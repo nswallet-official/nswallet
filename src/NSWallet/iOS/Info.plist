@@ -38,14 +38,10 @@
 	</array>
 	<key>XSAppIconAssets</key>
 	<string>Assets.xcassets/AppIcons.appiconset</string>
-	<key>CFBundleShortVersionString</key>
-	<string>3.0</string>
 	<key>UIFileSharingEnabled</key>
 	<true/>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
-	<key>CFBundleVersion</key>
-	<string>546</string>
 	<key>CFBundleDocumentTypes</key>
 	<array>
 		<dict>
@@ -111,5 +107,9 @@
 	<string>UIStatusBarStyleLightContent</string>
 	<key>UIUserInterfaceStyle</key>
 	<string>Light</string>
+	<key>CFBundleShortVersionString</key>
+	<string>4.0</string>
+	<key>CFBundleVersion</key>
+	<string>2020</string>
 </dict>
 </plist>
