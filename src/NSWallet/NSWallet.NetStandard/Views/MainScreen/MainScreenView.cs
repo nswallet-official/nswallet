@@ -70,7 +70,7 @@ namespace NSWallet
 
 			searchToolbarItem = new ToolbarItem {
 				Text = TR.Tr("search"),
-				Icon = Theme.Current.AppSearchIcon
+				Icon = Theme.Current.AppSearchIcon,
 			};
 			searchToolbarItem.SetBinding(MenuItem.CommandProperty, "SearchLaunchCommand");
 			ToolbarItems.Add(searchToolbarItem);
@@ -189,7 +189,8 @@ namespace NSWallet
 					searchBar.TextColor = Color.White;
 					break;
 			}
-			searchBar.PlaceholderColor = Color.LightGray;
+			searchBar.TextColor = Color.White;
+			searchBar.PlaceholderColor = Color.White;
 			searchBar.IsVisible = false;
 
 			switch (Device.RuntimePlatform) {

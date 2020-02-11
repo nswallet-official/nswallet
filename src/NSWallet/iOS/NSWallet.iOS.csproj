@@ -118,12 +118,6 @@
     <Reference Include="ToastIOS">
       <HintPath>..\Components\ToastIOS-1.6\lib\ios-unified\ToastIOS.dll</HintPath>
     </Reference>
-    <Reference Include="Plugin.InAppBilling.Abstractions">
-      <HintPath>..\packages\Plugin.InAppBilling.2.0.0\lib\Xamarin.iOS10\Plugin.InAppBilling.Abstractions.dll</HintPath>
-    </Reference>
-    <Reference Include="Plugin.InAppBilling">
-      <HintPath>..\packages\Plugin.InAppBilling.2.0.0\lib\Xamarin.iOS10\Plugin.InAppBilling.dll</HintPath>
-    </Reference>
     <Reference Include="ImageCircle.Forms.Plugin">
       <HintPath>..\packages\Xam.Plugins.Forms.ImageCircle.3.1.1.1-beta\lib\xamarinios10\ImageCircle.Forms.Plugin.dll</HintPath>
     </Reference>

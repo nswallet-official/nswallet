@@ -87,15 +87,6 @@
       <HintPath>..\packages\Plugin.CurrentActivity.2.1.0.4\lib\monoandroid44\Plugin.CurrentActivity.dll</HintPath>
     </Reference>
     <Reference Include="Java.Interop" />
-    <Reference Include="Plugin.InAppBilling.Abstractions">
-      <HintPath>..\packages\Plugin.InAppBilling.2.0.0\lib\MonoAndroid10\Plugin.InAppBilling.Abstractions.dll</HintPath>
-    </Reference>
-    <Reference Include="Plugin.InAppBilling">
-      <HintPath>..\packages\Plugin.InAppBilling.2.0.0\lib\MonoAndroid10\Plugin.InAppBilling.dll</HintPath>
-    </Reference>
-    <Reference Include="Plugin.InAppBilling.VendingLibrary">
-      <HintPath>..\packages\Plugin.InAppBilling.2.0.0\lib\MonoAndroid10\Plugin.InAppBilling.VendingLibrary.dll</HintPath>
-    </Reference>
     <Reference Include="Com.ViewPagerIndicator">
       <HintPath>..\packages\Xamarin.Android.CirclePageIndicator.1.0.4\lib\MonoAndroid\Com.ViewPagerIndicator.dll</HintPath>
     </Reference>

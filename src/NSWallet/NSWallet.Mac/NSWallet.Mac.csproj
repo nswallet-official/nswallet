@@ -59,12 +59,6 @@
     <Reference Include="System.IO.Compression" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.IO.Compression.FileSystem" />
-    <Reference Include="Plugin.InAppBilling.Abstractions">
-      <HintPath>..\packages\Plugin.InAppBilling.2.0.0\lib\netstandard1.0\Plugin.InAppBilling.Abstractions.dll</HintPath>
-    </Reference>
-    <Reference Include="Plugin.InAppBilling">
-      <HintPath>..\packages\Plugin.InAppBilling.2.0.0\lib\netstandard1.0\Plugin.InAppBilling.dll</HintPath>
-    </Reference>
     <Reference Include="ImageCircle.Forms.Plugin">
       <HintPath>..\packages\Xam.Plugins.Forms.ImageCircle.3.1.1.1-beta\lib\xamarinmac20\ImageCircle.Forms.Plugin.dll</HintPath>
     </Reference>
