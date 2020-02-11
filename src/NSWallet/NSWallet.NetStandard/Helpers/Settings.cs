@@ -1,8 +1,6 @@
 // Helpers/Settings.cs
 using System;
-using NSWallet.Premium;
 using NSWallet.Shared;
-using Plugin.InAppBilling.Abstractions;
 using Plugin.Settings;
 using Plugin.Settings.Abstractions;
 
@@ -28,23 +26,6 @@ namespace NSWallet.Helpers
         const string BuildKey = "build_key";
         static readonly string BuildDefault = "0";
 
-        const string PremiumKey = "premium_key";
-        public static readonly string PremiumDefault = "not_set";
-
-        const string IsPremiumOldKey = "is_premium_old_key";
-        static readonly bool IsPremiumOldDefault = false;
-
-        const string IsPremiumSubscriptionKey = "is_premium_subscription_key";
-        static readonly bool IsPremiumSubscriptionDefault = false;
-
-        //const string PremiumAutoRenewingKey = "premium_autorenewing_key";
-        //static readonly bool PremiumAutoRenewingDefault = false;
-
-        const string PremiumSubscriptionDateKey = "premium_subscription_key";
-        static readonly DateTime PremiumSubscriptionDateDefault = default(DateTime);
-
-        const string PremiumSubscriptionStateKey = "premium_autorenewing_key";
-        static readonly string PremiumSubscriptionStateDefault = "unknown";
 
         const string AutoBackupDateKey = "autobackuptime_key";
         static readonly string AutoBackupDateDefault = DateTime.Now.ToString();
@@ -166,22 +147,7 @@ namespace NSWallet.Helpers
 		const string IsAutoFingerKey = "is_auto_finger_key";
 		static readonly bool IsAutoFingerDefault = false;
 
-		/// <summary>
-		/// Resets the premium settings.
-		/// </summary>
-		public static void ResetPremiumSettings()
-        {
-            Theme = ThemeDefault;
-            IsRecentlyViewed = IsRecentlyViewedDefault;
-            IsExpiringSoon = IsExpiringSoonDefault;
-            ExpiringPeriod = ExpiringPeriodDefault;
-            IsRecentlyViewed = IsRecentlyViewedDefault;
-            IsMostlyViewed = IsMostlyViewedDefault;
-            FontFamily = FontFamilyDefault;
-            IsSocialEnabled = SocDefault;
-            IsAutoLoginEnabled = AutoLoginDefault;
-            PasswordTip = PasswordTipDefault;
-        }
+
 
 		public static void ResetSettings()
 		{
@@ -296,90 +262,6 @@ namespace NSWallet.Helpers
             }
         }
 
-        public static bool IsSocialEnabled
-        {
-            get
-            {
-                return AppSettings.GetValueOrDefault(SocKey, SocDefault);
-            }
-            set
-            {
-                AppSettings.AddOrUpdateValue(SocKey, value);
-            }
-        }
-
-        public static string PremiumStatus
-        {
-            get
-            {
-                return AppSettings.GetValueOrDefault(PremiumKey, PremiumDefault);
-            }
-            set
-            {
-                AppSettings.AddOrUpdateValue(PremiumKey, value);
-            }
-        }
-
-        public static bool IsPremiumOld
-        {
-            get
-            {
-                return AppSettings.GetValueOrDefault(IsPremiumOldKey, IsPremiumOldDefault);
-            }
-            set
-            {
-                AppSettings.AddOrUpdateValue(IsPremiumOldKey, value);
-            }
-        }
-
-        public static bool IsPremiumSubscription
-        {
-            get
-            {
-                return AppSettings.GetValueOrDefault(IsPremiumSubscriptionKey, IsPremiumSubscriptionDefault);
-            }
-            set
-            {
-                AppSettings.AddOrUpdateValue(IsPremiumSubscriptionKey, value);
-            }
-        }
-
-        /*
-        public static bool PremiumAutoRenewing
-        {
-            get
-            {
-                return AppSettings.GetValueOrDefault(PremiumAutoRenewingKey, PremiumAutoRenewingDefault);
-            }
-            set
-            {
-                AppSettings.AddOrUpdateValue(PremiumAutoRenewingKey, value);
-            }
-        }
-*/
-        public static DateTime PremiumSubscriptionDate
-        {
-            get
-            {
-                return AppSettings.GetValueOrDefault(PremiumSubscriptionDateKey, PremiumSubscriptionDateDefault);
-            }
-            set
-            {
-                AppSettings.AddOrUpdateValue(PremiumSubscriptionDateKey, value);
-            }
-        }
-
-        public static string PremiumSubscriptionState
-        {
-            get
-            {
-                return AppSettings.GetValueOrDefault(PremiumSubscriptionStateKey, PremiumSubscriptionStateDefault);
-            }
-            set
-            {
-                AppSettings.AddOrUpdateValue(PremiumSubscriptionStateKey, value);
-            }
-        }
 
         public static int AutoLogout
         {

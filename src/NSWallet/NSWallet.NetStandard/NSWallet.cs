@@ -2,7 +2,6 @@
 using NSWallet.Shared;
 using NSWallet.Helpers;
 using System;
-using NSWallet.Premium;
 using NSWallet.Shared.Helpers.Logs.AppLog;
 using NSWallet.NetStandard.Helpers;
 using Xamarin.Essentials;
@@ -44,27 +43,12 @@ namespace NSWallet
 			Pages.Login();
 		}
 
-		/*
-		void initAppLogs()
-		{
-			try {
-				var dbDirectory = PlatformSpecific.GetDBDirectory();
-				var logsDirectory = dbDirectory + GConsts.APP_LOGS_FILE_PATH;
-				//var logsDeviceInfo = DataService.GetDeviceInfo();
-				AppLogs.Init(logsDirectory, logsDeviceInfo, Settings.AreLogsActive);
-			} catch (Exception ex) {
-				Debug.WriteLine("AppLogs initialization failed. Message: " + ex.Message);
-			}
-		}
-		*/
 
 		public void ImportImage(byte[] imageBytes)
 		{
-			if (PremiumManagement.IsAnyPremium) {
+			
 				ImportIconManager.BeginImportingIcon(imageBytes);
-			} else {
-				PremiumManagement.ShowBuyPremiumPopup();
-			}
+
 		}
 
         public void ImportZip(string url)
@@ -139,16 +123,7 @@ namespace NSWallet
 						});
 					}
 				}
-				if (Settings.LaunchCount % 55 == 0) {
-					if (!Settings.IsPremiumSubscription) {
-						Device.BeginInvokeOnMainThread(async () => {
-							var result = await MainPage.DisplayAlert(TR.Tr("attention"), TR.Tr("feedback_subscription"), TR.Tr("premium_buy"), TR.Tr("later"));
-							if (result) {
-								Pages.Premium(MainPage.Navigation);
-							}
-						});
-					}
-				}
+
 			} catch (Exception ex) {
 				AppLogs.Log(ex.Message, nameof(checkLaunchCount), nameof(NSWallet));
 			}

@@ -296,19 +296,6 @@ namespace NSWallet
             clearFields();
         }
 
-        Command buyPremiumCommand;
-        public Command BuyPremiumCommand
-        {
-            get
-            {
-                return buyPremiumCommand ?? (buyPremiumCommand = new Command(ExecutePremiumCommand));
-            }
-        }
-
-        void ExecutePremiumCommand()
-        {
-            Pages.Premium(navigation);
-        }
 
         Command releaseCommand;
         public Command ReleaseCommand

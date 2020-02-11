@@ -4,14 +4,11 @@ using System.ComponentModel;
 using NSWallet.Shared;
 using Xamarin.Forms;
 using NSWallet.Helpers;
-using NSWallet.Premium;
 using System.IO;
 using NSWallet.Model;
-using System.Diagnostics;
 using System.Linq;
 using static NSWallet.NSWFormsItemModel;
 using NSWallet.Enums;
-using System.Text.RegularExpressions;
 using NSWallet.NetStandard.Helpers.UI.Popups.Pages.ExportImport;
 
 namespace NSWallet
@@ -26,7 +23,7 @@ namespace NSWallet
 	{
 		public event PropertyChangedEventHandler PropertyChanged;
 
-		public Action PremiumAlertCallback { get; set; }
+		
 		public Action<bool> SearchEntryShowHideCommandCallback { get; set; }
 		public Action LaunchEditTitlePopupCommandCallback { get; set; }
 		public Action HideEditTitlePopupCommandCallback { get; set; }
@@ -99,7 +96,7 @@ namespace NSWallet
 
 			IsLocalClipboardActivated = false;
 
-			PremiumAlertCallback = () => { };
+			
 			SearchEntryShowHideCommandCallback = (x) => { };
 			LaunchEditTitlePopupCommandCallback = () => { };
 			HideEditTitlePopupCommandCallback = () => { };
@@ -558,7 +555,7 @@ namespace NSWallet
 		protected void ExecuteSearchLaunchCommand()
 		{
 			if (!IsLocalClipboardActivated) {
-				if (PremiumManagement.IsAnyPremium) {
+			
 					SearchEntryShowHideCommandCallback.Invoke(false);
 					SearchText = null;
 					if (show) {
@@ -583,9 +580,7 @@ namespace NSWallet
 						AddButtonVisible = false;
 						HideEmptyAddButtonCommand.Invoke();
 					}
-				} else {
-					PremiumAlertCallback.Invoke();
-				}
+	
 			}
 		}
 

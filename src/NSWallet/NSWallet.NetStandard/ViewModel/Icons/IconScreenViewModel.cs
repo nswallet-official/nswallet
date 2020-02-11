@@ -9,7 +9,6 @@ using NSWallet.NetStandard.DependencyServices.MediaService;
 using NSWallet.NetStandard.Helpers;
 using NSWallet.NetStandard.Helpers.UI.Popups;
 using NSWallet.NetStandard.Helpers.UI.Popups.Pages.Icons;
-using NSWallet.Premium;
 using NSWallet.Shared;
 using Xamarin.Forms;
 
@@ -143,7 +142,7 @@ namespace NSWallet.NetStandard
 
 		void ExecuteGalleryPickCommand()
 		{
-			if (PremiumManagement.IsAnyPremium) {
+
 				Device.BeginInvokeOnMainThread(async () => {
 					if (!Settings.GalleryPermission) {
 						PopupUIController.LaunchMessageBox(
@@ -161,9 +160,7 @@ namespace NSWallet.NetStandard
 						await pickPhoto();
 					}
 				});
-			} else {
-				PremiumManagement.ShowBuyPremiumPopup();
-			}
+
 		}
 
 		string getDevice()

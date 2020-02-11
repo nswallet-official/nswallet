@@ -6,11 +6,7 @@ namespace NSWallet
 {
     public class SocialViewModel : ViewModel
     {
-        bool isVisibleProp = Settings.IsSocialEnabled;
-        public bool IsVisibleProp
-        {
-            get { return isVisibleProp; }
-        }
+
 
         void openWebsite(string url)
         {

@@ -1,4 +1,4 @@
-﻿using NSWallet.Premium;
+﻿
 using NSWallet.Shared;
 using Xamarin.Forms;
 
@@ -9,23 +9,10 @@ namespace NSWallet
 	{
 		public MainMenuViewModel()
 		{
-			// Temporary for Mac BETA
-			if (Device.RuntimePlatform == Device.macOS) {
-				Premium = "Mac BETA";
-				PremiumColor = Theme.Current.MenuTopPremiumColor;
-				return;
-			}
 
-			if (PremiumManagement.IsPremiumSubscription) {
 				Premium = TR.Tr("premium_status");
 				PremiumColor = Theme.Current.MenuTopPremiumColor;
-			} else if (PremiumManagement.IsLegacyPremium) {
-				Premium = TR.Tr("premiumlegacy_status");
-				PremiumColor = Theme.Current.MenuTopPremiumColor;
-			} else {
-				Premium = TR.Tr("free_status");
-				PremiumColor = Theme.Current.MenuTopFreeColor;
-			}
+
 		}
 
 		string premium;

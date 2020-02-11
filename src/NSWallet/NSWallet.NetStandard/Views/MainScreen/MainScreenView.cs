@@ -528,7 +528,7 @@ namespace NSWallet
 
 		void SetCallbacks()
 		{
-			mainScreenVM.PremiumAlertCallback = PremiumAlert;
+			
 			mainScreenVM.SearchEntryShowHideCommandCallback = SearchEntryShowHide;
 			mainScreenVM.LaunchEditTitlePopupCommandCallback = ChangeItemTitle;
 			mainScreenVM.HidePopupCommandCallback = HideCreatePopup;
@@ -563,14 +563,7 @@ namespace NSWallet
 			var answer = DisplayAlert(TR.Tr("alert"), TR.Tr("not_implemented"), TR.Tr("ok"));
 		}
 
-		void PremiumAlert()
-		{
-			var answer = DisplayAlert(TR.Tr("premium"), TR.Tr("premium_description"), TR.Tr("premium_buy"), TR.Tr("cancel")).ContinueWith((t => {
-				if (t.Result) {
-					Device.BeginInvokeOnMainThread(() => Pages.Premium(Navigation));
-				}
-			}));
-		}
+
 
 		void SearchEntryShowHide(bool onlyHide = false)
 		{

@@ -2,7 +2,6 @@
 using Xamarin.Forms;
 using NSWallet.Shared;
 using NSWallet.Helpers;
-using NSWallet.Premium;
 using System;
 using NSWallet.Consts;
 using System.Threading.Tasks;
@@ -163,43 +162,7 @@ namespace NSWallet
 				mainStackLayout.Children.Add(fingerPrintImage);
 			}
 
-			if (PremiumManagement.IsFree) { 
-				//mainStackLayout.Children.Add(getIndicators(5, 0));
-
-				if (!BL.IsNew()) // FIXME: business layer should not be in views!!!!!
-				{
-					var premiumButtonLayout = new Grid {
-						VerticalOptions = LayoutOptions.EndAndExpand
-					};
-
-					var premiumButton = new Button {
-						Margin = new Thickness(0, 0, 0, 20),
-						FontFamily = NSWFontsController.CurrentTypeface,
-						Text = TR.Tr("buypremium_button"),
-						HeightRequest = 50,
-						VerticalOptions = LayoutOptions.Center,
-						HorizontalOptions = LayoutOptions.Fill,
-						TextColor = Theme.Current.PremiumButtonTextColor,
-						FontSize = FontSizeController.GetSize(NamedSize.Medium, typeof(Button)),
-						FontAttributes = Theme.Current.PremiumButtonFontAttributes,
-						BackgroundColor = Theme.Current.PremiumButtonBackground
-					};
-					premiumButton.SetBinding(Button.CommandProperty, "BuyPremiumCommand");
-					premiumButtonLayout.Children.Add(premiumButton);
-
-					var premiumStar = new CachedImage {
-						HeightRequest = 70,
-						Source = ImageSource.FromStream(() => NSWRes.GetImage(Theme.Current.PremiumIcon)),
-						HorizontalOptions = LayoutOptions.End,
-						VerticalOptions = LayoutOptions.Center,
-						Style = ImageProperties.DefaultCachedImageStyle,
-						Margin = new Thickness(0, 0, 0, 20)
-					};
-					premiumButtonLayout.Children.Add(premiumStar);
-
-					mainStackLayout.Children.Add(premiumButtonLayout);
-				}
-			}
+			
 
 			if (BL.IsNew()) // FIXME: business layer should not be in views!!!!!
 			{

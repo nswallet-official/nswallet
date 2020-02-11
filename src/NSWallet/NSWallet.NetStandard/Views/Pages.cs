@@ -31,16 +31,6 @@ namespace NSWallet
 
 		}
 
-        public static void Premium(INavigation navigation)
-        {
-            var navPage = new NavigationPage(new PremiumPageView())
-            {
-                BarBackgroundColor = Theme.Current.AppHeaderBackground,
-                BarTextColor = Theme.Current.AppHeaderTextColor
-            };
-
-            navigation.PushModalAsync(navPage);
-        }
 
 		public static void ImportBackupHelp(INavigation navigation) {
 			var navPage = new NavigationPage(new ImportBackupView()) {
