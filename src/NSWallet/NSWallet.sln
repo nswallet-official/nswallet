@@ -13,8 +13,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NSWallet.NetStandard", "NSW
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NSWallet.Mac", "NSWallet.Mac\NSWallet.Mac.csproj", "{1AE8CDD0-F03F-4302-B688-0E29E3AA5969}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NSWallet.UITests", "NSWallet.UITests\NSWallet.UITests.csproj", "{E258AFFA-3F4A-4491-82E9-5ABC227333C4}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NSWallet.Console", "NSWallet.Console\NSWallet.Console.csproj", "{A476D603-79DC-4AA7-B51B-2B03B82D33DC}"
 EndProject
 Global
@@ -104,15 +102,6 @@ Global
 		{1AE8CDD0-F03F-4302-B688-0E29E3AA5969}.UnitTesting|Any CPU.ActiveCfg = Debug|Any CPU
 		{1AE8CDD0-F03F-4302-B688-0E29E3AA5969}.UiTesting|Any CPU.ActiveCfg = Debug|Any CPU
 		{1AE8CDD0-F03F-4302-B688-0E29E3AA5969}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E258AFFA-3F4A-4491-82E9-5ABC227333C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E258AFFA-3F4A-4491-82E9-5ABC227333C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E258AFFA-3F4A-4491-82E9-5ABC227333C4}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
-		{E258AFFA-3F4A-4491-82E9-5ABC227333C4}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
-		{E258AFFA-3F4A-4491-82E9-5ABC227333C4}.Release|iPhone.ActiveCfg = Release|Any CPU
-		{E258AFFA-3F4A-4491-82E9-5ABC227333C4}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
-		{E258AFFA-3F4A-4491-82E9-5ABC227333C4}.Debug|iPhone.ActiveCfg = Debug|Any CPU
-		{E258AFFA-3F4A-4491-82E9-5ABC227333C4}.UiTesting|Any CPU.ActiveCfg = Debug|Any CPU
-		{E258AFFA-3F4A-4491-82E9-5ABC227333C4}.UiTesting|Any CPU.Build.0 = Debug|Any CPU
 		{A476D603-79DC-4AA7-B51B-2B03B82D33DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A476D603-79DC-4AA7-B51B-2B03B82D33DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A476D603-79DC-4AA7-B51B-2B03B82D33DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
