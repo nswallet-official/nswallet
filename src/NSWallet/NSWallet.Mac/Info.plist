@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleName</key>
+	<string>NS Wallet</string>
+	<key>CFBundleIdentifier</key>
+	<string>com.nyxbull.nswallet</string>
+	<key>CFBundleShortVersionString</key>
+	<string>3.0</string>
+	<key>LSMinimumSystemVersion</key>
+	<string>10.14</string>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>en</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleSignature</key>
+	<string>????</string>
+	<key>NSHumanReadableCopyright</key>
+	<string>(c) Alexandr Bykov</string>
+	<key>NSPrincipalClass</key>
+	<string>NSApplication</string>
+	<key>XSAppIconAssets</key>
+	<string>Assets.xcassets/AppIcon.appiconset</string>
+	<key>CFBundleVersion</key>
+	<string>1000</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Fonts/Merriweather-Regular.ttf</string>
+		<string>Fonts/Montserrat-Regular.ttf</string>
+		<string>Fonts/Inconsolata-Regular.ttf</string>
+		<string>Fonts/Lobster-Regular.ttf</string>
+		<string>Fonts/OpenSansCondensed-Light.ttf</string>
+		<string>Fonts/OpenSans-Regular.ttf</string>
+		<string>Fonts/Oswald-Regular.ttf</string>
+		<string>Fonts/Pacifico-Regular.ttf</string>
+		<string>Fonts/PlayfairDisplay-Regular.ttf</string>
+		<string>Fonts/Raleway-Regular.ttf</string>
+		<string>Fonts/OpenSansCondensed-Bold.ttf</string>
+		<string>Fonts/Inconsolata-Bold.ttf</string>
+		<string>Fonts/Merriweather-Bold.ttf</string>
+		<string>Fonts/Montserrat-Bold.ttf</string>
+		<string>Fonts/OpenSans-Bold.ttf</string>
+		<string>Fonts/Oswald-Bold.ttf</string>
+		<string>Fonts/PlayfairDisplay-Bold.ttf</string>
+		<string>Fonts/fa-regular-581.otf</string>
+		<string>Fonts/fa-solid-581.otf</string>
+	</array>
+	<key>LSApplicationCategoryType</key>
+	<string>public.app-category.utilities</string>
+</dict>
+</plist>

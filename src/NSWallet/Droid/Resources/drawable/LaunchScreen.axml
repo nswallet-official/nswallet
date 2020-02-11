@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="#3291F0"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:paddingTop="30px">
+    <TextView
+        android:id="@+id/appName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#fff"
+        android:text="NS Wallet"
+        android:textSize="40sp"
+        android:background="@android:color/transparent" />
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:id="@+id/logo"
+        android:src="@drawable/app_icon_1024"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="50dp" />
+    <LinearLayout
+        android:layout_height="match_parent"
+        android:layout_width="wrap_content"
+        android:orientation="vertical"
+        android:gravity="bottom">
+        <TextView
+            android:id="@+id/appDevName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:textColor="#fff"
+            android:text="Nyxbull Software"
+            android:textSize="20sp"
+            android:background="@android:color/transparent" />
+        <TextView
+            android:id="@+id/appDevName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:textColor="#fff"
+            android:text="www.nyxbull.com"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:background="@android:color/transparent"
+            android:paddingBottom="40px" />
+    </LinearLayout>
+</LinearLayout>

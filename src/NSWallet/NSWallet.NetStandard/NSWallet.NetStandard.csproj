@@ -1,0 +1,63 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Xam.Plugins.Settings" Version="3.1.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="Plugin.InAppBilling" Version="2.0.0" />
+    <PackageReference Include="Plugin.Fingerprint" Version="1.4.9" />
+    <PackageReference Include="Xam.Plugins.Forms.ImageCircle" Version="3.1.1.1-beta" />
+    <PackageReference Include="Xamarin.FFImageLoading.Forms" Version="2.4.11.982" />
+    <PackageReference Include="Xamarin.FFImageLoading.Transformations" Version="2.4.11.982" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.3.1" />
+    <PackageReference Include="Xamarin.Forms" Version="4.4.0.991265" />
+    <PackageReference Include="sqlite-net-pcl" Version="1.6.292" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Helpers\Labels\" />
+    <Folder Include="Helpers\Fingerprint\" />
+    <Folder Include="Views\ExportImportScreen\" />
+    <Folder Include="ViewModel\ExportImportScreen\" />
+    <Folder Include="Views\ImportBackupScreen\" />
+    <Folder Include="ViewModel\ImportBackupScreen\" />
+    <Folder Include="Helpers\Fonts\" />
+    <Folder Include="Views\SettingsScreen\FontSelectorScreen\" />
+    <Folder Include="Views\SettingsScreen\FontSelectorScreen\ViewCells\" />
+    <Folder Include="ViewModel\SettingsScreen\FontSelectorScreen\" />
+    <Folder Include="Views\Icons\" />
+    <Folder Include="ViewModel\Icons\" />
+    <Folder Include="Views\Icons\ViewCells\" />
+    <Folder Include="Helpers\UI\" />
+    <Folder Include="Helpers\UI\ListView\" />
+    <Folder Include="Helpers\UI\Toolbar\" />
+    <Folder Include="Helpers\UI\Popups\" />
+    <Folder Include="Helpers\UI\Popups\Pages\" />
+    <Folder Include="Helpers\UI\Popups\Buttons\" />
+    <Folder Include="Helpers\UI\Popups\Pages\Icons\" />
+    <Folder Include="DependencyServices\" />
+    <Folder Include="DependencyServices\GalleryPicker\" />
+    <Folder Include="DependencyServices\GalleryPicker\Interfaces\" />
+    <Folder Include="DependencyServices\MediaService\" />
+    <Folder Include="DependencyServices\MediaService\Interfaces\" />
+    <Folder Include="Helpers\UI\NavigationHeader\" />
+    <Folder Include="Themes\NightMode\" />
+    <Folder Include="Helpers\UI\Images\" />
+    <Folder Include="Helpers\UI\Images\Properties\" />
+    <Folder Include="Helpers\UI\Popups\Pages\SignIn\" />
+    <Folder Include="Views\License\" />
+    <Folder Include="ViewModel\License\" />
+    <Folder Include="Helpers\Licenses\" />
+    <Folder Include="CustomRenderers\ViewCells\" />
+    <Folder Include="Helpers\UI\Popups\Pages\Premium\" />
+    <Folder Include="Views\Feedback\" />
+    <Folder Include="ViewModel\Feedback\" />
+    <Folder Include="Helpers\UI\Popups\Pages\ExportImport\" />
+    <Folder Include="Views\Diagnostics\" />
+    <Folder Include="ViewModel\Diagnostics\" />
+    <Folder Include="Helpers\2FA\" />
+  </ItemGroup>
+  <Import Project="..\NSWallet.Shared\NSWallet.Shared.projitems" Label="Shared" Condition="Exists('..\NSWallet.Shared\NSWallet.Shared.projitems')" />
+</Project>

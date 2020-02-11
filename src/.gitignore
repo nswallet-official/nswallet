@@ -1,0 +1,37 @@
+# Xamarin project ignore file
+
+Resource.designer.cs
+
+# Xamarin Components
+Components/
+
+# NuGet Packages Directory
+packages/
+.vs/
+*.nuget.targets
+*.lock.json
+*.nuget.props
+!packages/build/
+mono_crash.*
+
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+x64/
+build/
+bld/
+[Bb]in/
+[Oo]bj/
+
+*.dll
+*.pidb
+*.userprefs
+*.swp
+*.DS_Store
+*.nib
+*.suo
+*.user
+*.pfx
+
+*_ReSharper.*/
