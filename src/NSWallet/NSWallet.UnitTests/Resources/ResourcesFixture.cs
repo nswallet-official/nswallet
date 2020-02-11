@@ -13,8 +13,6 @@ namespace NSWallet.UnitTests
     {
         const string defaultLang = "en";
 		readonly string[] files2check = { 
-			"notpremium.html", 
-			"old_premium.html", 
 			"help_import_backup.html",
 			"privacy_policy.html",
 			"terms_of_use.html",

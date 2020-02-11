@@ -12,6 +12,7 @@
                 case "attention":
                 case "nswallet_premium":
                 case "password_hint":
+                case "premium_status":
                 case "settings_font":
                 case "settings_autologout":
                 case "settings_autologout_focus":
