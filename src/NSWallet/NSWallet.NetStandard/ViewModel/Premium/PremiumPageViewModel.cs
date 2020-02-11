@@ -10,7 +10,7 @@ namespace NSWallet
 {
     public class PremiumPageViewModel : ViewModel
     {
-        INavigation navigation;
+		readonly INavigation navigation;
 
 		public PremiumPageViewModel(INavigation navigation)
 		{
@@ -29,6 +29,15 @@ namespace NSWallet
             HtmlText = PremiumManagement.IsLegacyPremium
 				? NSWLocalFiles.GetOldPremiumHTML(AppLanguage.GetCurrentLangCode())
 				: NSWLocalFiles.GetNotPremiumHTML(AppLanguage.GetCurrentLangCode());
+
+			switch (Device.RuntimePlatform) {
+				case Device.iOS:
+					HtmlText = Common.RemoveTags(HtmlText, "[iosonly]", "[/iosonly]");
+					break;
+				default:
+					HtmlText = Common.RemoveTextBetweenTags(HtmlText, "[iosonly]", "[/iosonly]");
+					break;
+			}
 		}
 
 		bool areButtonsVisible;

@@ -138,6 +138,7 @@
   "settings_group_extra": "अतिरिक्त",
   "settings_delete_all": "सब डिलीट करें ",
   "settings_delete_all_alert": "चेतावनी!  आपकी सभी जानकारीयां डिलीट हो जाएंगी. ",
+  "settings_optimize": "डेटा भंडारण का अनुकूलन करें",
   "create_item_placeholder": "नए रिकॉर्ड का नाम दर्ज करें",
   "create_folder_placeholder": "नए फोल्डर का नाम दर्ज करें",
   "create_item_empty": "नए फोल्डर का नाम दर्ज करें",

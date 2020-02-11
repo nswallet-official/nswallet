@@ -15,6 +15,7 @@ namespace NSWallet
         Color AppHeaderTextColor { get; }
         Color DefaultLinkColor { get; }
         Color GroupBackground { get; }
+        Color GroupDangerBackground { get; }
         Color GroupTextColor { get; }
         Color ListBackgroundColor { get; }
         Color ListTextColor { get; }

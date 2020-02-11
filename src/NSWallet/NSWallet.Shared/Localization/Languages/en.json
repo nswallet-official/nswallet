@@ -148,10 +148,12 @@
   "settings_is_mostly_viewed": "Mostly viewed items",
   "settings_is_mostly_viewed_on": "This folder shows 10 items viewed more frequently",
   "settings_is_mostly_viewed_off": "Disabled",
-  "settings_group_extra": "Extra",
+  "settings_group_extra": "Danger zone",
   "settings_delete_all": "Delete everything",
   "settings_delete_all_alert": "All your data and backup files will be deleted! Are you sure that you want to continue?",
-  
+  "settings_optimize": "Optimize data storage",
+
+
   "create_item_placeholder": "Enter new item name",
   "create_folder_placeholder": "Enter new folder name",
   "create_item_empty": "The field cannot be empty",
@@ -434,10 +436,10 @@
   "previous_password_description": "This field is populated automatically in the moment when you change your password field in the same item, so when you save new password you always have a copy of the previous one",
 
   "clever_password_description": "Clever password generation creates your new password using current password as a template, so you can be sure that your new password is always compliant to the same rules as the previous one (the same length, the same quantity of lower & upper case, special symbols and digits)",
-  "password_generation":  "Generate new password",
-  "clever_generation":  "Clever password generation",
+  "password_generation": "Generate new password",
+  "clever_generation": "Clever password generation",
   "password_length": "Password length",
-  "manage_password_no_chosen":  "You should activate at least one switch",
+  "manage_password_no_chosen": "You should activate at least one switch",
   "upper_case_letters": "Upper case letters",
   "lower_case_letters": "Lower case letters",
   "digits": "Digits",
@@ -483,7 +485,7 @@
   "menu_developer": "Developer options",
   "admin_panel_detailed_log": "Detailed log files",
   "admin_panel_diagnostics": "Launch diagnostics",
-  
+
   "add_button_item_text": "Tap here to add new item",
   "add_button_field_text": "Tap here to add new field",
 
@@ -532,7 +534,7 @@
   "copy_locally_unavailable_folder": "Folder cannot be copied inside of Item, go to Folder level",
 
   "default_font_family": "Default font",
-  
+
   "send_logs": "Send logs to the developer",
   "choose_mailing_app": "Choose mailing application",
   "mail_app_ios_need": "You need to install Apple's \"Mail\" application to send log messages",
@@ -559,7 +561,7 @@
   "change_icon_name_failure": "Error occured during changing icon's name",
   "change_icon_name_description": "Enter a new name for this icon",
   "icon_change_group_success": "You have successfully changed group for icon",
-  "icon_change_group_failure":  "Error occured during changing group for icon",
+  "icon_change_group_failure": "Error occured during changing group for icon",
   "icon_change_shape_success": "You have successfully changed shape for icon",
   "icon_change_shape_failure": "Error occured during changing shape for icon",
   "icons_filter_custom": "Custom icons",

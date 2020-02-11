@@ -151,6 +151,7 @@
   "settings_group_extra": "Дадаткова",
   "settings_delete_all": "Выдаліць усё",
   "settings_delete_all_alert": "Усе вашыя дадзеныя і рэзервовыя копіі будуць выдаленыя! Вы ўпэўненыя, што жадаеце працягнуць?",
+  "settings_optimize": "Аптымізаваць дадзеныя",
 
   "create_item_placeholder": "Калі ласка, увядзіце імя новай запісу",
   "create_folder_placeholder": "Калі ласка, увядзіце імя новай тэчкі",

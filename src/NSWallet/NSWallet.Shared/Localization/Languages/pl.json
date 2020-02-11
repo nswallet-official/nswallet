@@ -151,7 +151,8 @@
   "settings_group_extra": "Dodatki",
   "settings_restore_default": "Usuń wszystko",
   "settings_restore_default_alert": "Wszystkie twoje dane i pliki kopii zapasowych zostaną usunięte! Czy na pewno chcesz kontynuować?",
-  
+  "settings_optimize": "Zoptymalizuj dane",
+
   "create_item_placeholder": "Wpisz nową nazwę elementu",
   "create_folder_placeholder": "Wpisz nową nazwę olderu",
   "create_item_empty": "Pole nie może być puste",
@@ -434,10 +435,10 @@
   "previous_password_description": "To pole jest wypełniane automatycznie w momencie zmiany pola hasła w tym samym elemencie, więc po zapisaniu nowego hasła zawsze masz kopię poprzedniego",
 
   "clever_password_description": "Sprytne generowanie hasła tworzy nowe hasło przy użyciu bieżącego hasła jako szablonu, dzięki czemu możesz mieć pewność, że nowe hasło jest zawsze zgodne z tymi samymi regułami, co poprzednie (ta sama długość, ta sama liczba małych i wielkich liter, symbole specjalne i cyfry)",
-  "password_generation":  "Wygeneruj nowe hasło",
-  "clever_generation":  "Sprytne generowanie haseł",
+  "password_generation": "Wygeneruj nowe hasło",
+  "clever_generation": "Sprytne generowanie haseł",
   "password_length": "Długość hasła",
-  "manage_password_no_chosen":  "Powinieneś aktywować co najmniej jeden przełącznik",
+  "manage_password_no_chosen": "Powinieneś aktywować co najmniej jeden przełącznik",
   "upper_case_letters": "Wielkie litery",
   "lower_case_letters": "Małe litery",
   "digits": "Cyfry",
@@ -483,7 +484,7 @@
   "menu_developer": "Opcje programistyczne",
   "admin_panel_detailed_log": "Szczegółowe pliki dziennika",
   "admin_panel_diagnostics": "Uruchom diagnostykę",
-  
+
   "add_button_item_text": "Kliknij tutaj, aby dodać nowy element",
   "add_button_field_text": "Kliknij tutaj, aby dodać nowe pole",
 
@@ -547,18 +548,18 @@
   "delete_icon_accept": "Czy naprawdę chcesz usunąć tę ikonę?",
   "delete_icon_name_success": "Pomyślnie usunięto tę ikonę",
   "delete_icon_name_failure": "Wystąpił błąd podczas usuwania ikony",
-  "change_icon_name_success": "Pomyślnie zmieniłeś nazwę ikony",                                                      
+  "change_icon_name_success": "Pomyślnie zmieniłeś nazwę ikony",
   "change_icon_name_failure": "Wystąpił błąd podczas zmiany nazwy ikony",
   "change_icon_name_description": "Wprowadź nową nazwę dla tej ikony",
   "icon_change_group_success": "Pomyślnie zmieniłeś grupę dla ikony",
-  "icon_change_group_failure":  "Wystąpił błąd podczas zmiany grupy dla ikony",
+  "icon_change_group_failure": "Wystąpił błąd podczas zmiany grupy dla ikony",
   "icon_change_shape_success": "Pomyślnie zmieniłeś kształt ikony",
   "icon_change_shape_failure": "Wystąpił błąd podczas zmiany kształtu ikony",
   "icons_filter_custom": "Niestandardowe ikony",
   "icons_filter_all": "Wszystkie ikony",
 
   "icons_gallery_picker": "Wybierz ikonę z galerii",
-                    
+
   "icons_gallery_access_request_ios": "'NSWallet' Aplikacja chciałaby uzyskać dostęp 'Zdjęcia'",
   "icons_gallery_access_request_android": "'NSWallet' Aplikacja chciałaby uzyskać dostęp 'Galeria'",
   "icons_gallery_permission": "Twoja Galeria Zdjęć będzie używana do importowania nowej ikony do aplikacji, dzięki czemu możesz wybrać ją dla dowolnych elementów",
@@ -593,7 +594,7 @@
   "proceed_to_feedback": "Przejdź do feedback",
   "continue": "Dalej",
   "export_import_alert": "Zamierzasz udostępnić swoje poufne informacje, upewnij się, że kanał, którego używasz do udostępniania informacji, jest wystarczająco bezpieczny. Czy kontynuujemy?",
-  
+
   "back": "Z powrotem"
- 
+
 }

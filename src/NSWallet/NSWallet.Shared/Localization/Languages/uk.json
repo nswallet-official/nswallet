@@ -151,6 +151,7 @@
   "settings_group_extra": "Додатково",
   "settings_delete_all": "Видалити все",
   "settings_delete_all_alert": "Всі ваші дані і резервні копії будуть видалені! Ви впевнені, що хочете продовжити?",
+  "settings_optimize": "Оптимізувати дані",
 
   "create_item_placeholder": "Введіть назву нового запису",
   "create_folder_placeholder": "Введіть назву нового каталогу",

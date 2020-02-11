@@ -294,9 +294,9 @@ namespace NSWallet
             navigation.PushModalAsync(navPage);
         }
 
-		public static void Login(bool manualExit = false)
+		public static void Login()
         {
-			Application.Current.MainPage = new NavigationPage(new LoginScreenView(manualExit))
+			Application.Current.MainPage = new NavigationPage(new LoginScreenView())
             {
                 BarBackgroundColor = Theme.Current.AppHeaderBackground,
                 BarTextColor = Theme.Current.AppHeaderTextColor

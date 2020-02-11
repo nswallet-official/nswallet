@@ -151,6 +151,7 @@
   "settings_is_mostly_viewed": "Ítems més vistos",
   "settings_is_mostly_viewed_on": "Aquesta carpeta mostra els 10 articles més vistos",
   "settings_is_mostly_viewed_off": "Desactivat",
+  "settings_optimize": "Optimitza l’emmagatzematge de dades",
 
   "create_item_placeholder": "Entrar nou nom article",
   "create_folder_placeholder": "Entrar nou nom carpeta",

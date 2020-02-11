@@ -141,7 +141,8 @@
   "settings_group_extra": "Extra",
   "settings_delete_all": "Alles löschen",
   "settings_delete_all_alert": "Alle Ihre Daten und Backup-Dateien werden gelöscht! Sind Sie sicher, dass Sie fortfahren möchten?",
-  
+  "settings_optimize": "Optimieren Sie die Datenspeicherung",
+
   "create_item_placeholder": "Geben Sie einen neuen Artikelnamen ein",
   "create_folder_placeholder": "Geben Sie einen neuen Ordnernamen ein",
   "create_item_empty": "Das Feld darf nicht leer sein",

@@ -16,6 +16,7 @@ namespace NSWallet
         virtual public Color MenuTextColor { get { return Color.FromRgb(120, 120, 120); } }
         virtual public Color MenuBackgroundColor { get { return Color.FromRgb(250, 250, 250); } }
         virtual public Color GroupBackground { get { return AppHeaderBackground; } }
+        virtual public Color GroupDangerBackground { get { return Color.Red; } }
         virtual public Color GroupTextColor { get { return Color.White; } }
         virtual public Color MenuTopBackgroundColor { get { return Color.FromRgb(0, 157, 248); } }
         virtual public Color MenuTopTextColor { get { return Color.White; } }

@@ -34,6 +34,7 @@ namespace NSWallet
 			buyButton.BackgroundColor = Theme.Current.PremiumButtonPremScrBackgroundColor;
 			buyButton.TextColor = Theme.Current.PremiumButtonPremScrTextColor;
 			buyButton.HorizontalOptions = LayoutOptions.FillAndExpand;
+			buyButton.Padding = 5;
 			buyButton.SetBinding(Button.TextProperty, "BuySubscriptionText");
 			mainStackLayout.Children.Add(buyButton);
 
@@ -117,6 +118,7 @@ namespace NSWallet
 			var webView = new WebView {
 				VerticalOptions = LayoutOptions.FillAndExpand,
 				HorizontalOptions = LayoutOptions.FillAndExpand
+				
 			};
 
 			var webSource = new HtmlWebViewSource();

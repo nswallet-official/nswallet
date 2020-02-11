@@ -151,6 +151,7 @@
   "settings_is_mostly_viewed": "Items más vistos",
   "settings_is_mostly_viewed_on": "Esta carpeta muestra los 10 artículos más vistos",
   "settings_is_mostly_viewed_off": "Desactivado",
+  "settings_optimize": "Optimizar el almacenamiento de datos",
 
   "create_item_placeholder": "Entrar nuevo nombre artículo",
   "create_folder_placeholder": "Entrar nuevo nombre carpeta",

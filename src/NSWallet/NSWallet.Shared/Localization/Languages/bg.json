@@ -151,6 +151,7 @@
   "settings_group_extra": "допълнително",
   "settings_delete_all": "Изтриване на всички",
   "settings_delete_all_alert": "Всички ваши данни и резервни копия ще бъдат изтрити! Наистина ли искате да продължите?",
+  "settings_optimize": "Оптимизирайте данните",
 
   "create_item_placeholder": "Въведете име на новия елемент",
   "create_folder_placeholder": "Въведете име на новата папка",

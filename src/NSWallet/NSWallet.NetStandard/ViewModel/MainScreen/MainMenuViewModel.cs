@@ -98,7 +98,7 @@ namespace NSWallet
 
 			BL.Close();
 			LoginScreenView.ManualExit = true;
-			Pages.Login(true);
+			Pages.Login();
 		}
 
 		Command exportImportCommand;

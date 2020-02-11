@@ -692,7 +692,7 @@ namespace NSWallet
 
 			if (choice) {
 				LoginScreenView.ManualExit = true;
-				Device.BeginInvokeOnMainThread(() => Pages.Login(true));
+				Device.BeginInvokeOnMainThread(() => Pages.Login());
 			}
 		}
 	}

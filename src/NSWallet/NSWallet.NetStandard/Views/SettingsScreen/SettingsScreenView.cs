@@ -87,8 +87,8 @@ namespace NSWallet
 
 
 
-			AddCheckbox(settingsLayout, TR.Tr("settings_social"), "IsSocialChecked", Theme.Current.SettingsSocial, "IsSocialToggleCommand", "ChosenSocial", true);
-			AddSeparator(settingsLayout);
+			//AddCheckbox(settingsLayout, TR.Tr("settings_social"), "IsSocialChecked", Theme.Current.SettingsSocial, "IsSocialToggleCommand", "ChosenSocial", true);
+			//AddSeparator(settingsLayout);
 
 			AddCheckbox(settingsLayout, TR.Tr("settings_auto_night_mode"), "IsAutoNightModeChecked", Theme.Current.SettingsNightModeIcon, "IsAutoNightModeCheckedCommand", "ChosenAutoNightMode", true);
 
@@ -122,9 +122,10 @@ namespace NSWallet
             AddSettingButton(settingsLayout, "RestorePremiumCommand", TR.Tr("settings_restore_premium"), Theme.Current.SettingsPremium, "ChosenRestorePremium");
             AddSeparator(settingsLayout);
 
-			AddGroup(settingsLayout, TR.Tr("settings_group_extra"));
+			AddGroup(settingsLayout, TR.Tr("settings_group_extra"), true);
 			AddSettingButton(settingsLayout, "RestoreDefaultCommand", TR.Tr("settings_delete_all"), Theme.Current.SettingsDeleteAll);
-			AddSeparator(settingsLayout);
+            AddSettingButton(settingsLayout, "OptimizeCommand", TR.Tr("settings_optimize"), Theme.Current.SettingsDeleteAll);
+            AddSeparator(settingsLayout);
 
 			//pageVM.PremiumAlertCallback = PremiumAlert;
             pageVM.PremiumAlertAfterRestoringFailedCallback = PremiumAlertAfterRestoringFailed;
@@ -460,7 +461,7 @@ namespace NSWallet
             settingsLayout.Children.Add(separator);
         }
 
-        void AddGroup(StackLayout settingsLayout, string groupName)
+        void AddGroup(StackLayout settingsLayout, string groupName, bool dangerGroup = false)
         {
             var groupLayout = new StackLayout
             {
@@ -471,6 +472,10 @@ namespace NSWallet
                 Padding = Theme.Current.InnerMenuPadding,
                 BackgroundColor = Theme.Current.GroupBackground,
             };
+
+			if (dangerGroup) {
+                groupLayout.BackgroundColor = Theme.Current.GroupDangerBackground;
+			}
 
 			var group = new Label {
 				Text = groupName,
@@ -627,7 +632,7 @@ namespace NSWallet
             var itemStackLayout = new StackLayout();
 
 			var textColor = Theme.Current.ListTextColor;
-			if (modelCommand == "RestoreDefaultCommand") 
+			if (modelCommand == "RestoreDefaultCommand" || modelCommand == "OptimizeCommand") 
 			{
 				textColor = Theme.Current.DeleteAllButtonTextColor;
 			}

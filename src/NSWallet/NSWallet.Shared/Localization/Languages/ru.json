@@ -148,9 +148,10 @@
   "settings_is_mostly_viewed": "Самые популярные записи",
   "settings_is_mostly_viewed_on": "Эта папка содержит 10 чаще всего просматриваемых записей",
   "settings_is_mostly_viewed_off": "Выключено",
-  "settings_group_extra": "Дополнительно",
+  "settings_group_extra": "Зона опасности",
   "settings_delete_all": "Удалить всё",
   "settings_delete_all_alert": "Все ваши данные и резервные копии будут удалены! Вы уверены, что хотите продолжить?",
+  "settings_optimize": "Оптимизировать данные",
 
   "create_item_placeholder": "Введите имя новой записи",
   "create_folder_placeholder": "Введите имя новой папки",
@@ -462,7 +463,7 @@
   "copy_here": "Копировать сюда",
   "move_here": "Переместить сюда",
 
-   "settings_font_size": "Размер шрифта",
+  "settings_font_size": "Размер шрифта",
   "font_sizes_standard": "Обычный",
   "font_sizes_large": "Большой",
   "settings_font_size_choose": "Выберите размер шрифтов",
@@ -489,7 +490,7 @@
   "dont_allow": "Не разрешать",
 
   "run_diagnostics": "Запустить диагностику",
-  
+
   "cant_open_mail_with_attachment": "Не получилось открыть письмо с прикрепленными файлами",
 
   "icon_import_enter_name": "Введите название иконки",

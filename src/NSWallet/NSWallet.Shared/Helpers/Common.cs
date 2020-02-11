@@ -191,5 +191,18 @@ namespace NSWallet.Shared
 		{
 			AppLogs.Log(message, method, nameof(Common));
 		}
+
+		public static string RemoveTextBetweenTags(string text, string startTag, string endTag)
+		{
+            string strToRemove = text.Substring(text.IndexOf(startTag),
+				text.IndexOf(endTag) - text.IndexOf(startTag) + endTag.Length);
+            return text.Replace(strToRemove, "");
+        }
+
+		public static string RemoveTags(string text, string startTag, string endTag)
+		{
+            var preparedText = text.Replace(startTag, "");
+            return preparedText.Replace(endTag, "");
+		}
     }
 }

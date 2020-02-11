@@ -5,6 +5,7 @@ using System;
 using NSWallet.Premium;
 using NSWallet.Shared.Helpers.Logs.AppLog;
 using NSWallet.NetStandard.Helpers;
+using Xamarin.Essentials;
 
 namespace NSWallet
 {
@@ -128,10 +129,10 @@ namespace NSWallet
 								Settings.LaunchRememberedCount = true;
 								switch (Device.RuntimePlatform) {
 									case Device.Android:
-										openWebsite(GConsts.APPLINK_GOOGLEPLAY);
+										OpenAppStore(GConsts.APPLINK_GOOGLEPLAY);
 										break;
 									case Device.iOS:
-										openWebsite(GConsts.APPLINK_APPSTORE);
+										OpenAppStore(GConsts.APPLINK_APPSTORE);
 										break;
 								}
 							}
@@ -153,29 +154,29 @@ namespace NSWallet
 			}
 		}
 
-		void openWebsite(string url)
+		void OpenAppStore(string url)
 		{
-			Device.OpenUri(new Uri(url));
+			Launcher.OpenAsync(new Uri(url));
 		}
 
-        DateTime dateTimeSleep;
+		DateTime dateTimeSleep;
 
 		protected override void OnSleep()
 		{
 			if (!FingerprintHelper.IsEnabled) {
-				dateTimeSleep = DateTime.Now;
 				ItemsStatsManager.Save();
 			}
+			dateTimeSleep = DateTime.Now;
 		}
 
 		protected override void OnResume()
 		{
 			if (!FingerprintHelper.IsEnabled) {
 				ItemsStatsManager.Init();
-				var passed = DateTime.Now.Subtract(dateTimeSleep).Minutes;
-				if (passed >= Settings.AutoLogout) {
-					Pages.Login();
-				}
+			}
+			var passed = DateTime.Now.Subtract(dateTimeSleep).Minutes;
+			if (passed >= Settings.AutoLogout) {
+				Pages.Login();
 			}
 
 			FingerprintHelper.IsEnabled = false;

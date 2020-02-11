@@ -152,6 +152,7 @@
   "settings_is_mostly_viewed": "Itens mais vistos",
   "settings_is_mostly_viewed_on": "Esta pasta mostra 10 itens vistos com maior frequência",
   "settings_is_mostly_viewed_off": "Desativado",
+  "settings_optimize": "Otimize o armazenamento de dados",
 
   "create_item_placeholder": "Insira nome do novo item",
   "create_folder_placeholder": "Insira nome da nova pasta",
