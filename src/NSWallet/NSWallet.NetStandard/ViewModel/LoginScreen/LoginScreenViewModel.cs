@@ -9,208 +9,186 @@ using System.Linq;
 
 namespace NSWallet
 {
-    public class LoginScreenViewModel : INotifyPropertyChanged
-    {
-        public event PropertyChangedEventHandler PropertyChanged;
+	public class LoginScreenViewModel : INotifyPropertyChanged
+	{
+		public event PropertyChangedEventHandler PropertyChanged;
 
-        public Action TipAlertCommandCallback { get; set; }
+		public Action TipAlertCommandCallback { get; set; }
 
-        INavigation navigation;
+		INavigation navigation;
 
-        public LoginScreenViewModel(INavigation navigation)
-        {
-            this.navigation = navigation;
+		public LoginScreenViewModel(INavigation navigation)
+		{
+			this.navigation = navigation;
 
-            if (Settings.IsClipboardClean)
-                PlatformSpecific.CleanClipboard();
+			if (Settings.IsClipboardClean)
+				PlatformSpecific.CleanClipboard();
 
-            Features = new List<FeatureModel>
-            {
-                new FeatureModel
-                {
-                    Image = ImageSource.FromStream(() => NSWRes.GetImage(Theme.Current.ICON_PREMIUM_SEARCH)),
-                    Title = TR.Tr("featuresource_search"),
-                    Description = TR.Tr("featuresource_search_description")
-                },
-
-                new FeatureModel
-                {
-                    Image = ImageSource.FromStream(() => NSWRes.GetImage(Theme.Current.ICON_PREMIUM_THEMES)),
-                    Title = TR.Tr("featuresource_themes"),
-                    Description = TR.Tr("featuresource_themes_description")
-                },
-
-                new FeatureModel
-                {
-                    Image = ImageSource.FromStream(() => NSWRes.GetImage(Theme.Current.ICON_PREMIUM_SPECIAL)),
-                    Title = TR.Tr("featuresource_special_folders"),
-                    Description = TR.Tr("featuresource_special_folders_description")
-                },
-
-                new FeatureModel
-                {
-                    Image = ImageSource.FromStream(() => NSWRes.GetImage(Theme.Current.ICON_PREMIUM_FEEDBACK)),
-                    Title = TR.Tr("featuresource_feedback"),
-                    Description = TR.Tr("featuresource_feedback_description")
-                },
-
-                new FeatureModel
-                {
-                    Image = ImageSource.FromStream(() => NSWRes.GetImage(Theme.Current.ICON_PREMIUM_OTHER)),
-                    Title = TR.Tr("featuresource_other"),
-                    Description = TR.Tr("featuresource_other_description")
-                }
-            };
-
-            var isNotNew = !BL.IsNew();
-            if (isNotNew)
-            {
-                IsNotNew = isNotNew;
-            }
-
-            TipAlertCommandCallback = () => { };
-        }
-
-        bool checkNewBuild()
-        {
-            var currentBuild = PlatformSpecific.GetBuildNumber();
-            if (currentBuild.Equals(Settings.Build))
-            {
-                return false;
-            }
-            Settings.Build = currentBuild;
-            return true;
-        }
-
-        int count = 0;
-        void CountFailedSigning()
-        {
-            count++;
-            if (count == 3)
-            {
-                TipAlertCommandCallback.Invoke();
-                count = 0;
-            }
-        }
-
-        bool isNewBuild;
-        public bool IsNewBuild
-        {
-            get { return checkNewBuild(); }
-            set
-            {
-                if (isNewBuild == value)
-                    return;
-                isNewBuild = value;
-                OnPropertyChanged("IsNewBuild");
-            }
-        }
-
-        string releaseNotes;
-        public string ReleaseNotes
-        {
-            get { return TR.Tr("release_notes") + " " + PlatformSpecific.GetVersion(); }
-            set
-            {
-                if (releaseNotes == value)
-                    return;
-                releaseNotes = value;
-                OnPropertyChanged("ReleaseNotes");
-            }
-        }
-
-        string password;
-        public string Password
-        {
-            get { return password; }
-            set
-            {
-                if (password == value)
-                    return;
-                password = value;
-                if (Settings.IsAutoLoginEnabled)
-                    passwordAutoLogin();
-                OnPropertyChanged("Password");
-            }
-        }
-
-        void passwordAutoLogin()
-        {
-			if (!BL.IsNew())
+			Features = new List<FeatureModel>
 			{
-                if (!string.IsNullOrEmpty(Password))
-                {
-                    if (BL.CheckPassword(Password))
-                    {
-                        Device.BeginInvokeOnMainThread(() => Pages.Main());
-                    }
-                }
-            }
-        }
+				new FeatureModel
+				{
+					Image = ImageSource.FromStream(() => NSWRes.GetImage(Theme.Current.ICON_PREMIUM_SEARCH)),
+					Title = TR.Tr("featuresource_search"),
+					Description = TR.Tr("featuresource_search_description")
+				},
 
-        string checkPassword;
-        public string CheckPassword
-        {
-            get { return checkPassword; }
-            set
-            {
-                if (checkPassword == value)
-                    return;
-                checkPassword = value;
-                OnPropertyChanged("CheckPassword");
-            }
-        }
+				new FeatureModel
+				{
+					Image = ImageSource.FromStream(() => NSWRes.GetImage(Theme.Current.ICON_PREMIUM_THEMES)),
+					Title = TR.Tr("featuresource_themes"),
+					Description = TR.Tr("featuresource_themes_description")
+				},
 
-        int animationStatus;
-        public int AnimationStatus
-        {
-            get { return animationStatus; }
-            set
-            {
-                if (animationStatus == value)
-                    return;
-                animationStatus = value;
-                OnPropertyChanged("AnimationStatus");
-            }
-        }
+				new FeatureModel
+				{
+					Image = ImageSource.FromStream(() => NSWRes.GetImage(Theme.Current.ICON_PREMIUM_SPECIAL)),
+					Title = TR.Tr("featuresource_special_folders"),
+					Description = TR.Tr("featuresource_special_folders_description")
+				},
 
-        bool isNew;
-        public bool IsNotNew
-        {
-            get { return isNew; }
-            set
-            {
-                if (isNew == value)
-                    return;
-                isNew = value;
-                OnPropertyChanged("IsNew");
-            }
-        }
+				new FeatureModel
+				{
+					Image = ImageSource.FromStream(() => NSWRes.GetImage(Theme.Current.ICON_PREMIUM_FEEDBACK)),
+					Title = TR.Tr("featuresource_feedback"),
+					Description = TR.Tr("featuresource_feedback_description")
+				},
 
-        List<FeatureModel> features;
-        public List<FeatureModel> Features
-        {
-            get { return features; }
-            set
-            {
-                if (features == value)
-                    return;
-                features = value;
-                OnPropertyChanged("Features");
-            }
-        }
+				new FeatureModel
+				{
+					Image = ImageSource.FromStream(() => NSWRes.GetImage(Theme.Current.ICON_PREMIUM_OTHER)),
+					Title = TR.Tr("featuresource_other"),
+					Description = TR.Tr("featuresource_other_description")
+				}
+			};
 
-        Command loginCommand;
-        public Command LoginCommand
-        {
-            get
-            {
-                return loginCommand ?? (loginCommand = new Command(ExecuteLoginCommand));
-            }
-        }
+			var isNotNew = !BL.IsNew();
+			if (isNotNew) {
+				IsNotNew = isNotNew;
+			}
 
-        protected void ExecuteLoginCommand(object obj)
-        {
+			TipAlertCommandCallback = () => { };
+		}
+
+		bool checkNewBuild()
+		{
+			var currentBuild = PlatformSpecific.GetBuildNumber();
+			if (currentBuild.Equals(Settings.Build)) {
+				return false;
+			}
+			Settings.Build = currentBuild;
+			return true;
+		}
+
+		int count = 0;
+		void CountFailedSigning()
+		{
+			count++;
+			if (count == 3) {
+				TipAlertCommandCallback.Invoke();
+				count = 0;
+			}
+		}
+
+		bool isNewBuild;
+		public bool IsNewBuild {
+			get { return checkNewBuild(); }
+			set {
+				if (isNewBuild == value)
+					return;
+				isNewBuild = value;
+				OnPropertyChanged("IsNewBuild");
+			}
+		}
+
+		string releaseNotes;
+		public string ReleaseNotes {
+			get { return TR.Tr("release_notes") + " " + PlatformSpecific.GetVersion(); }
+			set {
+				if (releaseNotes == value)
+					return;
+				releaseNotes = value;
+				OnPropertyChanged("ReleaseNotes");
+			}
+		}
+
+		string password;
+		public string Password {
+			get { return password; }
+			set {
+				if (password == value)
+					return;
+				password = value;
+				if (Settings.IsAutoLoginEnabled)
+					passwordAutoLogin();
+				OnPropertyChanged("Password");
+			}
+		}
+
+		void passwordAutoLogin()
+		{
+			if (!BL.IsNew()) {
+				if (!string.IsNullOrEmpty(Password)) {
+					if (BL.CheckPassword(Password)) {
+						Device.BeginInvokeOnMainThread(() => AppPages.Main());
+					}
+				}
+			}
+		}
+
+		string checkPassword;
+		public string CheckPassword {
+			get { return checkPassword; }
+			set {
+				if (checkPassword == value)
+					return;
+				checkPassword = value;
+				OnPropertyChanged("CheckPassword");
+			}
+		}
+
+		int animationStatus;
+		public int AnimationStatus {
+			get { return animationStatus; }
+			set {
+				if (animationStatus == value)
+					return;
+				animationStatus = value;
+				OnPropertyChanged("AnimationStatus");
+			}
+		}
+
+		bool isNew;
+		public bool IsNotNew {
+			get { return isNew; }
+			set {
+				if (isNew == value)
+					return;
+				isNew = value;
+				OnPropertyChanged("IsNew");
+			}
+		}
+
+		List<FeatureModel> features;
+		public List<FeatureModel> Features {
+			get { return features; }
+			set {
+				if (features == value)
+					return;
+				features = value;
+				OnPropertyChanged("Features");
+			}
+		}
+
+		Command loginCommand;
+		public Command LoginCommand {
+			get {
+				return loginCommand ?? (loginCommand = new Command(ExecuteLoginCommand));
+			}
+		}
+
+		protected void ExecuteLoginCommand(object obj)
+		{
 			if (LicenseController.CheckPrivacyPolicy()) {
 				if (LicenseController.CheckTermsOfUse()) {
 					AnimationStatus = 0; // 0 - Nothing happened
@@ -222,7 +200,7 @@ namespace NSWallet
 									BL.CreateOnlyRootItem(Password);
 									BL.CreateSampleItems();
 									Settings.ChangePasswordUnicodeIOSBug = true;
-									Pages.Main();
+									AppPages.Main();
 								} else {
 									showErrorMessage(TR.Tr("create_password_not_match"));
 								}
@@ -243,7 +221,7 @@ namespace NSWallet
 									if (Settings.UsedFingerprintBefore)
 										Settings.IsFingerprintActive = true;
 								}
-							Pages.Main();
+								AppPages.Main();
 								//isUnicodePassword()
 								//Device.BeginInvokeOnMainThread(() => Pages.Main(isUnicodePassword()));
 							} else {
@@ -256,7 +234,7 @@ namespace NSWallet
 					}
 				}
 			}
-        }
+		}
 
 		// FIXME: remove as soon as possible
 		// This is workaround created to avoid decryption bug in old iOS app when first byte in non ASCII
@@ -285,35 +263,33 @@ namespace NSWallet
 		}
 
 		void clearFields()
-        {
-            Password = null;
-            CheckPassword = null;
-        }
+		{
+			Password = null;
+			CheckPassword = null;
+		}
 
-        void showErrorMessage(string msg)
-        {
-            PlatformSpecific.DisplayShortMessage(msg);
-            clearFields();
-        }
+		void showErrorMessage(string msg)
+		{
+			PlatformSpecific.DisplayShortMessage(msg);
+			clearFields();
+		}
 
 
-        Command releaseCommand;
-        public Command ReleaseCommand
-        {
-            get
-            {
-                return releaseCommand ?? (releaseCommand = new Command(ExecuteReleaseCommand));
-            }
-        }
+		Command releaseCommand;
+		public Command ReleaseCommand {
+			get {
+				return releaseCommand ?? (releaseCommand = new Command(ExecuteReleaseCommand));
+			}
+		}
 
-        void ExecuteReleaseCommand()
-        {
-            Device.BeginInvokeOnMainThread(() => Device.OpenUri(new Uri(GConsts.APP_DEV_RELEASE_NOTES_URI)));
-        }
+		void ExecuteReleaseCommand()
+		{
+			Device.BeginInvokeOnMainThread(() => Device.OpenUri(new Uri(GConsts.APP_DEV_RELEASE_NOTES_URI)));
+		}
 
-        protected void OnPropertyChanged(string propName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
-        }
-    }
+		protected void OnPropertyChanged(string propName)
+		{
+			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
+		}
+	}
 }

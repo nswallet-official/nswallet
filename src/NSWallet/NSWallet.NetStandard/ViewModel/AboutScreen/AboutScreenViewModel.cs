@@ -17,7 +17,7 @@ namespace NSWallet
 		{
 			isFromLogin = fromLogin;
 			this.navigation = navigation;
-			AdminPanelCallback = () => { Pages.AdminPanelPassword(navigation); };
+			AdminPanelCallback = () => { AppPages.AdminPanelPassword(navigation); };
 		}
 
 		/// <summary>
@@ -59,7 +59,7 @@ namespace NSWallet
 
 		protected void ExecuteOpenDevCommand()
 		{
-			Pages.Diagnostics(navigation, isFromLogin);
+			AppPages.Diagnostics(navigation, isFromLogin);
 		}
 
 		/// <summary>

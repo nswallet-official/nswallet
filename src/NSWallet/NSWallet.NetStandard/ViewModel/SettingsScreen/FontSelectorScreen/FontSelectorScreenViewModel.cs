@@ -42,7 +42,7 @@ namespace NSWallet.NetStandard
 			if (obj != null) {
 				var font = (NSWFont)obj;
 				NSWFontsController.SetFont(font.Name);
-				Pages.Settings();
+				AppPages.Settings();
 			}
 		}
 	}

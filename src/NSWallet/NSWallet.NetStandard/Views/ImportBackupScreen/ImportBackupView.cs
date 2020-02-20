@@ -51,7 +51,7 @@ namespace NSWallet
 
 		void BackupScreenButton_Clicked(object sender, System.EventArgs e)
 		{
-			Pages.Backup(Navigation);
+			AppPages.Backup(Navigation);
 		}
 
 	}

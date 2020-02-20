@@ -529,7 +529,7 @@ namespace NSWallet
 
 		void SetCallbacks()
 		{
-			
+
 			mainScreenVM.SearchEntryShowHideCommandCallback = SearchEntryShowHide;
 			mainScreenVM.LaunchEditTitlePopupCommandCallback = ChangeItemTitle;
 			mainScreenVM.HidePopupCommandCallback = HideCreatePopup;
@@ -686,7 +686,7 @@ namespace NSWallet
 
 			if (choice) {
 				LoginScreenView.ManualExit = true;
-				Device.BeginInvokeOnMainThread(() => Pages.Login());
+				Device.BeginInvokeOnMainThread(() => AppPages.Login());
 			}
 		}
 	}

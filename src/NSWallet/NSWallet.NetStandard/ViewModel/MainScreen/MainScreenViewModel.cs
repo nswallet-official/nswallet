@@ -23,7 +23,7 @@ namespace NSWallet
 	{
 		public event PropertyChangedEventHandler PropertyChanged;
 
-		
+
 		public Action<bool> SearchEntryShowHideCommandCallback { get; set; }
 		public Action LaunchEditTitlePopupCommandCallback { get; set; }
 		public Action HideEditTitlePopupCommandCallback { get; set; }
@@ -96,7 +96,7 @@ namespace NSWallet
 
 			IsLocalClipboardActivated = false;
 
-			
+
 			SearchEntryShowHideCommandCallback = (x) => { };
 			LaunchEditTitlePopupCommandCallback = () => { };
 			HideEditTitlePopupCommandCallback = () => { };
@@ -367,10 +367,7 @@ namespace NSWallet
 				if (searchText == value)
 					return;
 				searchText = value;
-				if (searchText == "") 
-				{ 					setItemsList(null, false); 				}
-				else 
-				{ 					SearchCommand.Execute(searchText); 				}
+				if (searchText == "") { 					setItemsList(null, false); 				} else { 					SearchCommand.Execute(searchText); 				}
 				OnPropertyChanged("SearchText");
 			}
 		}
@@ -555,32 +552,32 @@ namespace NSWallet
 		protected void ExecuteSearchLaunchCommand()
 		{
 			if (!IsLocalClipboardActivated) {
-			
-					SearchEntryShowHideCommandCallback.Invoke(false);
-					SearchText = null;
-					if (show) {
-						if (searchID != null) {
-							SearchEntryShowHideCommandCallback.Invoke(true);
-							BL.SetCurrentItemID(searchID);
-							searchID = null;
-						}
-						setItemsList(BL.GetCurrentItems());
-						IsSearchEnabled = false;
-						show = false;
-						SetHeader();
-						AddButtonVisible = true;
-						LaunchShowHideRestrictionCommand.Invoke(false);
-						ShowEmptyAddButtonCommand.Invoke();
-					} else {
-						setItemsList(null);
-						LaunchShowHideRestrictionCommand.Invoke(true);
-						IsSearchEnabled = true;
-						show = true;
-						HideHeader();
-						AddButtonVisible = false;
-						HideEmptyAddButtonCommand.Invoke();
+
+				SearchEntryShowHideCommandCallback.Invoke(false);
+				SearchText = null;
+				if (show) {
+					if (searchID != null) {
+						SearchEntryShowHideCommandCallback.Invoke(true);
+						BL.SetCurrentItemID(searchID);
+						searchID = null;
 					}
-	
+					setItemsList(BL.GetCurrentItems());
+					IsSearchEnabled = false;
+					show = false;
+					SetHeader();
+					AddButtonVisible = true;
+					LaunchShowHideRestrictionCommand.Invoke(false);
+					ShowEmptyAddButtonCommand.Invoke();
+				} else {
+					setItemsList(null);
+					LaunchShowHideRestrictionCommand.Invoke(true);
+					IsSearchEnabled = true;
+					show = true;
+					HideHeader();
+					AddButtonVisible = false;
+					HideEmptyAddButtonCommand.Invoke();
+				}
+
 			}
 		}
 
@@ -598,7 +595,7 @@ namespace NSWallet
 					LaunchPopupCommandCallback.Invoke();
 				} else {
 					var nswItem = BL.GetCurrentItem();
-					Pages.CreateField(navigation, false, nswItem);
+					AppPages.CreateField(navigation, false, nswItem);
 				}
 			}
 		}
@@ -613,7 +610,7 @@ namespace NSWallet
 		protected void ExecuteCreateItemCommand()
 		{
 			//HidePopupCommandCallback.Invoke();
-			Pages.CreateItem(navigation);
+			AppPages.CreateItem(navigation);
 		}
 
 		Command createFolderCommand;
@@ -626,7 +623,7 @@ namespace NSWallet
 		protected void ExecuteCreateFolderCommand()
 		{
 			HidePopupCommandCallback.Invoke();
-			Pages.CreateFolder(navigation);
+			AppPages.CreateFolder(navigation);
 		}
 
 		Command hideCommand;
@@ -710,7 +707,7 @@ namespace NSWallet
 				itemType = NSWItemType.Folder;
 			}
 
-			Pages.EditItemIcon(navigation, itemType, true, currentItem.Name);
+			AppPages.EditItemIcon(navigation, itemType, true, currentItem.Name);
 		}
 
 		private Command deleteFieldCommand;
@@ -754,7 +751,7 @@ namespace NSWallet
 			//HideFieldMenuCommandCallback.Invoke();
 			var nswField = BL.GetCurrentItem().Fields.Find(x => x.FieldID == BL.CurrentFieldID);
 			var nswItem = BL.GetCurrentItem();
-			Pages.UpdateField(navigation, true, nswItem, nswField.FieldID, fieldValue.ToString());
+			AppPages.UpdateField(navigation, true, nswItem, nswField.FieldID, fieldValue.ToString());
 		}
 
 		private Command deleteCommand;
@@ -932,7 +929,7 @@ namespace NSWallet
 
 			ListIsEmpty = isEmpty;
 			ListIsNotEmpty = !isEmpty;
-			if(pasteItemID == null && pasteFieldID == null) {
+			if (pasteItemID == null && pasteFieldID == null) {
 				AddButtonVisible = !isEmpty;
 			}
 		}
@@ -1108,7 +1105,7 @@ namespace NSWallet
 						IsCopyEnabled = false;
 						IsMoveEnabled = false;
 						var pasteItem = BL.GetItemByID(pasteItemID);
-						switch(pasteItem.Folder) {
+						switch (pasteItem.Folder) {
 							case true:
 								setUnavailableClipboard(true, GConsts.FOLDER);
 								break;
@@ -1240,17 +1237,17 @@ namespace NSWallet
 			ExportImportPopupUIController.LaunchAlertPopup((x) => {
 				Device.BeginInvokeOnMainThread(() => {
 					if (x.Result) {
-							var itemID = BL.CurrentItemID;
-							var item = BL.GetItemByID(itemID);
-							if (item != null) {
-								string message = String.Format("{0}\n", item.Name);
-								if (item.Fields != null) {
-									foreach (var field in item.Fields) {
-										message += String.Format("{0}: {1}\n", BL.GetFieldTypeNameByShortName(field.FieldType), field.FieldValue);
-									}
+						var itemID = BL.CurrentItemID;
+						var item = BL.GetItemByID(itemID);
+						if (item != null) {
+							string message = String.Format("{0}\n", item.Name);
+							if (item.Fields != null) {
+								foreach (var field in item.Fields) {
+									message += String.Format("{0}: {1}\n", BL.GetFieldTypeNameByShortName(field.FieldType), field.FieldValue);
 								}
-								PlatformSpecific.Share(message);
 							}
+							PlatformSpecific.Share(message);
+						}
 					}
 				});
 			});
@@ -1364,7 +1361,7 @@ namespace NSWallet
 					case "CutCommand":
 						var isItem = !BL.GetCurrentItem().Folder;
 						if (isItem) {
-							Pages.ReorderField(navigation, Items);
+							AppPages.ReorderField(navigation, Items);
 						}
 						break;
 					case "ShareCommand":
