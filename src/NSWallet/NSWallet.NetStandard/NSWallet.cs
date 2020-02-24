@@ -40,7 +40,7 @@ namespace NSWallet
 				AppLogs.Log(ex.Message, nameof(App), nameof(NSWallet));
 			}
 
-			Pages.Login();
+			AppPages.Login();
 		}
 
 
@@ -71,7 +71,7 @@ namespace NSWallet
                 {
                     BackupManager.UpdateBackup(url, dbDir);
 					FingerprintHelper.ResetSettings(true, true, true);
-                    Device.BeginInvokeOnMainThread(() => Pages.Login());
+                    Device.BeginInvokeOnMainThread(() => AppPages.Login());
                 }
 
                 PlatformSpecific.MoveFile(url, backupFile);
@@ -138,20 +138,27 @@ namespace NSWallet
 
 		protected override void OnSleep()
 		{
+			AppPages.Locker();
+
 			if (!FingerprintHelper.IsEnabled) {
 				ItemsStatsManager.Save();
 			}
+
 			dateTimeSleep = DateTime.Now;
 		}
 
 		protected override void OnResume()
 		{
+			AppPages.Close(isModal: true);
+
 			if (!FingerprintHelper.IsEnabled) {
 				ItemsStatsManager.Init();
 			}
+
 			var passed = DateTime.Now.Subtract(dateTimeSleep).Minutes;
+
 			if (passed >= Settings.AutoLogout) {
-				Pages.Login();
+				AppPages.Login();
 			}
 
 			FingerprintHelper.IsEnabled = false;

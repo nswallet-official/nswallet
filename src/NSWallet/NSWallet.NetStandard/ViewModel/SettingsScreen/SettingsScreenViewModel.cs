@@ -9,84 +9,80 @@ using NSWallet.NetStandard.Helpers.Fonts;
 
 namespace NSWallet
 {
-    public class SettingsScreenViewModel : INotifyPropertyChanged
-    {
-        public event PropertyChangedEventHandler PropertyChanged;
+	public class SettingsScreenViewModel : INotifyPropertyChanged
+	{
+		public event PropertyChangedEventHandler PropertyChanged;
 
-        //public Action PremiumAlertCallback { get; set; }
-        
-        public Action AutoBackupCommandCallback { get; set; }
-        public Action AutoLogoutCommandCallback { get; set; }
-        public Action BackupDeletionCommandCallback { get; set; }
-        public Action PasswordTipCommandCallback { get; set; }
-        public Action<bool> ThemeCommandCallback { get; set; }
-        public Action LanguageCommandCallback { get; set; }
+		//public Action PremiumAlertCallback { get; set; }
+
+		public Action AutoBackupCommandCallback { get; set; }
+		public Action AutoLogoutCommandCallback { get; set; }
+		public Action BackupDeletionCommandCallback { get; set; }
+		public Action PasswordTipCommandCallback { get; set; }
+		public Action<bool> ThemeCommandCallback { get; set; }
+		public Action LanguageCommandCallback { get; set; }
 		public Action FontSizeCommandCallback { get; set; }
 		public Action FontCommandCallback { get; set; }
-        public Action ChangePasswordCallback { get; set; }
-        public Action ExpiringPeriodCommandCallback { get; set; }
+		public Action ChangePasswordCallback { get; set; }
+		public Action ExpiringPeriodCommandCallback { get; set; }
 
 		bool settingsFirstLaunch = true;
 		bool settingsStartup = true;
 
-        INavigation navigation;
+		INavigation navigation;
 
-        public SettingsScreenViewModel(INavigation navigation)
-        {
-            //PremiumAlertCallback = () => { };
-            
-            AutoBackupCommandCallback = () => { };
-            AutoLogoutCommandCallback = () => { };
-            BackupDeletionCommandCallback = () => { };
-            PasswordTipCommandCallback = () => { };
-            ThemeCommandCallback = (x) => { };
-            LanguageCommandCallback = () => { };
+		public SettingsScreenViewModel(INavigation navigation)
+		{
+			//PremiumAlertCallback = () => { };
+
+			AutoBackupCommandCallback = () => { };
+			AutoLogoutCommandCallback = () => { };
+			BackupDeletionCommandCallback = () => { };
+			PasswordTipCommandCallback = () => { };
+			ThemeCommandCallback = (x) => { };
+			LanguageCommandCallback = () => { };
 			FontSizeCommandCallback = () => { };
-            ChangePasswordCallback = () => { };
-            FontCommandCallback = () => { };
-            ExpiringPeriodCommandCallback = () => { };
+			ChangePasswordCallback = () => { };
+			FontCommandCallback = () => { };
+			ExpiringPeriodCommandCallback = () => { };
 
-            this.navigation = navigation;
+			this.navigation = navigation;
 
-            switch (Settings.AutoBackup)
-            {
-                case 0: ChosenAutoBackup = TR.Tr("autobackup_no_backup"); break;
-                case 1: ChosenAutoBackup = TR.Tr("autobackup_weekly"); break;
-                case 2: ChosenAutoBackup = TR.Tr("autobackup_daily"); break;
-            }
+			switch (Settings.AutoBackup) {
+				case 0: ChosenAutoBackup = TR.Tr("autobackup_no_backup"); break;
+				case 1: ChosenAutoBackup = TR.Tr("autobackup_weekly"); break;
+				case 2: ChosenAutoBackup = TR.Tr("autobackup_daily"); break;
+			}
 
-            switch (Settings.AutoLogout)
-            {
-                case 0: ChosenAutoLogout = TR.Tr("settings_autologout_focus"); break;
-                case 5: ChosenAutoLogout = TR.Tr("settings_autologout_5"); break;
-                case 10: ChosenAutoLogout = TR.Tr("settings_autologout_10"); break;
-                case 30: ChosenAutoLogout = TR.Tr("settings_autologout_30"); break;
-            }
+			switch (Settings.AutoLogout) {
+				case 0: ChosenAutoLogout = TR.Tr("settings_autologout_focus"); break;
+				case 5: ChosenAutoLogout = TR.Tr("settings_autologout_5"); break;
+				case 10: ChosenAutoLogout = TR.Tr("settings_autologout_10"); break;
+				case 30: ChosenAutoLogout = TR.Tr("settings_autologout_30"); break;
+			}
 
-            switch (Settings.BackupDeletion)
-            {
-                case 5: ChosenBackupDeletion = TR.Tr("backups_deletion_5"); break;
-                case 10: ChosenBackupDeletion = TR.Tr("backups_deletion_10"); break;
-                case 30: ChosenBackupDeletion = TR.Tr("backups_deletion_30"); break;
-                case 90: ChosenBackupDeletion = TR.Tr("backups_deletion_90"); break;
-                case 180: ChosenBackupDeletion = TR.Tr("backups_deletion_180"); break;
-            }
+			switch (Settings.BackupDeletion) {
+				case 5: ChosenBackupDeletion = TR.Tr("backups_deletion_5"); break;
+				case 10: ChosenBackupDeletion = TR.Tr("backups_deletion_10"); break;
+				case 30: ChosenBackupDeletion = TR.Tr("backups_deletion_30"); break;
+				case 90: ChosenBackupDeletion = TR.Tr("backups_deletion_90"); break;
+				case 180: ChosenBackupDeletion = TR.Tr("backups_deletion_180"); break;
+			}
 
-            switch (Settings.ExpiringPeriod)
-            {
-                case 0: ChosenExpiringPeriod = TR.Tr("settings_expiring_period_all"); break;
-                case 10: ChosenExpiringPeriod = TR.Tr("settings_expiring_period_10"); break;
-                case 30: ChosenExpiringPeriod = TR.Tr("settings_expiring_period_30"); break;
-            }
+			switch (Settings.ExpiringPeriod) {
+				case 0: ChosenExpiringPeriod = TR.Tr("settings_expiring_period_all"); break;
+				case 10: ChosenExpiringPeriod = TR.Tr("settings_expiring_period_10"); break;
+				case 30: ChosenExpiringPeriod = TR.Tr("settings_expiring_period_30"); break;
+			}
 
 			IsAutoFingerprintChecked = Settings.IsAutoFinger;
-            IsDroidLogoutChecked = Settings.AndroidBackLogout;
-            IsHidePasswordChecked = Settings.IsHidePasswordEnabled;
-            
-            IsClipCleanChecked = Settings.IsClipboardClean;
-            IsExpiringSoonChecked = Settings.IsExpiringSoon;
-            IsRecentlyViewedChecked = Settings.IsRecentlyViewed;
-            IsMostlyViewedChecked = Settings.IsMostlyViewed;
+			IsDroidLogoutChecked = Settings.AndroidBackLogout;
+			IsHidePasswordChecked = Settings.IsHidePasswordEnabled;
+
+			IsClipCleanChecked = Settings.IsClipboardClean;
+			IsExpiringSoonChecked = Settings.IsExpiringSoon;
+			IsRecentlyViewedChecked = Settings.IsRecentlyViewed;
+			IsMostlyViewedChecked = Settings.IsMostlyViewed;
 			IsFingerprintChecked = Settings.IsFingerprintActive;
 			IsAutoNightModeChecked = Settings.IsAutoNightMode;
 
@@ -96,25 +92,25 @@ namespace NSWallet
 				ChosenAutoNightMode = TR.Tr("settings_auto_night_mode_off");
 			}
 
-            if (IsExpiringSoonChecked)
-                ChosenExpiringSoon = TR.Tr("settings_is_expiring_on");
-            else
-                ChosenExpiringSoon = TR.Tr("settings_is_expiring_off");
+			if (IsExpiringSoonChecked)
+				ChosenExpiringSoon = TR.Tr("settings_is_expiring_on");
+			else
+				ChosenExpiringSoon = TR.Tr("settings_is_expiring_off");
 
-            if (IsRecentlyViewedChecked)
-                ChosenRecentlyViewed = TR.Tr("settings_is_recently_viewed_on");
-            else
-                ChosenRecentlyViewed = TR.Tr("settings_is_recently_viewed_off");
+			if (IsRecentlyViewedChecked)
+				ChosenRecentlyViewed = TR.Tr("settings_is_recently_viewed_on");
+			else
+				ChosenRecentlyViewed = TR.Tr("settings_is_recently_viewed_off");
 
-            if (IsMostlyViewedChecked)
-                ChosenMostlyViewed = TR.Tr("settings_is_mostly_viewed_on");
-            else
-                ChosenMostlyViewed = TR.Tr("settings_is_mostly_viewed_off");
+			if (IsMostlyViewedChecked)
+				ChosenMostlyViewed = TR.Tr("settings_is_mostly_viewed_on");
+			else
+				ChosenMostlyViewed = TR.Tr("settings_is_mostly_viewed_off");
 
-            if (IsHidePasswordChecked)
-                ChosenHidePassword = TR.Tr("settings_hidepass_on");
-            else
-                ChosenHidePassword = TR.Tr("settings_hidepass_off");
+			if (IsHidePasswordChecked)
+				ChosenHidePassword = TR.Tr("settings_hidepass_on");
+			else
+				ChosenHidePassword = TR.Tr("settings_hidepass_off");
 
 
 			if (IsFingerprintChecked)
@@ -122,36 +118,33 @@ namespace NSWallet
 			else
 				ChosenFingerprintActive = TR.Tr("settings_fingerprint_off");
 
-            ChosenRestorePremium = TR.Tr("settings_restore_premium_description");
-            ChosenPassword = TR.Tr("settings_change_password_description");
-            ChosenTheme = TR.Tr(Settings.Theme);
-            if (Settings.Language == Lang.LANG_CODE_SYSTEM)
-            {
-                ChosenLanguage = TR.Tr("default") + " (" + TR.LanguageHumanReadable + ")";
-            }
-            else
-            {
-                ChosenLanguage = TR.LanguageHumanReadable;
-            }
+			ChosenRestorePremium = TR.Tr("settings_restore_premium_description");
+			ChosenPassword = TR.Tr("settings_change_password_description");
+			ChosenTheme = TR.Tr(Settings.Theme);
+			if (Settings.Language == Lang.LANG_CODE_SYSTEM) {
+				ChosenLanguage = TR.Tr("default") + " (" + TR.LanguageHumanReadable + ")";
+			} else {
+				ChosenLanguage = TR.LanguageHumanReadable;
+			}
 
 			ChosenFontSize = TR.Tr(Settings.FontSize);
 
 			// Lang.getLangByCode(Settings.Language).LanguageLocal;
 			ChosenFont = NSWFontsController.GetNameByTypeface(Settings.FontFamily);
 
-            var passTip = Settings.PasswordTip;
-            if (string.IsNullOrEmpty(passTip))
-                ChosenPassTip = TR.Tr("settings_pass_tooltip_off");
-            else
-                ChosenPassTip = passTip;
+			var passTip = Settings.PasswordTip;
+			if (string.IsNullOrEmpty(passTip))
+				ChosenPassTip = TR.Tr("settings_pass_tooltip_off");
+			else
+				ChosenPassTip = passTip;
 
-            IsAutoLoginChecked = Settings.IsAutoLoginEnabled;
-            ExecuteAutoLoginCommand();
+			IsAutoLoginChecked = Settings.IsAutoLoginEnabled;
+			ExecuteAutoLoginCommand();
 
-            if (IsDroidLogoutChecked)
-                ChosenDroidLogout = TR.Tr("settings_android_exit_on");
-            else
-                ChosenDroidLogout = TR.Tr("settings_android_exit_off");
+			if (IsDroidLogoutChecked)
+				ChosenDroidLogout = TR.Tr("settings_android_exit_on");
+			else
+				ChosenDroidLogout = TR.Tr("settings_android_exit_off");
 
 			if (IsAutoFingerprintChecked)
 				ChosenAutoFingerprintActive = TR.Tr("settings_is_auto_fingerprint_on");
@@ -159,292 +152,240 @@ namespace NSWallet
 				ChosenAutoFingerprintActive = TR.Tr("settings_is_auto_fingerprint_off");
 
 			if (IsClipCleanChecked)
-                ChosenClipClean = TR.Tr("settings_clipboard_clean_on");
-            else
-                ChosenClipClean = TR.Tr("settings_clipboard_clean_off");
+				ChosenClipClean = TR.Tr("settings_clipboard_clean_on");
+			else
+				ChosenClipClean = TR.Tr("settings_clipboard_clean_off");
 
 			settingsFirstLaunch = false;
 			settingsStartup = false;
-        }
+		}
 
-        Command changepassCommand;
-        public Command ChangePasswordCommand
-        {
-            get
-            {
-                return changepassCommand ?? (changepassCommand = new Command(ExecuteChangePassword));
-            }
-        }
+		Command changepassCommand;
+		public Command ChangePasswordCommand {
+			get {
+				return changepassCommand ?? (changepassCommand = new Command(ExecuteChangePassword));
+			}
+		}
 
-        protected void ExecuteChangePassword()
-        {
-            ChangePasswordCallback.Invoke();
-        }
+		protected void ExecuteChangePassword()
+		{
+			ChangePasswordCallback.Invoke();
+		}
 
-        #region Auto-backup Command
+		#region Auto-backup Command
 
-        Command autoBackupCommand;
-        public Command AutoBackupCommand
-        {
-            get
-            {
-                return autoBackupCommand ?? (autoBackupCommand = new Command(ExecuteAutoBackupCommand));
-            }
-        }
+		Command autoBackupCommand;
+		public Command AutoBackupCommand {
+			get {
+				return autoBackupCommand ?? (autoBackupCommand = new Command(ExecuteAutoBackupCommand));
+			}
+		}
 
-        protected void ExecuteAutoBackupCommand()
-        {
-            AutoBackupCommandCallback.Invoke();
-        }
+		protected void ExecuteAutoBackupCommand()
+		{
+			AutoBackupCommandCallback.Invoke();
+		}
 
-        Command<string> autoBackupSelectedCommand;
-        public Command<string> AutoBackupSelectedCommand
-        {
-            get
-            {
-                return autoBackupSelectedCommand ?? (autoBackupSelectedCommand = new Command<string>(ExecuteAutoBackupSelectedCommand));
-            }
-        }
+		Command<string> autoBackupSelectedCommand;
+		public Command<string> AutoBackupSelectedCommand {
+			get {
+				return autoBackupSelectedCommand ?? (autoBackupSelectedCommand = new Command<string>(ExecuteAutoBackupSelectedCommand));
+			}
+		}
 
-        protected void ExecuteAutoBackupSelectedCommand(string selectedBackup)
-        {
-            if (string.Compare(selectedBackup, TR.Tr("autobackup_no_backup"), StringComparison.Ordinal) == 0)
-            {
-                Settings.AutoBackup = 0;
-            }
+		protected void ExecuteAutoBackupSelectedCommand(string selectedBackup)
+		{
+			if (string.Compare(selectedBackup, TR.Tr("autobackup_no_backup"), StringComparison.Ordinal) == 0) {
+				Settings.AutoBackup = 0;
+			}
 
-            if (string.Compare(selectedBackup, TR.Tr("autobackup_weekly"), StringComparison.Ordinal) == 0)
-            {
-                Settings.AutoBackup = 1;
-            }
+			if (string.Compare(selectedBackup, TR.Tr("autobackup_weekly"), StringComparison.Ordinal) == 0) {
+				Settings.AutoBackup = 1;
+			}
 
-            if (string.Compare(selectedBackup, TR.Tr("autobackup_daily"), StringComparison.Ordinal) == 0)
-            {
-                Settings.AutoBackup = 2;
-            }
+			if (string.Compare(selectedBackup, TR.Tr("autobackup_daily"), StringComparison.Ordinal) == 0) {
+				Settings.AutoBackup = 2;
+			}
 
-            Device.BeginInvokeOnMainThread(Pages.Settings);
-        }
+			Device.BeginInvokeOnMainThread(AppPages.Settings);
+		}
 
-        Command autoLogoutCommand;
-        public Command AutoLogoutCommand
-        {
-            get
-            {
-                return autoLogoutCommand ?? (autoLogoutCommand = new Command(ExecuteAutoLogoutCommand));
-            }
-        }
+		Command autoLogoutCommand;
+		public Command AutoLogoutCommand {
+			get {
+				return autoLogoutCommand ?? (autoLogoutCommand = new Command(ExecuteAutoLogoutCommand));
+			}
+		}
 
-        protected void ExecuteAutoLogoutCommand()
-        {
-            AutoLogoutCommandCallback.Invoke();
-        }
+		protected void ExecuteAutoLogoutCommand()
+		{
+			AutoLogoutCommandCallback.Invoke();
+		}
 
-        Command<string> autoLogoutSelectedCommand;
-        public Command<string> AutoLogoutSelectedCommand
-        {
-            get
-            {
-                return autoLogoutSelectedCommand ?? (autoLogoutSelectedCommand = new Command<string>(ExecuteAutoLogoutSelectedCommand));
-            }
-        }
+		Command<string> autoLogoutSelectedCommand;
+		public Command<string> AutoLogoutSelectedCommand {
+			get {
+				return autoLogoutSelectedCommand ?? (autoLogoutSelectedCommand = new Command<string>(ExecuteAutoLogoutSelectedCommand));
+			}
+		}
 
-        protected void ExecuteAutoLogoutSelectedCommand(string selectedLogout)
-        {
-            if (string.Compare(selectedLogout, TR.Tr("settings_autologout_focus"), StringComparison.Ordinal) == 0)
-            {
-                Settings.AutoLogout = 0;
-            }
+		protected void ExecuteAutoLogoutSelectedCommand(string selectedLogout)
+		{
+			if (string.Compare(selectedLogout, TR.Tr("settings_autologout_focus"), StringComparison.Ordinal) == 0) {
+				Settings.AutoLogout = 0;
+			}
 
-            if (string.Compare(selectedLogout, TR.Tr("settings_autologout_5"), StringComparison.Ordinal) == 0)
-            {
-                Settings.AutoLogout = 5;
-            }
+			if (string.Compare(selectedLogout, TR.Tr("settings_autologout_5"), StringComparison.Ordinal) == 0) {
+				Settings.AutoLogout = 5;
+			}
 
-            if (string.Compare(selectedLogout, TR.Tr("settings_autologout_10"), StringComparison.Ordinal) == 0)
-            {
-                Settings.AutoLogout = 10;
-            }
+			if (string.Compare(selectedLogout, TR.Tr("settings_autologout_10"), StringComparison.Ordinal) == 0) {
+				Settings.AutoLogout = 10;
+			}
 
-            if (string.Compare(selectedLogout, TR.Tr("settings_autologout_30"), StringComparison.Ordinal) == 0)
-            {
-                Settings.AutoLogout = 30;
-            }
+			if (string.Compare(selectedLogout, TR.Tr("settings_autologout_30"), StringComparison.Ordinal) == 0) {
+				Settings.AutoLogout = 30;
+			}
 
-            Device.BeginInvokeOnMainThread(Pages.Settings);
-        }
+			Device.BeginInvokeOnMainThread(AppPages.Settings);
+		}
 
-        #endregion
+		#endregion
 
-        Command backupDeletionCommand;
-        public Command BackupDeletionCommand
-        {
-            get
-            {
-                return backupDeletionCommand ?? (backupDeletionCommand = new Command(ExecuteBackupDeletionCommand));
-            }
-        }
+		Command backupDeletionCommand;
+		public Command BackupDeletionCommand {
+			get {
+				return backupDeletionCommand ?? (backupDeletionCommand = new Command(ExecuteBackupDeletionCommand));
+			}
+		}
 
-        protected void ExecuteBackupDeletionCommand()
-        {
-            BackupDeletionCommandCallback.Invoke();
-        }
+		protected void ExecuteBackupDeletionCommand()
+		{
+			BackupDeletionCommandCallback.Invoke();
+		}
 
-        Command<string> backupDeletionSelectedCommand;
-        public Command<string> BackupDeletionSelectedCommand
-        {
-            get
-            {
-                return backupDeletionSelectedCommand ?? (backupDeletionSelectedCommand = new Command<string>(ExecuteBackupDeletionSelectedCommand));
-            }
-        }
+		Command<string> backupDeletionSelectedCommand;
+		public Command<string> BackupDeletionSelectedCommand {
+			get {
+				return backupDeletionSelectedCommand ?? (backupDeletionSelectedCommand = new Command<string>(ExecuteBackupDeletionSelectedCommand));
+			}
+		}
 
-        protected void ExecuteBackupDeletionSelectedCommand(string selected)
-        {
-            if (string.Compare(selected, TR.Tr("backups_deletion_5"), StringComparison.Ordinal) == 0)
-            {
-                Settings.BackupDeletion = 5;
-            }
+		protected void ExecuteBackupDeletionSelectedCommand(string selected)
+		{
+			if (string.Compare(selected, TR.Tr("backups_deletion_5"), StringComparison.Ordinal) == 0) {
+				Settings.BackupDeletion = 5;
+			}
 
-            if (string.Compare(selected, TR.Tr("backups_deletion_10"), StringComparison.Ordinal) == 0)
-            {
-                Settings.BackupDeletion = 10;
-            }
+			if (string.Compare(selected, TR.Tr("backups_deletion_10"), StringComparison.Ordinal) == 0) {
+				Settings.BackupDeletion = 10;
+			}
 
-            if (string.Compare(selected, TR.Tr("backups_deletion_30"), StringComparison.Ordinal) == 0)
-            {
-                Settings.BackupDeletion = 30;
-            }
+			if (string.Compare(selected, TR.Tr("backups_deletion_30"), StringComparison.Ordinal) == 0) {
+				Settings.BackupDeletion = 30;
+			}
 
-            if (string.Compare(selected, TR.Tr("backups_deletion_90"), StringComparison.Ordinal) == 0)
-            {
-                Settings.BackupDeletion = 90;
-            }
+			if (string.Compare(selected, TR.Tr("backups_deletion_90"), StringComparison.Ordinal) == 0) {
+				Settings.BackupDeletion = 90;
+			}
 
-            if (string.Compare(selected, TR.Tr("backups_deletion_180"), StringComparison.Ordinal) == 0)
-            {
-                Settings.BackupDeletion = 180;
-            }
+			if (string.Compare(selected, TR.Tr("backups_deletion_180"), StringComparison.Ordinal) == 0) {
+				Settings.BackupDeletion = 180;
+			}
 
-            Device.BeginInvokeOnMainThread(Pages.Settings);
-        }
+			Device.BeginInvokeOnMainThread(AppPages.Settings);
+		}
 
-        Command expiringPeriodCommand;
-        public Command ExpiringPeriodCommand
-        {
-            get
-            {
-                return expiringPeriodCommand ?? (expiringPeriodCommand = new Command(ExecuteExpiringPeriodCommand));
-            }
-        }
+		Command expiringPeriodCommand;
+		public Command ExpiringPeriodCommand {
+			get {
+				return expiringPeriodCommand ?? (expiringPeriodCommand = new Command(ExecuteExpiringPeriodCommand));
+			}
+		}
 
-        protected void ExecuteExpiringPeriodCommand()
-        {
+		protected void ExecuteExpiringPeriodCommand()
+		{
 
-                ExpiringPeriodCommandCallback.Invoke();
+			ExpiringPeriodCommandCallback.Invoke();
 
-        }
+		}
 
-        Command<string> expiringPeriodSelectedCommand;
-        public Command<string> ExpiringPeriodSelectedCommand
-        {
-            get
-            {
-                return expiringPeriodSelectedCommand ?? (expiringPeriodSelectedCommand = new Command<string>(ExecuteExpiringPeriodSelectedCommand));
-            }
-        }
+		Command<string> expiringPeriodSelectedCommand;
+		public Command<string> ExpiringPeriodSelectedCommand {
+			get {
+				return expiringPeriodSelectedCommand ?? (expiringPeriodSelectedCommand = new Command<string>(ExecuteExpiringPeriodSelectedCommand));
+			}
+		}
 
-        protected void ExecuteExpiringPeriodSelectedCommand(string selected)
-        {
-            if (string.Compare(selected, TR.Tr("settings_expiring_period_10"), StringComparison.Ordinal) == 0)
-            {
-                Settings.ExpiringPeriod = 10;
-            }
+		protected void ExecuteExpiringPeriodSelectedCommand(string selected)
+		{
+			if (string.Compare(selected, TR.Tr("settings_expiring_period_10"), StringComparison.Ordinal) == 0) {
+				Settings.ExpiringPeriod = 10;
+			}
 
-            if (string.Compare(selected, TR.Tr("settings_expiring_period_30"), StringComparison.Ordinal) == 0)
-            {
-                Settings.ExpiringPeriod = 30;
-            }
+			if (string.Compare(selected, TR.Tr("settings_expiring_period_30"), StringComparison.Ordinal) == 0) {
+				Settings.ExpiringPeriod = 30;
+			}
 
-            if (string.Compare(selected, TR.Tr("settings_expiring_period_all"), StringComparison.Ordinal) == 0)
-            {
-                Settings.ExpiringPeriod = 0;
-            }
+			if (string.Compare(selected, TR.Tr("settings_expiring_period_all"), StringComparison.Ordinal) == 0) {
+				Settings.ExpiringPeriod = 0;
+			}
 
-            Device.BeginInvokeOnMainThread(Pages.Settings);
-        }
+			Device.BeginInvokeOnMainThread(AppPages.Settings);
+		}
 
 
-        #region Theme Command
+		#region Theme Command
 
-        Command themeCommand;
-        public Command ThemeCommand
-        {
-            get
-            {
-                return themeCommand ?? (themeCommand = new Command(ExecuteThemeCommand));
-            }
-        }
+		Command themeCommand;
+		public Command ThemeCommand {
+			get {
+				return themeCommand ?? (themeCommand = new Command(ExecuteThemeCommand));
+			}
+		}
 
-        protected void ExecuteThemeCommand()
-        {
+		protected void ExecuteThemeCommand()
+		{
 
-                ThemeCommandCallback.Invoke(true);
+			ThemeCommandCallback.Invoke(true);
 
-        }
+		}
 
-        Command<string> themeSelectedCommand;
-        public Command<string> ThemeSelectedCommand
-        {
-            get
-            {
-                return themeSelectedCommand ?? (themeSelectedCommand = new Command<string>(ExecuteThemeSelectedCommand));
-            }
-        }
+		Command<string> themeSelectedCommand;
+		public Command<string> ThemeSelectedCommand {
+			get {
+				return themeSelectedCommand ?? (themeSelectedCommand = new Command<string>(ExecuteThemeSelectedCommand));
+			}
+		}
 
-        protected void ExecuteThemeSelectedCommand(string selectedTheme)
-        {
-            string themeCode = null;
+		protected void ExecuteThemeSelectedCommand(string selectedTheme)
+		{
+			string themeCode = null;
 
-            if (!string.IsNullOrEmpty(selectedTheme) && string.Compare(selectedTheme, TR.Cancel) != 0)
-            {
-                if (string.Compare(selectedTheme, TR.Tr(AppTheme.ThemeDark)) == 0)
-                {
-                    themeCode = AppTheme.ThemeDark;
-                }
-                else if (string.Compare(selectedTheme, TR.Tr(AppTheme.ThemeRed)) == 0)
-                {
-                    themeCode = AppTheme.ThemeRed;
-                }
-                else if (string.Compare(selectedTheme, TR.Tr(AppTheme.ThemeGreen)) == 0)
-                {
-                    themeCode = AppTheme.ThemeGreen;
-                }
-                else if (string.Compare(selectedTheme, TR.Tr(AppTheme.ThemeGray)) == 0)
-                {
-                    themeCode = AppTheme.ThemeGray;
-                }
-                else if (string.Compare(selectedTheme, TR.Tr(AppTheme.ThemeYellow)) == 0)
-                {
-                    themeCode = AppTheme.ThemeYellow;
-                }
-                else
-                {
-                    themeCode = AppTheme.ThemeDefault;
-                }
-
-                if (string.Compare(selectedTheme, TR.Tr("more_themes")) == 0)
-                {
-
+			if (!string.IsNullOrEmpty(selectedTheme) && string.Compare(selectedTheme, TR.Cancel) != 0) {
+				if (string.Compare(selectedTheme, TR.Tr(AppTheme.ThemeDark)) == 0) {
+					themeCode = AppTheme.ThemeDark;
+				} else if (string.Compare(selectedTheme, TR.Tr(AppTheme.ThemeRed)) == 0) {
+					themeCode = AppTheme.ThemeRed;
+				} else if (string.Compare(selectedTheme, TR.Tr(AppTheme.ThemeGreen)) == 0) {
+					themeCode = AppTheme.ThemeGreen;
+				} else if (string.Compare(selectedTheme, TR.Tr(AppTheme.ThemeGray)) == 0) {
+					themeCode = AppTheme.ThemeGray;
+				} else if (string.Compare(selectedTheme, TR.Tr(AppTheme.ThemeYellow)) == 0) {
+					themeCode = AppTheme.ThemeYellow;
+				} else {
+					themeCode = AppTheme.ThemeDefault;
 				}
-                else
-                {
-                    ChosenTheme = selectedTheme;
-                    Device.BeginInvokeOnMainThread(() => { AppTheme.SetTheme(themeCode); });
-                    Device.BeginInvokeOnMainThread(Pages.Settings);
-                }
-            }
-        }
+
+				if (string.Compare(selectedTheme, TR.Tr("more_themes")) == 0) {
+
+				} else {
+					ChosenTheme = selectedTheme;
+					Device.BeginInvokeOnMainThread(() => { AppTheme.SetTheme(themeCode); });
+					Device.BeginInvokeOnMainThread(AppPages.Settings);
+				}
+			}
+		}
 
 		#endregion
 
@@ -474,204 +415,177 @@ namespace NSWallet
 			if (selectedFontSize == TR.Tr("font_sizes_large"))
 				Settings.FontSize = "font_sizes_large";
 			ChosenFontSize = TR.Tr(Settings.FontSize);
-			Device.BeginInvokeOnMainThread(() => Pages.Settings());
+			Device.BeginInvokeOnMainThread(() => AppPages.Settings());
 		}
 
 		#region Language Command
 
 		Command languageCommand;
-        public Command LanguageCommand
-        {
-            get
-            {
-                return languageCommand ?? (languageCommand = new Command(ExecuteLanguageCommand));
-            }
-        }
+		public Command LanguageCommand {
+			get {
+				return languageCommand ?? (languageCommand = new Command(ExecuteLanguageCommand));
+			}
+		}
 
-        protected void ExecuteLanguageCommand()
-        {
-            LanguageCommandCallback.Invoke();
-        }
+		protected void ExecuteLanguageCommand()
+		{
+			LanguageCommandCallback.Invoke();
+		}
 
-        //Command<string> languageSelectedCommand;
-        public Command<string> LanguageSelectedCommand
-        {
-            get
-            {
-                return fontSizeSelectedCommand ?? (fontSizeSelectedCommand = new Command<string>(ExecuteLanguageSelectedCommand));
-            }
-        }
+		//Command<string> languageSelectedCommand;
+		public Command<string> LanguageSelectedCommand {
+			get {
+				return fontSizeSelectedCommand ?? (fontSizeSelectedCommand = new Command<string>(ExecuteLanguageSelectedCommand));
+			}
+		}
 
-        protected void ExecuteLanguageSelectedCommand(string selectedLanguage)
-        {
-            if (string.Compare(selectedLanguage, TR.Tr("languages_other")) == 0)
-            {
-                Device.BeginInvokeOnMainThread(() => Device.OpenUri(new Uri(GConsts.APP_DEV_REQUEST_LANGUAGE_URI)));
-                return;
-            }
+		protected void ExecuteLanguageSelectedCommand(string selectedLanguage)
+		{
+			if (string.Compare(selectedLanguage, TR.Tr("languages_other")) == 0) {
+				Device.BeginInvokeOnMainThread(() => Device.OpenUri(new Uri(GConsts.APP_DEV_REQUEST_LANGUAGE_URI)));
+				return;
+			}
 
-            SetNewLanguage(selectedLanguage);
+			SetNewLanguage(selectedLanguage);
 
 
-        }
+		}
 
-        void SetNewLanguage(string newLanguage)
-        {
-            var langs = Lang.availableLangs();
-            foreach (var lang in langs)
-            {
-                if (lang.LangCode == newLanguage)
-                {
-                    Settings.Language = newLanguage;
-                    newLanguage = AppLanguage.GetCurrentLangCode();
+		void SetNewLanguage(string newLanguage)
+		{
+			var langs = Lang.availableLangs();
+			foreach (var lang in langs) {
+				if (lang.LangCode == newLanguage) {
+					Settings.Language = newLanguage;
+					newLanguage = AppLanguage.GetCurrentLangCode();
 
-                    TR.SetLanguage(newLanguage);
-                    BL.ResetData(false, false, true);
-                    Device.BeginInvokeOnMainThread(Pages.Settings);
-                    break;
-                }
-            }
-        }
+					TR.SetLanguage(newLanguage);
+					BL.ResetData(false, false, true);
+					Device.BeginInvokeOnMainThread(AppPages.Settings);
+					break;
+				}
+			}
+		}
 
-        #endregion
+		#endregion
 
-        #region Font Command
+		#region Font Command
 
-        Command fontCommand;
-        public Command FontCommand
-        {
-            get
-            {
-                return fontCommand ?? (fontCommand = new Command(ExecuteFontCommand));
-            }
-        }
+		Command fontCommand;
+		public Command FontCommand {
+			get {
+				return fontCommand ?? (fontCommand = new Command(ExecuteFontCommand));
+			}
+		}
 
-        protected void ExecuteFontCommand()
-        {
+		protected void ExecuteFontCommand()
+		{
 
-				Pages.FontSelector();
+			AppPages.FontSelector();
 
-        }
+		}
 
-        Command<string> fontSelectedCommand;
-        public Command<string> FontSelectedCommand
-        {
-            get
-            {
-                return fontSelectedCommand ?? (fontSelectedCommand = new Command<string>(ExecuteFontSelectedCommand));
-            }
-        }
+		Command<string> fontSelectedCommand;
+		public Command<string> FontSelectedCommand {
+			get {
+				return fontSelectedCommand ?? (fontSelectedCommand = new Command<string>(ExecuteFontSelectedCommand));
+			}
+		}
 
-        protected void ExecuteFontSelectedCommand(string selectedFont)
-        {
-            if (string.Compare(selectedFont, null) != 0 || string.Compare(selectedFont, TR.Cancel) != 0)
-            {
+		protected void ExecuteFontSelectedCommand(string selectedFont)
+		{
+			if (string.Compare(selectedFont, null) != 0 || string.Compare(selectedFont, TR.Cancel) != 0) {
 				NSWFontsController.SetFont(selectedFont);
 
-                Device.BeginInvokeOnMainThread(Pages.Settings);
-            }
-        }
+				Device.BeginInvokeOnMainThread(AppPages.Settings);
+			}
+		}
 
-        #endregion
+		#endregion
 
-        bool isExpiringSoonChecked;
-        public bool IsExpiringSoonChecked
-        {
-            get { return isExpiringSoonChecked; }
-            set
-            {
+		bool isExpiringSoonChecked;
+		public bool IsExpiringSoonChecked {
+			get { return isExpiringSoonChecked; }
+			set {
 
-                    if (isExpiringSoonChecked == value)
-                        return;
-                    isExpiringSoonChecked = value;
-                    ExecuteExoiringSoonCommand();
-               
+				if (isExpiringSoonChecked == value)
+					return;
+				isExpiringSoonChecked = value;
+				ExecuteExoiringSoonCommand();
 
-                OnPropertyChanged("IsExpiringSoonChecked");
-            }
-        }
 
-        protected void ExecuteExoiringSoonCommand()
-        {
-            if (IsExpiringSoonChecked)
-            {
-                // Checked code below
-                Settings.IsExpiringSoon = true;
-                ChosenExpiringSoon = TR.Tr("settings_is_expiring_on");
-            }
-            else
-            {
-                // Unchecked code below
-                Settings.IsExpiringSoon = false;
-                ChosenExpiringSoon = TR.Tr("settings_is_expiring_off");
-            }
-        }
+				OnPropertyChanged("IsExpiringSoonChecked");
+			}
+		}
 
-        bool isRecentlyViewedChecked;
-        public bool IsRecentlyViewedChecked
-        {
-            get { return isRecentlyViewedChecked; }
-            set
-            {
+		protected void ExecuteExoiringSoonCommand()
+		{
+			if (IsExpiringSoonChecked) {
+				// Checked code below
+				Settings.IsExpiringSoon = true;
+				ChosenExpiringSoon = TR.Tr("settings_is_expiring_on");
+			} else {
+				// Unchecked code below
+				Settings.IsExpiringSoon = false;
+				ChosenExpiringSoon = TR.Tr("settings_is_expiring_off");
+			}
+		}
 
-                    if (isRecentlyViewedChecked == value)
-                        return;
-                    isRecentlyViewedChecked = value;
-                    ExecuteRecentlyViewedCommand();
+		bool isRecentlyViewedChecked;
+		public bool IsRecentlyViewedChecked {
+			get { return isRecentlyViewedChecked; }
+			set {
 
-                OnPropertyChanged("IsRecentlyViewedChecked");
-            }
-        }
+				if (isRecentlyViewedChecked == value)
+					return;
+				isRecentlyViewedChecked = value;
+				ExecuteRecentlyViewedCommand();
 
-        protected void ExecuteRecentlyViewedCommand()
-        {
-            if (IsRecentlyViewedChecked)
-            {
-                // Checked code below
-                Settings.IsRecentlyViewed = true;
-                ChosenRecentlyViewed = TR.Tr("settings_is_recently_viewed_on");
-            }
-            else
-            {
-                // Unchecked code below
-                Settings.IsRecentlyViewed = false;
-                ChosenRecentlyViewed = TR.Tr("settings_is_recently_viewed_off");
-            }
-        }
+				OnPropertyChanged("IsRecentlyViewedChecked");
+			}
+		}
 
-        // Is mostly viewed
+		protected void ExecuteRecentlyViewedCommand()
+		{
+			if (IsRecentlyViewedChecked) {
+				// Checked code below
+				Settings.IsRecentlyViewed = true;
+				ChosenRecentlyViewed = TR.Tr("settings_is_recently_viewed_on");
+			} else {
+				// Unchecked code below
+				Settings.IsRecentlyViewed = false;
+				ChosenRecentlyViewed = TR.Tr("settings_is_recently_viewed_off");
+			}
+		}
 
-        bool isMostlyViewedChecked;
-        public bool IsMostlyViewedChecked
-        {
-            get { return isMostlyViewedChecked; }
-            set
-            {
-      
-                    if (isMostlyViewedChecked == value)
-                        return;
-                    isMostlyViewedChecked = value;
-                    ExecuteMostlyViewedCommand();
+		// Is mostly viewed
 
-                OnPropertyChanged("IsMostlyViewedChecked");
-            }
-        }
+		bool isMostlyViewedChecked;
+		public bool IsMostlyViewedChecked {
+			get { return isMostlyViewedChecked; }
+			set {
 
-        protected void ExecuteMostlyViewedCommand()
-        {
-            if (IsMostlyViewedChecked)
-            {
-                // Checked code below
-                Settings.IsMostlyViewed = true;
-                ChosenMostlyViewed = TR.Tr("settings_is_mostly_viewed_on");
-            }
-            else
-            {
-                // Unchecked code below
-                Settings.IsMostlyViewed = false;
-                ChosenMostlyViewed = TR.Tr("settings_is_mostly_viewed_off");
-            }
-        }
+				if (isMostlyViewedChecked == value)
+					return;
+				isMostlyViewedChecked = value;
+				ExecuteMostlyViewedCommand();
+
+				OnPropertyChanged("IsMostlyViewedChecked");
+			}
+		}
+
+		protected void ExecuteMostlyViewedCommand()
+		{
+			if (IsMostlyViewedChecked) {
+				// Checked code below
+				Settings.IsMostlyViewed = true;
+				ChosenMostlyViewed = TR.Tr("settings_is_mostly_viewed_on");
+			} else {
+				// Unchecked code below
+				Settings.IsMostlyViewed = false;
+				ChosenMostlyViewed = TR.Tr("settings_is_mostly_viewed_off");
+			}
+		}
 
 		bool isAutoNightModeChecked;
 		public bool IsAutoNightModeChecked {
@@ -699,34 +613,29 @@ namespace NSWallet
 		}
 
 		bool isDroidLogoutChecked;
-        public bool IsDroidLogoutChecked
-        {
-            get { return isDroidLogoutChecked; }
-            set
-            {
-                if (isDroidLogoutChecked == value)
-                    return;
-                isDroidLogoutChecked = value;
-                ExecuteAndroidExitCommand();
-                OnPropertyChanged("IsDroidLogoutChecked");
-            }
-        }
+		public bool IsDroidLogoutChecked {
+			get { return isDroidLogoutChecked; }
+			set {
+				if (isDroidLogoutChecked == value)
+					return;
+				isDroidLogoutChecked = value;
+				ExecuteAndroidExitCommand();
+				OnPropertyChanged("IsDroidLogoutChecked");
+			}
+		}
 
-        protected void ExecuteAndroidExitCommand()
-        {
-            if (IsDroidLogoutChecked)
-            {
-                // Checked code below
-                Settings.AndroidBackLogout = true;
-                ChosenDroidLogout = TR.Tr("settings_android_exit_on");
-            }
-            else
-            {
-                // Unchecked code below
-                Settings.AndroidBackLogout = false;
-                ChosenDroidLogout = TR.Tr("settings_android_exit_off");
-            }
-        }
+		protected void ExecuteAndroidExitCommand()
+		{
+			if (IsDroidLogoutChecked) {
+				// Checked code below
+				Settings.AndroidBackLogout = true;
+				ChosenDroidLogout = TR.Tr("settings_android_exit_on");
+			} else {
+				// Unchecked code below
+				Settings.AndroidBackLogout = false;
+				ChosenDroidLogout = TR.Tr("settings_android_exit_off");
+			}
+		}
 
 		bool isAutoFingerprintChecked;
 		public bool IsAutoFingerprintChecked {
@@ -816,87 +725,74 @@ namespace NSWallet
 			}
 		}
 
-        bool isClipCleanChecked;
-        public bool IsClipCleanChecked
-        {
-            get { return isClipCleanChecked; }
-            set
-            {
-                if (isClipCleanChecked == value)
-                    return;
-                isClipCleanChecked = value;
-                ExecuteClipCleanCommand();
-                OnPropertyChanged("IsClipCleanChecked");
-            }
-        }
+		bool isClipCleanChecked;
+		public bool IsClipCleanChecked {
+			get { return isClipCleanChecked; }
+			set {
+				if (isClipCleanChecked == value)
+					return;
+				isClipCleanChecked = value;
+				ExecuteClipCleanCommand();
+				OnPropertyChanged("IsClipCleanChecked");
+			}
+		}
 
-        protected void ExecuteClipCleanCommand()
-        {
-            if (IsClipCleanChecked)
-            {
-                // Checked code below
-                Settings.IsClipboardClean = true;
-                ChosenClipClean = TR.Tr("settings_clipboard_clean_on");
-            }
-            else
-            {
-                // Unchecked code below
-                Settings.IsClipboardClean = false;
-                ChosenClipClean = TR.Tr("settings_clipboard_clean_off");
-            }
-        }
+		protected void ExecuteClipCleanCommand()
+		{
+			if (IsClipCleanChecked) {
+				// Checked code below
+				Settings.IsClipboardClean = true;
+				ChosenClipClean = TR.Tr("settings_clipboard_clean_on");
+			} else {
+				// Unchecked code below
+				Settings.IsClipboardClean = false;
+				ChosenClipClean = TR.Tr("settings_clipboard_clean_off");
+			}
+		}
 
-        string chosenRestorePremium;
-        public string ChosenRestorePremium
-        {
-            get { return chosenRestorePremium; }
-            set
-            {
-                if (chosenRestorePremium == value)
-                    return;
-                chosenRestorePremium = value;
-                OnPropertyChanged("ChosenRestorePremium");
-            }
-        }
+		string chosenRestorePremium;
+		public string ChosenRestorePremium {
+			get { return chosenRestorePremium; }
+			set {
+				if (chosenRestorePremium == value)
+					return;
+				chosenRestorePremium = value;
+				OnPropertyChanged("ChosenRestorePremium");
+			}
+		}
 
-        string chosenPassword;
-        public string ChosenPassword
-        {
-            get { return chosenPassword; }
-            set
-            {
-                if (chosenPassword == value)
-                    return;
-                chosenPassword = value;
-                OnPropertyChanged("ChosenPassword");
-            }
-        }
+		string chosenPassword;
+		public string ChosenPassword {
+			get { return chosenPassword; }
+			set {
+				if (chosenPassword == value)
+					return;
+				chosenPassword = value;
+				OnPropertyChanged("ChosenPassword");
+			}
+		}
 
-        string chosenTheme;
-        public string ChosenTheme
-        {
-            get { return chosenTheme; }
-            set
-            {
-                if (chosenTheme == value)
-                    return;
-                chosenTheme = value;
-                OnPropertyChanged("ChosenTheme");
-            }
-        }
+		string chosenTheme;
+		public string ChosenTheme {
+			get { return chosenTheme; }
+			set {
+				if (chosenTheme == value)
+					return;
+				chosenTheme = value;
+				OnPropertyChanged("ChosenTheme");
+			}
+		}
 
-        string chosenLanguage;
-        public string ChosenLanguage
-        {
-            get { return chosenLanguage; }
-            set
-            {
-                if (chosenLanguage == value)
-                    return;
-                chosenLanguage = value;
-                OnPropertyChanged("ChosenLanguage");
-            }
-        }
+		string chosenLanguage;
+		public string ChosenLanguage {
+			get { return chosenLanguage; }
+			set {
+				if (chosenLanguage == value)
+					return;
+				chosenLanguage = value;
+				OnPropertyChanged("ChosenLanguage");
+			}
+		}
 
 		string chosenFontSize;
 		public string ChosenFontSize {
@@ -910,30 +806,26 @@ namespace NSWallet
 		}
 
 		string chosenFont;
-        public string ChosenFont
-        {
-            get { return chosenFont; }
-            set
-            {
-                if (chosenFont == value)
-                    return;
-                chosenFont = value;
-                OnPropertyChanged("ChosenFont");
-            }
-        }
+		public string ChosenFont {
+			get { return chosenFont; }
+			set {
+				if (chosenFont == value)
+					return;
+				chosenFont = value;
+				OnPropertyChanged("ChosenFont");
+			}
+		}
 
-        string chosenSocial;
-        public string ChosenSocial
-        {
-            get { return chosenSocial; }
-            set
-            {
-                if (chosenSocial == value)
-                    return;
-                chosenSocial = value;
-                OnPropertyChanged("ChosenSocial");
-            }
-        }
+		string chosenSocial;
+		public string ChosenSocial {
+			get { return chosenSocial; }
+			set {
+				if (chosenSocial == value)
+					return;
+				chosenSocial = value;
+				OnPropertyChanged("ChosenSocial");
+			}
+		}
 
 		string chosenFingerprintActive;
 		public string ChosenFingerprintActive {
@@ -946,70 +838,60 @@ namespace NSWallet
 			}
 		}
 
-        string chosenAutoBackup;
-        public string ChosenAutoBackup
-        {
-            get { return chosenAutoBackup; }
-            set
-            {
-                if (chosenAutoBackup == value)
-                    return;
-                chosenAutoBackup = value;
-                OnPropertyChanged("ChosenAutoBackup");
-            }
-        }
+		string chosenAutoBackup;
+		public string ChosenAutoBackup {
+			get { return chosenAutoBackup; }
+			set {
+				if (chosenAutoBackup == value)
+					return;
+				chosenAutoBackup = value;
+				OnPropertyChanged("ChosenAutoBackup");
+			}
+		}
 
-        string chosenExpiringPeriod;
-        public string ChosenExpiringPeriod
-        {
-            get { return chosenExpiringPeriod; }
-            set
-            {
-                if (chosenExpiringPeriod == value)
-                    return;
-                chosenExpiringPeriod = value;
-                OnPropertyChanged("ChosenExpiringPeriod");
-            }
-        }
+		string chosenExpiringPeriod;
+		public string ChosenExpiringPeriod {
+			get { return chosenExpiringPeriod; }
+			set {
+				if (chosenExpiringPeriod == value)
+					return;
+				chosenExpiringPeriod = value;
+				OnPropertyChanged("ChosenExpiringPeriod");
+			}
+		}
 
-        string chosenPassTip;
-        public string ChosenPassTip
-        {
-            get { return chosenPassTip; }
-            set
-            {
-                if (chosenPassTip == value)
-                    return;
-                chosenPassTip = value;
-                OnPropertyChanged("ChosenPassTip");
-            }
-        }
+		string chosenPassTip;
+		public string ChosenPassTip {
+			get { return chosenPassTip; }
+			set {
+				if (chosenPassTip == value)
+					return;
+				chosenPassTip = value;
+				OnPropertyChanged("ChosenPassTip");
+			}
+		}
 
-        string chosenAutoLogout;
-        public string ChosenAutoLogout
-        {
-            get { return chosenAutoLogout; }
-            set
-            {
-                if (chosenAutoLogout == value)
-                    return;
-                chosenAutoLogout = value;
-                OnPropertyChanged("ChosenAutoLogout");
-            }
-        }
+		string chosenAutoLogout;
+		public string ChosenAutoLogout {
+			get { return chosenAutoLogout; }
+			set {
+				if (chosenAutoLogout == value)
+					return;
+				chosenAutoLogout = value;
+				OnPropertyChanged("ChosenAutoLogout");
+			}
+		}
 
-        string chosenBackupDeletion;
-        public string ChosenBackupDeletion
-        {
-            get { return chosenBackupDeletion; }
-            set
-            {
-                if (chosenBackupDeletion == value)
-                    return;
-                chosenBackupDeletion = value;
-                OnPropertyChanged("ChosenBackupDeletion");
-            }
-        }
+		string chosenBackupDeletion;
+		public string ChosenBackupDeletion {
+			get { return chosenBackupDeletion; }
+			set {
+				if (chosenBackupDeletion == value)
+					return;
+				chosenBackupDeletion = value;
+				OnPropertyChanged("ChosenBackupDeletion");
+			}
+		}
 
 		string chosenAutoNightMode;
 		public string ChosenAutoNightMode {
@@ -1023,17 +905,15 @@ namespace NSWallet
 		}
 
 		string chosenDroidLogout;
-        public string ChosenDroidLogout
-        {
-            get { return chosenDroidLogout; }
-            set
-            {
-                if (chosenDroidLogout == value)
-                    return;
-                chosenDroidLogout = value;
-                OnPropertyChanged("ChosenDroidLogout");
-            }
-        }
+		public string ChosenDroidLogout {
+			get { return chosenDroidLogout; }
+			set {
+				if (chosenDroidLogout == value)
+					return;
+				chosenDroidLogout = value;
+				OnPropertyChanged("ChosenDroidLogout");
+			}
+		}
 
 		string chosenAutoFingerprintActive;
 		public string ChosenAutoFingerprintActive {
@@ -1047,148 +927,126 @@ namespace NSWallet
 		}
 
 		string chosenExpiringSoon;
-        public string ChosenExpiringSoon
-        {
-            get { return chosenExpiringSoon; }
-            set
-            {
-                if (chosenExpiringSoon == value)
-                    return;
-                chosenExpiringSoon = value;
-                OnPropertyChanged("ChosenExpiringSoon");
-            }
-        }
+		public string ChosenExpiringSoon {
+			get { return chosenExpiringSoon; }
+			set {
+				if (chosenExpiringSoon == value)
+					return;
+				chosenExpiringSoon = value;
+				OnPropertyChanged("ChosenExpiringSoon");
+			}
+		}
 
-        string chosenRecentlyViewed;
-        public string ChosenRecentlyViewed
-        {
-            get { return chosenRecentlyViewed; }
-            set
-            {
-                if (chosenRecentlyViewed == value)
-                    return;
-                chosenRecentlyViewed = value;
-                OnPropertyChanged("ChosenRecentlyViewed");
-            }
-        }
+		string chosenRecentlyViewed;
+		public string ChosenRecentlyViewed {
+			get { return chosenRecentlyViewed; }
+			set {
+				if (chosenRecentlyViewed == value)
+					return;
+				chosenRecentlyViewed = value;
+				OnPropertyChanged("ChosenRecentlyViewed");
+			}
+		}
 
-        string chosenMostlyViewed;
-        public string ChosenMostlyViewed
-        {
-            get { return chosenMostlyViewed; }
-            set
-            {
-                if (chosenMostlyViewed == value)
-                    return;
-                chosenMostlyViewed = value;
-                OnPropertyChanged("ChosenMostlyViewed");
-            }
-        }
+		string chosenMostlyViewed;
+		public string ChosenMostlyViewed {
+			get { return chosenMostlyViewed; }
+			set {
+				if (chosenMostlyViewed == value)
+					return;
+				chosenMostlyViewed = value;
+				OnPropertyChanged("ChosenMostlyViewed");
+			}
+		}
 
-        string chosenClipClean;
-        public string ChosenClipClean
-        {
-            get { return chosenClipClean; }
-            set
-            {
-                if (chosenClipClean == value)
-                    return;
-                chosenClipClean = value;
-                OnPropertyChanged("ChosenClipClean");
-            }
-        }
+		string chosenClipClean;
+		public string ChosenClipClean {
+			get { return chosenClipClean; }
+			set {
+				if (chosenClipClean == value)
+					return;
+				chosenClipClean = value;
+				OnPropertyChanged("ChosenClipClean");
+			}
+		}
 
-        string chosenAutoLogin;
-        public string ChosenAutoLogin
-        {
-            get { return chosenAutoLogin; }
-            set
-            {
-                if (chosenAutoLogin == value)
-                    return;
-                chosenAutoLogin = value;
-                OnPropertyChanged("ChosenAutoLogin");
-            }
-        }
+		string chosenAutoLogin;
+		public string ChosenAutoLogin {
+			get { return chosenAutoLogin; }
+			set {
+				if (chosenAutoLogin == value)
+					return;
+				chosenAutoLogin = value;
+				OnPropertyChanged("ChosenAutoLogin");
+			}
+		}
 
-        string chosenHidePassword;
-        public string ChosenHidePassword
-        {
-            get { return chosenHidePassword; }
-            set
-            {
-                if (chosenHidePassword == value)
-                    return;
-                chosenHidePassword = value;
-                OnPropertyChanged("ChosenHidePassword");
-            }
-        }
+		string chosenHidePassword;
+		public string ChosenHidePassword {
+			get { return chosenHidePassword; }
+			set {
+				if (chosenHidePassword == value)
+					return;
+				chosenHidePassword = value;
+				OnPropertyChanged("ChosenHidePassword");
+			}
+		}
 
-        bool isHidePasswordChecked;
-        public bool IsHidePasswordChecked
-        {
-            get { return isHidePasswordChecked; }
-            set
-            {
-                if (isHidePasswordChecked == value)
-                    return;
-                isHidePasswordChecked = value;
-                ExecuteHidePassCommand();
-                OnPropertyChanged("IsHidePasswordChecked");
-            }
-        }
+		bool isHidePasswordChecked;
+		public bool IsHidePasswordChecked {
+			get { return isHidePasswordChecked; }
+			set {
+				if (isHidePasswordChecked == value)
+					return;
+				isHidePasswordChecked = value;
+				ExecuteHidePassCommand();
+				OnPropertyChanged("IsHidePasswordChecked");
+			}
+		}
 
-        bool isAutoLoginChecked;
-        public bool IsAutoLoginChecked
-        {
-            get { return isAutoLoginChecked; }
-            set
-            {
+		bool isAutoLoginChecked;
+		public bool IsAutoLoginChecked {
+			get { return isAutoLoginChecked; }
+			set {
 
-                    if (isAutoLoginChecked == value)
-                        return;
-                    isAutoLoginChecked = value;
-                    ExecuteAutoLoginCommand();
-      
-                OnPropertyChanged("IsAutoLoginChecked");
-            }
-        }
+				if (isAutoLoginChecked == value)
+					return;
+				isAutoLoginChecked = value;
+				ExecuteAutoLoginCommand();
 
-        protected void ExecuteAutoLoginCommand()
-        {
-            if (IsAutoLoginChecked)
-            {
-                // Checked code below
-                IsAutoLoginChecked = true;
-                Settings.IsAutoLoginEnabled = true;
-                ChosenAutoLogin = TR.Tr("settings_auto_login_on");
-            }
-            else
-            {
-                // Unchecked code below
-                IsAutoLoginChecked = false;
-                Settings.IsAutoLoginEnabled = false;
-                ChosenAutoLogin = TR.Tr("settings_auto_login_off");
-            }
-        }
+				OnPropertyChanged("IsAutoLoginChecked");
+			}
+		}
 
-        protected void ExecuteHidePassCommand()
-        {
-            if (IsHidePasswordChecked)
-            {
-                // Checked code below
-                IsHidePasswordChecked = true;
-                Settings.IsHidePasswordEnabled = true;
-                ChosenHidePassword = TR.Tr("settings_hidepass_on");
-            }
-            else
-            {
-                // Unchecked code below
-                IsHidePasswordChecked = false;
-                Settings.IsHidePasswordEnabled = false;
-                ChosenHidePassword = TR.Tr("settings_hidepass_off");
-            }
-        }
+		protected void ExecuteAutoLoginCommand()
+		{
+			if (IsAutoLoginChecked) {
+				// Checked code below
+				IsAutoLoginChecked = true;
+				Settings.IsAutoLoginEnabled = true;
+				ChosenAutoLogin = TR.Tr("settings_auto_login_on");
+			} else {
+				// Unchecked code below
+				IsAutoLoginChecked = false;
+				Settings.IsAutoLoginEnabled = false;
+				ChosenAutoLogin = TR.Tr("settings_auto_login_off");
+			}
+		}
+
+		protected void ExecuteHidePassCommand()
+		{
+			if (IsHidePasswordChecked) {
+				// Checked code below
+				IsHidePasswordChecked = true;
+				Settings.IsHidePasswordEnabled = true;
+				ChosenHidePassword = TR.Tr("settings_hidepass_on");
+			} else {
+				// Unchecked code below
+				IsHidePasswordChecked = false;
+				Settings.IsHidePasswordEnabled = false;
+				ChosenHidePassword = TR.Tr("settings_hidepass_off");
+			}
+		}
 
 
 		Command autoFingerprintToggleCommand;
@@ -1204,181 +1062,155 @@ namespace NSWallet
 		}
 
 		Command fingerprintActiveToggleCommand;
-		public Command FingerprintActiveToggleCommand
-        {
-            get
-            {
+		public Command FingerprintActiveToggleCommand {
+			get {
 				return fingerprintActiveToggleCommand ?? (fingerprintActiveToggleCommand = new Command(ExecuteFingerprintActiveToggleCommand));
-            }
-        }
+			}
+		}
 
 		protected void ExecuteFingerprintActiveToggleCommand()
-        {
+		{
 			IsFingerprintChecked = !IsFingerprintChecked;
-        }
+		}
 
-        Command isAutoLoginToggleCommand;
-        public Command IsAutoLoginToggleCommand
-        {
-            get
-            {
-                return isAutoLoginToggleCommand ?? (isAutoLoginToggleCommand = new Command(ExecuteIsAutoLoginToggleCommand));
-            }
-        }
+		Command isAutoLoginToggleCommand;
+		public Command IsAutoLoginToggleCommand {
+			get {
+				return isAutoLoginToggleCommand ?? (isAutoLoginToggleCommand = new Command(ExecuteIsAutoLoginToggleCommand));
+			}
+		}
 
-        protected void ExecuteIsAutoLoginToggleCommand()
-        {
-            IsAutoLoginChecked = !IsAutoLoginChecked;
-        }
+		protected void ExecuteIsAutoLoginToggleCommand()
+		{
+			IsAutoLoginChecked = !IsAutoLoginChecked;
+		}
 
-        Command isClipCleanToggleCommand;
-        public Command IsClipCleanToggleCommand
-        {
-            get
-            {
-                return isClipCleanToggleCommand ?? (isClipCleanToggleCommand = new Command(ExecuteIsClipCleanToggleCommand));
-            }
-        }
+		Command isClipCleanToggleCommand;
+		public Command IsClipCleanToggleCommand {
+			get {
+				return isClipCleanToggleCommand ?? (isClipCleanToggleCommand = new Command(ExecuteIsClipCleanToggleCommand));
+			}
+		}
 
-        protected void ExecuteIsClipCleanToggleCommand()
-        {
-            IsClipCleanChecked = !IsClipCleanChecked;
-        }
+		protected void ExecuteIsClipCleanToggleCommand()
+		{
+			IsClipCleanChecked = !IsClipCleanChecked;
+		}
 
-        Command isDroidLogoutToggleCommand;
-        public Command IsDroidLogoutToggleCommand
-        {
-            get
-            {
-                return isDroidLogoutToggleCommand ?? (isDroidLogoutToggleCommand = new Command(ExecuteIsDroidLogoutToggleCommand));
-            }
-        }
+		Command isDroidLogoutToggleCommand;
+		public Command IsDroidLogoutToggleCommand {
+			get {
+				return isDroidLogoutToggleCommand ?? (isDroidLogoutToggleCommand = new Command(ExecuteIsDroidLogoutToggleCommand));
+			}
+		}
 
-        protected void ExecuteIsDroidLogoutToggleCommand()
-        {
-            IsDroidLogoutChecked = !IsDroidLogoutChecked;
-        }
+		protected void ExecuteIsDroidLogoutToggleCommand()
+		{
+			IsDroidLogoutChecked = !IsDroidLogoutChecked;
+		}
 
-        Command isExpiringSoonToggleCommand;
-        public Command IsExpiringSoonToggleCommand
-        {
-            get
-            {
-                return isExpiringSoonToggleCommand ?? (isExpiringSoonToggleCommand = new Command(ExecuteIsExpiringSoonToggleCommand));
-            }
-        }
+		Command isExpiringSoonToggleCommand;
+		public Command IsExpiringSoonToggleCommand {
+			get {
+				return isExpiringSoonToggleCommand ?? (isExpiringSoonToggleCommand = new Command(ExecuteIsExpiringSoonToggleCommand));
+			}
+		}
 
-        protected void ExecuteIsExpiringSoonToggleCommand()
-        {
-            IsExpiringSoonChecked = !IsExpiringSoonChecked;
-        }
+		protected void ExecuteIsExpiringSoonToggleCommand()
+		{
+			IsExpiringSoonChecked = !IsExpiringSoonChecked;
+		}
 
-        Command isHidePasswordToggleCommand;
-        public Command IsHidePasswordToggleCommand
-        {
-            get
-            {
-                return isHidePasswordToggleCommand ?? (isHidePasswordToggleCommand = new Command(ExecuteIsHidePasswordToggleCommand));
-            }
-        }
+		Command isHidePasswordToggleCommand;
+		public Command IsHidePasswordToggleCommand {
+			get {
+				return isHidePasswordToggleCommand ?? (isHidePasswordToggleCommand = new Command(ExecuteIsHidePasswordToggleCommand));
+			}
+		}
 
-        protected void ExecuteIsHidePasswordToggleCommand()
-        {
-            IsHidePasswordChecked = !IsHidePasswordChecked;
-        }
+		protected void ExecuteIsHidePasswordToggleCommand()
+		{
+			IsHidePasswordChecked = !IsHidePasswordChecked;
+		}
 
-        Command isMostlyViewedToggleCommand;
-        public Command IsMostlyViewedToggleCommand
-        {
-            get
-            {
-                return isMostlyViewedToggleCommand ?? (isMostlyViewedToggleCommand = new Command(ExecuteIsMostlyViewedToggleCommand));
-            }
-        }
+		Command isMostlyViewedToggleCommand;
+		public Command IsMostlyViewedToggleCommand {
+			get {
+				return isMostlyViewedToggleCommand ?? (isMostlyViewedToggleCommand = new Command(ExecuteIsMostlyViewedToggleCommand));
+			}
+		}
 
-        protected void ExecuteIsMostlyViewedToggleCommand()
-        {
-            IsMostlyViewedChecked = !IsMostlyViewedChecked;
-        }
+		protected void ExecuteIsMostlyViewedToggleCommand()
+		{
+			IsMostlyViewedChecked = !IsMostlyViewedChecked;
+		}
 
-        Command isRecentlyViewedToggleCommand;
-        public Command IsRecentlyViewedToggleCommand
-        {
-            get
-            {
-                return isRecentlyViewedToggleCommand ?? (isRecentlyViewedToggleCommand = new Command(ExecuteIsRecentlyViewedToggleCommand));
-            }
-        }
+		Command isRecentlyViewedToggleCommand;
+		public Command IsRecentlyViewedToggleCommand {
+			get {
+				return isRecentlyViewedToggleCommand ?? (isRecentlyViewedToggleCommand = new Command(ExecuteIsRecentlyViewedToggleCommand));
+			}
+		}
 
-        protected void ExecuteIsRecentlyViewedToggleCommand()
-        {
-            IsRecentlyViewedChecked = !IsRecentlyViewedChecked;
-        }
+		protected void ExecuteIsRecentlyViewedToggleCommand()
+		{
+			IsRecentlyViewedChecked = !IsRecentlyViewedChecked;
+		}
 
-        Command passwordTipCommand;
-        public Command PasswordTipCommand
-        {
-            get
-            {
-                return passwordTipCommand ?? (passwordTipCommand = new Command(ExecutePasswordTipCommand));
-            }
-        }
+		Command passwordTipCommand;
+		public Command PasswordTipCommand {
+			get {
+				return passwordTipCommand ?? (passwordTipCommand = new Command(ExecutePasswordTipCommand));
+			}
+		}
 
-        protected void ExecutePasswordTipCommand()
-        {
+		protected void ExecutePasswordTipCommand()
+		{
 
-                PasswordTipCommandCallback.Invoke();
+			PasswordTipCommandCallback.Invoke();
 
-        }
+		}
 
-        Command passwordTipSuccessCommand;
-        public Command PasswordTipSuccessCommand
-        {
-            get
-            {
-                return passwordTipSuccessCommand ?? (passwordTipSuccessCommand = new Command(ExecutePasswordTipSuccessCommand));
-            }
-        }
+		Command passwordTipSuccessCommand;
+		public Command PasswordTipSuccessCommand {
+			get {
+				return passwordTipSuccessCommand ?? (passwordTipSuccessCommand = new Command(ExecutePasswordTipSuccessCommand));
+			}
+		}
 
-        protected void ExecutePasswordTipSuccessCommand(object obj)
-        {
-            string tip = null;
+		protected void ExecutePasswordTipSuccessCommand(object obj)
+		{
+			string tip = null;
 
-            if (obj != null)
-            {
-                tip = obj.ToString();
-            }
+			if (obj != null) {
+				tip = obj.ToString();
+			}
 
-            if (string.IsNullOrEmpty(tip))
-            {
-                ChosenPassTip = TR.Tr("settings_pass_tooltip_off");
-                Settings.PasswordTip = null;
-            }
-            else
-            {
-                ChosenPassTip = tip;
-                Settings.PasswordTip = tip;
-            }
-        }
+			if (string.IsNullOrEmpty(tip)) {
+				ChosenPassTip = TR.Tr("settings_pass_tooltip_off");
+				Settings.PasswordTip = null;
+			} else {
+				ChosenPassTip = tip;
+				Settings.PasswordTip = tip;
+			}
+		}
 
-        Command returnMainCommand;
-        public Command ReturnMainCommand
-        {
-            get
-            {
-                return returnMainCommand ?? (returnMainCommand = new Command(ExecuteReturnMainCommand));
-            }
-        }
+		Command returnMainCommand;
+		public Command ReturnMainCommand {
+			get {
+				return returnMainCommand ?? (returnMainCommand = new Command(ExecuteReturnMainCommand));
+			}
+		}
 
-        protected void ExecuteReturnMainCommand()
-        {
-            // Main command
-        }
+		protected void ExecuteReturnMainCommand()
+		{
+			// Main command
+		}
 
 
 
-        bool restored = true;
-        
+		bool restored = true;
+
 
 		Command restoreDefaultCommand;
 		public Command RestoreDefaultCommand {
@@ -1419,7 +1251,7 @@ namespace NSWallet
 			AppTheme.SetCurrentTheme();
 			TR.SetLanguage(Settings.Language);
 			Device.BeginInvokeOnMainThread(() => {
-				Pages.Login();
+				AppPages.Login();
 			});
 		}
 
@@ -1441,16 +1273,15 @@ namespace NSWallet
         */
 
 		void showMessage(string message)
-        {
-            Device.BeginInvokeOnMainThread(() =>
-            {
-                PlatformSpecific.DisplayShortMessage(message);
-            });
-        }
+		{
+			Device.BeginInvokeOnMainThread(() => {
+				PlatformSpecific.DisplayShortMessage(message);
+			});
+		}
 
-        protected void OnPropertyChanged(string propName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
-        }
-    }
+		protected void OnPropertyChanged(string propName)
+		{
+			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
+		}
+	}
 }

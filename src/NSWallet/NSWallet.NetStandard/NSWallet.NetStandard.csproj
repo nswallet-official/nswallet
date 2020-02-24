@@ -57,6 +57,9 @@
     <Folder Include="Views\Diagnostics\" />
     <Folder Include="ViewModel\Diagnostics\" />
     <Folder Include="Helpers\2FA\" />
+    <Folder Include="Pages\" />
+    <Folder Include="Pages\Lock\" />
+    <Folder Include="Pages\Lock\Views\" />
   </ItemGroup>
   <Import Project="..\NSWallet.Shared\NSWallet.Shared.projitems" Label="Shared" Condition="Exists('..\NSWallet.Shared\NSWallet.Shared.projitems')" />
 </Project>

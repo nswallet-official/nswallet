@@ -347,7 +347,7 @@ namespace NSWallet
 		{
 			if (obj != null) {
 				var label = BL.GetLabels().FirstOrDefault(x => x.FieldType == obj.ToString());
-				Device.BeginInvokeOnMainThread(() => Pages.ClosePage(navigation));
+				Device.BeginInvokeOnMainThread(() => AppPages.ClosePage(navigation));
 				SetLabelsList();
 				PrepareScreenViewByType(new NSWFormsLabelModel(label));
 			}
@@ -468,7 +468,7 @@ namespace NSWallet
 				}
 
 				MessagingCenter.Send(this, "/reloaditems");
-				Pages.CloseModalPage(navigation);
+				AppPages.CloseModalPage(navigation);
 				//}
 			} catch (Exception ex) {
 				log(ex.Message, nameof(ExecuteSaveFieldCommand));
@@ -900,7 +900,7 @@ namespace NSWallet
 			if (humanReadableFieldValue != null) {
 				PlatformSpecific.CopyToClipboard(humanReadableFieldValue);
 				PlatformSpecific.DisplayShortMessage(TR.Tr("field_clipboard_copied"));
-				Pages.CloseModalPage(navigation);
+				AppPages.CloseModalPage(navigation);
 			}
 		}
 
@@ -923,7 +923,7 @@ namespace NSWallet
 
 				if (res == "Copy locally") {
 					StateHandler.CopyFieldLocallyActivated = true;
-					Pages.CloseModalPage(navigation);
+					AppPages.CloseModalPage(navigation);
 				}
 			});
 		}
@@ -938,7 +938,7 @@ namespace NSWallet
 		private void ExecuteDeleteFieldCommand()
 		{
 			StateHandler.DeleteFieldActivated = true;
-			Pages.CloseModalPage(navigation);
+			AppPages.CloseModalPage(navigation);
 		}
 
 		bool isPhoneNumber(string number)
@@ -972,7 +972,7 @@ namespace NSWallet
 		void ExecuteMailCommand()
 		{
 			var fieldValue = humanReadableFieldValue;
-		    //Device.OpenUri(new Uri(String.Format("mailto:{0}", fieldValue)));
+			//Device.OpenUri(new Uri(String.Format("mailto:{0}", fieldValue)));
 			try {
 				List<string> recipients = new List<string> {
 					fieldValue

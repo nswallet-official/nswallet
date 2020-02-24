@@ -178,7 +178,7 @@ namespace NSWallet
 			}
 
 			if (Settings.AndroidBackLogout) {
-				Pages.Main();
+				AppPages.Main();
 			}
 
 			return true;

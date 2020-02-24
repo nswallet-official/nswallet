@@ -72,7 +72,7 @@ namespace NSWallet
                 {
                     var icon = iconModel.Path.Substring(18, iconModel.Path.Length - 27);
                     BL.UpdateLabelIcon(fieldType, icon);
-                    Device.BeginInvokeOnMainThread(() => Pages.ClosePage(navigation));
+                    Device.BeginInvokeOnMainThread(() => AppPages.ClosePage(navigation));
                     if (command != null)
                         command.Execute(null);
                     //Pages.LabelsManagement();

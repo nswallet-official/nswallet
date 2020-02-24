@@ -93,7 +93,7 @@ namespace NSWallet.Helpers
                 try
                 {
                     customLabelType = obj.ToString();
-                    Device.BeginInvokeOnMainThread(() => _navigation.PushAsync(Pages.AddLabelScreen(customLabelName, customLabelType, null, null, _command)));
+                    Device.BeginInvokeOnMainThread(() => _navigation.PushAsync(AppPages.AddLabelScreen(customLabelName, customLabelType, null, null, _command)));
                 }
                 catch (Exception ex)
                 {

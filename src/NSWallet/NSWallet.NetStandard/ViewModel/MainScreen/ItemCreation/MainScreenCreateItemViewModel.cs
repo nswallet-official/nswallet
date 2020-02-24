@@ -52,7 +52,7 @@ namespace NSWallet
 
         void ExecuteCancelCommand()
         {
-            Pages.CloseModalPage(navigation);
+            AppPages.CloseModalPage(navigation);
         }
 
         private Command nextCommand;
@@ -68,7 +68,7 @@ namespace NSWallet
         {
             if (!string.IsNullOrEmpty(Name))
             {
-                Pages.CreateItemOrFolder(navigation, itemType, Name);
+                AppPages.CreateItemOrFolder(navigation, itemType, Name);
             }
             else
             {

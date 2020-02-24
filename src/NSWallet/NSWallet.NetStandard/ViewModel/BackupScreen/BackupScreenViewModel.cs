@@ -11,22 +11,22 @@ using Xamarin.Forms;
 
 namespace NSWallet
 {
-    public class BackupScreenViewModel : INotifyPropertyChanged
-    {
-        public event PropertyChangedEventHandler PropertyChanged;
+	public class BackupScreenViewModel : INotifyPropertyChanged
+	{
+		public event PropertyChangedEventHandler PropertyChanged;
 		public Action<string, string, string> MessageCommand { get; set; }
-        public Action<bool> MessageCreateManualBackupCommand { get; set; }
+		public Action<bool> MessageCreateManualBackupCommand { get; set; }
 
-        public string FirstLetterToUpper(string str)
-        {
-            if (str == null)
-                return null;
+		public string FirstLetterToUpper(string str)
+		{
+			if (str == null)
+				return null;
 
-            if (str.Length > 1)
-                return char.ToUpper(str[0]) + str.Substring(1);
+			if (str.Length > 1)
+				return char.ToUpper(str[0]) + str.Substring(1);
 
-            return str.ToUpper();
-        }
+			return str.ToUpper();
+		}
 
 		void clearNonZip(IEnumerable<string> paths)
 		{
@@ -43,8 +43,8 @@ namespace NSWallet
 			}
 		}
 
-        void updateList()
-        {
+		void updateList()
+		{
 			try {
 				var backupPath = PlatformSpecific.GetBackupPath();
 				var backupFiles = PlatformSpecific.GetFileNames(backupPath);
@@ -73,16 +73,16 @@ namespace NSWallet
 				if (BackupList != null) {
 					BackupList = BackupList.OrderByDescending(x => x.Date).ToList();
 				}
-			} catch(Exception ex) {
+			} catch (Exception ex) {
 				AppLogs.Log(ex.Message, nameof(updateList), nameof(BackupScreenViewModel));
 			}
-        }
+		}
 
 		INavigation navigation;
 		bool isAuthorized;
 
 		public BackupScreenViewModel(INavigation navigation, bool isAuthorized)
-        {
+		{
 			try {
 				this.navigation = navigation;
 				this.isAuthorized = isAuthorized;
@@ -92,26 +92,22 @@ namespace NSWallet
 			} catch (Exception ex) {
 				AppLogs.Log(ex.Message, nameof(BackupScreenViewModel), nameof(BackupScreenViewModel));
 			}
-        }
+		}
 
-        List<BackupModel> backupList;
-        public List<BackupModel> BackupList
-        {
-            get { return backupList; }
-            set
-            {
-                if (backupList == value)
-                    return;
-                backupList = value;
-                OnPropertyChanged("BackupList");
-            }
-        }
+		List<BackupModel> backupList;
+		public List<BackupModel> BackupList {
+			get { return backupList; }
+			set {
+				if (backupList == value)
+					return;
+				backupList = value;
+				OnPropertyChanged("BackupList");
+			}
+		}
 
 		Command exportBackupCommand;
-		public Command ExportBackupCommand
-		{
-			get
-			{
+		public Command ExportBackupCommand {
+			get {
 				return exportBackupCommand ?? (exportBackupCommand = new Command(ExecuteExportBackupCommand));
 			}
 		}
@@ -130,17 +126,15 @@ namespace NSWallet
 			}
 		}
 
-        Command manualBackup;
-        public Command ManualBackupCommand
-        {
-            get
-            {
-                return manualBackup ?? (manualBackup = new Command(ExecuteManualBackupCommand));
-            }
-        }
+		Command manualBackup;
+		public Command ManualBackupCommand {
+			get {
+				return manualBackup ?? (manualBackup = new Command(ExecuteManualBackupCommand));
+			}
+		}
 
-        protected void ExecuteManualBackupCommand()
-        {
+		protected void ExecuteManualBackupCommand()
+		{
 			try {
 				var result = BackupManager.CreateManual();
 
@@ -151,13 +145,11 @@ namespace NSWallet
 			} catch (Exception ex) {
 				AppLogs.Log(ex.Message, nameof(ExecuteManualBackupCommand), nameof(BackupScreenViewModel));
 			}
-        }
+		}
 
 		Command deleteBackupCommand;
-		public Command DeleteBackupCommand
-		{
-			get
-			{
+		public Command DeleteBackupCommand {
+			get {
 				return deleteBackupCommand ?? (deleteBackupCommand = new Command(ExecuteDeleteBackupCommand));
 			}
 		}
@@ -177,7 +169,7 @@ namespace NSWallet
 
 						if (PlatformSpecific.FileExists(path)) {
 							PlatformSpecific.RemoveFile(path);
-							Pages.Backup();
+							AppPages.Backup();
 						}
 					} catch (Exception ex) {
 						AppLogs.Log(ex.Message, nameof(ExecuteDeleteBackupCommand), nameof(BackupScreenViewModel));
@@ -189,15 +181,13 @@ namespace NSWallet
 		}
 
 		Command restoreBackupCommand;
-		public Command RestoreBackupCommand
-		{
-			get
-			{
+		public Command RestoreBackupCommand {
+			get {
 				return restoreBackupCommand ?? (restoreBackupCommand = new Command(ExecuteRestoreBackupCommand));
 			}
 		}
 
-        int reduceRepeat; // FIXME: whole execution should be re-developed, messaging center is called mutliple times
+		int reduceRepeat; // FIXME: whole execution should be re-developed, messaging center is called mutliple times
 		protected void ExecuteRestoreBackupCommand(object sender)
 		{
 			try {
@@ -222,7 +212,7 @@ namespace NSWallet
 								if (PlatformSpecific.FileExists(pathFrom) && PlatformSpecific.DirectoryExists(pathTo)) {
 									FingerprintHelper.ResetSettings(true, true, true);
 									BackupManager.UpdateBackup(pathFrom, pathTo, isAuthorized);
-									Pages.Login();
+									AppPages.Login();
 								}
 							}
 						}
@@ -235,17 +225,15 @@ namespace NSWallet
 			}
 		}
 
-        Command menuTappedCommand;
-        public Command MenuTappedCommand
-        {
-            get
-            {
-                return menuTappedCommand ?? (menuTappedCommand = new Command(ExecuteMenuTappedCommand));
-            }
-        }
+		Command menuTappedCommand;
+		public Command MenuTappedCommand {
+			get {
+				return menuTappedCommand ?? (menuTappedCommand = new Command(ExecuteMenuTappedCommand));
+			}
+		}
 
-        void ExecuteMenuTappedCommand(object obj)
-        {
+		void ExecuteMenuTappedCommand(object obj)
+		{
 			try {
 				if (obj != null) {
 					var popupItem = (PopupItem)obj;
@@ -264,12 +252,12 @@ namespace NSWallet
 			} catch (Exception ex) {
 				AppLogs.Log(ex.Message, nameof(ExecuteMenuTappedCommand), nameof(BackupScreenViewModel));
 			}
-        }
+		}
 
-        protected void OnPropertyChanged(string propName)
-        {
-            if (PropertyChanged != null)
-                PropertyChanged(this, new PropertyChangedEventArgs(propName));
-        }
-    }
+		protected void OnPropertyChanged(string propName)
+		{
+			if (PropertyChanged != null)
+				PropertyChanged(this, new PropertyChangedEventArgs(propName));
+		}
+	}
 }

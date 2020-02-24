@@ -46,7 +46,7 @@ namespace NSWallet
                 case AdminPassword.True:
                     SendMessage(TR.Tr("admin_password_success"));
 					Settings.DevOpsOn = true;
-					Pages.AdminPanel(navigation);
+					AppPages.AdminPanel(navigation);
                     break;
             }
         }

@@ -46,7 +46,7 @@ namespace NSWallet
 
 		protected static void ExecuteHomeCommand()
 		{
-			Pages.Main();
+			AppPages.Main();
 		}
 
 		Command labelsCommand;
@@ -58,7 +58,7 @@ namespace NSWallet
 
 		protected static void ExecuteLabelsCommand()
 		{
-			Pages.LabelsManagement();
+			AppPages.LabelsManagement();
 		}
 
 		Command iconsCommand;
@@ -70,7 +70,7 @@ namespace NSWallet
 
 		protected static void ExecuteIconsCommand()
 		{
-			Pages.IconsManagement();
+			AppPages.IconsManagement();
 		}
 
 		Command logoutCommand;
@@ -85,7 +85,7 @@ namespace NSWallet
 
 			BL.Close();
 			LoginScreenView.ManualExit = true;
-			Pages.Login();
+			AppPages.Login();
 		}
 
 		Command exportImportCommand;
@@ -97,7 +97,7 @@ namespace NSWallet
 
 		protected static void ExecuteExportImportCommand()
 		{
-			Pages.ExportImport();
+			AppPages.ExportImport();
 		}
 
 		Command aboutCommand;
@@ -109,7 +109,7 @@ namespace NSWallet
 
 		protected static void ExecuteAboutCommand()
 		{
-			Pages.About();
+			AppPages.About();
 		}
 
 		Command settingsCommand;
@@ -121,7 +121,7 @@ namespace NSWallet
 
 		protected static void ExecuteSettingsCommand()
 		{
-			Pages.Settings();
+			AppPages.Settings();
 		}
 
 		Command backupCommand;
@@ -133,7 +133,7 @@ namespace NSWallet
 
 		protected static void ExecuteBackupCommand()
 		{
-			Pages.Backup();
+			AppPages.Backup();
 		}
 
 		Command developerCommand;
@@ -145,7 +145,7 @@ namespace NSWallet
 
 		protected static void ExecuteDeveloperCommand()
 		{
-			Pages.AdminPanel();
+			AppPages.AdminPanel();
 		}
 
 		Command feedbackCommand;
@@ -157,7 +157,7 @@ namespace NSWallet
 
 		protected static void ExecuteFeedbackCommand()
 		{
-			Pages.Feedback();
+			AppPages.Feedback();
 		}
 	}
 }

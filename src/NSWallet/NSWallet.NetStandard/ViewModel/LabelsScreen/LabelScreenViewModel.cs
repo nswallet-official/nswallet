@@ -11,75 +11,70 @@ using Xamarin.Forms;
 
 namespace NSWallet
 {
-    public class LabelScreenViewModel : INotifyPropertyChanged
-    {
-        public event PropertyChangedEventHandler PropertyChanged;
+	public class LabelScreenViewModel : INotifyPropertyChanged
+	{
+		public event PropertyChangedEventHandler PropertyChanged;
 
 		public Action LaunchCreatePopupCallback { get; set; }
 		public Action HideCreatePopupCallback { get; set; }
 		public Action LaunchEditPopupCallback { get; set; }
 		public Action HideEditPopupCallback { get; set; }
-        public Action HideItemMenuPopupCallback { get; set; }
-        public Action MenuCommandCallback { get; set; }
-        public Action SystemMenuCommandCallback { get; set; }
-        public Action ContextMenuCommandCallback { get; set; }
-        public Action<string, string, string> MessageCommand { get; set; }
-        public Action<int> ErrorMessageCommand { get; set; }
+		public Action HideItemMenuPopupCallback { get; set; }
+		public Action MenuCommandCallback { get; set; }
+		public Action SystemMenuCommandCallback { get; set; }
+		public Action ContextMenuCommandCallback { get; set; }
+		public Action<string, string, string> MessageCommand { get; set; }
+		public Action<int> ErrorMessageCommand { get; set; }
 
-        private INavigation navigation;
-        private object currentObject;
+		private INavigation navigation;
+		private object currentObject;
 
-        public NSWFormsLabelModel NSWFormsLabel { get; set; }
+		public NSWFormsLabelModel NSWFormsLabel { get; set; }
 
-        public LabelScreenViewModel(INavigation navigation)
-        {
-            this.navigation = navigation;
+		public LabelScreenViewModel(INavigation navigation)
+		{
+			this.navigation = navigation;
 
 			LaunchCreatePopupCallback = () => { };
 			HideCreatePopupCallback = () => { };
-            LaunchEditPopupCallback = () => { };
-            HideEditPopupCallback = () => { };
-            HideItemMenuPopupCallback = () => { };
-            MenuCommandCallback = () => { };
-            SystemMenuCommandCallback = () => { };
-            ContextMenuCommandCallback = () => { };
-            ErrorMessageCommand = (obj) => { };
+			LaunchEditPopupCallback = () => { };
+			HideEditPopupCallback = () => { };
+			HideItemMenuPopupCallback = () => { };
+			MenuCommandCallback = () => { };
+			SystemMenuCommandCallback = () => { };
+			ContextMenuCommandCallback = () => { };
+			ErrorMessageCommand = (obj) => { };
 
-            updateLabelsList();
+			updateLabelsList();
 
-            MessageCommand = (x, y, z) => { };
-        }
+			MessageCommand = (x, y, z) => { };
+		}
 
-        void updateLabelsList()
-        {
-            var currentLabels = BL.GetLabels();
-            LabelItems = new List<NSWFormsLabelModel>();
-            foreach (var label in currentLabels)
-            {
-                if (!label.Deleted)
-                    LabelItems.Add(new NSWFormsLabelModel(label));
-            }
-        }
+		void updateLabelsList()
+		{
+			var currentLabels = BL.GetLabels();
+			LabelItems = new List<NSWFormsLabelModel>();
+			foreach (var label in currentLabels) {
+				if (!label.Deleted)
+					LabelItems.Add(new NSWFormsLabelModel(label));
+			}
+		}
 
-        List<NSWFormsLabelModel> labelItems;
-        public List<NSWFormsLabelModel> LabelItems
-        {
-            get { return labelItems; }
-            set
-            {
-                if (labelItems == value)
-                    return;
-                labelItems = value;
-                OnPropertyChanged("LabelItems");
-            }
-        }
+		List<NSWFormsLabelModel> labelItems;
+		public List<NSWFormsLabelModel> LabelItems {
+			get { return labelItems; }
+			set {
+				if (labelItems == value)
+					return;
+				labelItems = value;
+				OnPropertyChanged("LabelItems");
+			}
+		}
 
 		string labelName;
-		public string LabelName
-		{
+		public string LabelName {
 			get { return labelName; }
-			set
-			{
+			set {
 				if (labelName == value)
 					return;
 				labelName = value;
@@ -88,11 +83,9 @@ namespace NSWallet
 		}
 
 		int selectedLabelIndex;
-		public int SelectedLabelIndex
-		{
+		public int SelectedLabelIndex {
 			get { return selectedLabelIndex; }
-			set
-			{
+			set {
 				if (selectedLabelIndex == value)
 					return;
 				selectedLabelIndex = value;
@@ -101,11 +94,9 @@ namespace NSWallet
 		}
 
 		object selectedLabelItem;
-		public object SelectedLabelItem
-		{
+		public object SelectedLabelItem {
 			get { return selectedLabelItem; }
-			set
-			{
+			set {
 				if (selectedLabelItem == value)
 					return;
 				selectedLabelItem = value;
@@ -113,41 +104,35 @@ namespace NSWallet
 			}
 		}
 
-        Command addLabelCommand;
-        public Command AddLabelCommand
-        {
-            get
-            {
-                return addLabelCommand ?? (addLabelCommand = new Command(ExecuteAddLabelCommand));
-            }
-        }
+		Command addLabelCommand;
+		public Command AddLabelCommand {
+			get {
+				return addLabelCommand ?? (addLabelCommand = new Command(ExecuteAddLabelCommand));
+			}
+		}
 
-        protected void ExecuteAddLabelCommand()
-        {
-            LM.StartCreatingLabel(navigation, LastCommand);
+		protected void ExecuteAddLabelCommand()
+		{
+			LM.StartCreatingLabel(navigation, LastCommand);
 			SelectedLabelIndex = 0;
 			LabelName = null;
-        }
+		}
 
-        Command lastCommand;
-        public Command LastCommand
-        {
-            get
-            {
-                return lastCommand ?? (lastCommand = new Command(ExecuteLastCommand));
-            }
-        }
+		Command lastCommand;
+		public Command LastCommand {
+			get {
+				return lastCommand ?? (lastCommand = new Command(ExecuteLastCommand));
+			}
+		}
 
-        protected void ExecuteLastCommand()
-        {
-            Pages.LabelsManagement();
-        }
+		protected void ExecuteLastCommand()
+		{
+			AppPages.LabelsManagement();
+		}
 
 		Command cancelPressedCommand;
-		public Command CancelPressedCommand
-		{
-			get
-			{
+		public Command CancelPressedCommand {
+			get {
 				return cancelPressedCommand ?? (cancelPressedCommand = new Command(ExecuteCancelPressedCommand));
 			}
 		}
@@ -158,258 +143,222 @@ namespace NSWallet
 		}
 
 		Command okPressedCommand;
-		public Command OKPressedCommand
-		{
-			get
-			{
+		public Command OKPressedCommand {
+			get {
 				return okPressedCommand ?? (okPressedCommand = new Command(ExecuteOKPressedCommand));
 			}
 		}
 
 		protected void ExecuteOKPressedCommand()
 		{
-			if (!string.IsNullOrEmpty(LabelName) && SelectedLabelItem != null)
-			{
-				navigation.PushAsync(Pages.AddLabelScreen(LabelName, (string)SelectedLabelItem));
+			if (!string.IsNullOrEmpty(LabelName) && SelectedLabelItem != null) {
+				navigation.PushAsync(AppPages.AddLabelScreen(LabelName, (string)SelectedLabelItem));
 				HideCreatePopupCallback.Invoke();
 			}
 		}
 
 		Command cancelEditPressedCommand;
-		public Command CancelEditPressedCommand
-		{
-			get
-			{
+		public Command CancelEditPressedCommand {
+			get {
 				return cancelEditPressedCommand ?? (cancelEditPressedCommand = new Command(ExecuteCancelEditPressedCommand));
 			}
 		}
 
 		protected void ExecuteCancelEditPressedCommand()
 		{
-            HideEditPopupCallback.Invoke();
+			HideEditPopupCallback.Invoke();
 		}
 
 		Command okEditPressedCommand;
-		public Command OKEditPressedCommand
-		{
-			get
-			{
+		public Command OKEditPressedCommand {
+			get {
 				return okEditPressedCommand ?? (okEditPressedCommand = new Command(ExecuteOKEditPressedCommand));
 			}
 		}
 
-        protected void ExecuteOKEditPressedCommand(object obj)
-        {
-            var nswFormsLabelModel = (NSWFormsLabelModel)NSWFormsLabel;
-            BL.UpdateLabelTitle(nswFormsLabelModel.FieldType, obj.ToString());
-            updateLabelsList();
-        }
-
-        Command contextMenuCommand;
-        public Command ContextMenuCommand
-        {
-            get
-            {
-                return contextMenuCommand ?? (contextMenuCommand = new Command(ExecuteContextMenuCommand));
-            }
-        }
-
-        protected void ExecuteContextMenuCommand()
-        {
-            ContextMenuCommandCallback.Invoke();
-        }
-
-        Command<string> contextSelectedCommand;
-        public Command<string> ContextSelectedCommand
-        {
-            get
-            {
-                return contextSelectedCommand ?? (contextSelectedCommand = new Command<string>(ExecuteContextSelectedCommand));
-            }
-        }
-
-        protected void ExecuteContextSelectedCommand(string selectedItem)
-        {
-            // handle items
-        }
-
-        Command menuCommand;
-        public Command MenuCommand
-        {
-            get
-            {
-                return menuCommand ?? (menuCommand = new Command(ExecuteMenuCommand));
-            }
-        }
-
-        protected void ExecuteMenuCommand(object obj)
-        {
-            if (obj != null)
-            {
-                currentObject = obj;
-            }
-
-            MenuCommandCallback.Invoke();
-        }
-
-        Command<string> menuSelectedCommand;
-        public Command<string> MenuSelectedCommand
-        {
-            get
-            {
-                return menuSelectedCommand ?? (menuSelectedCommand = new Command<string>(ExecuteMenuSelectedCommand));
-            }
-        }
-
-        protected void ExecuteMenuSelectedCommand(string selectedItem)
-        {
-            if (string.Compare(selectedItem, "Delete") == 0)
-            {
-                LabelItems.Remove(LabelItems.Single(i => i.FieldType == (string)currentObject));
-            }
-        }
-
-        Command systemMenuCommand;
-        public Command SystemMenuCommand
-        {
-            get
-            {
-                return systemMenuCommand ?? (systemMenuCommand = new Command(ExecuteSystemMenuCommand));
-            }
-        }
-
-        protected void ExecuteSystemMenuCommand()
-        {
-            SystemMenuCommandCallback.Invoke();
-        }
-
-        Command<string> systemMenuSelectedCommand;
-        public Command<string> SystemMenuSelectedCommand
-        {
-            get
-            {
-                return systemMenuSelectedCommand ?? (systemMenuSelectedCommand = new Command<string>(ExecuteSystemMenuSelectedCommand));
-            }
-        }
-
-        protected void ExecuteSystemMenuSelectedCommand(string selectedItem)
-        {
-            // System menu handle
-        }
-
-        Command deleteCommand;
-        public Command DeleteCommand
+		protected void ExecuteOKEditPressedCommand(object obj)
 		{
-			get
-			{
-                return deleteCommand ?? (deleteCommand = new Command(ExecuteDeleteCommand));
+			var nswFormsLabelModel = (NSWFormsLabelModel)NSWFormsLabel;
+			BL.UpdateLabelTitle(nswFormsLabelModel.FieldType, obj.ToString());
+			updateLabelsList();
+		}
+
+		Command contextMenuCommand;
+		public Command ContextMenuCommand {
+			get {
+				return contextMenuCommand ?? (contextMenuCommand = new Command(ExecuteContextMenuCommand));
 			}
 		}
 
-        protected void ExecuteDeleteCommand(object obj)
+		protected void ExecuteContextMenuCommand()
 		{
-            var nswFormsLabelModel = (NSWFormsLabelModel)obj;
-            MessageCommand.Invoke("Confirmation", "Are you sure you want to delete label " + nswFormsLabelModel.Name + "?", "/delete");
+			ContextMenuCommandCallback.Invoke();
+		}
 
-            MessagingCenter.Subscribe<LabelScreenView>(this, "/delete", (s) =>
-			{
-                var result = BL.RemoveLabel(nswFormsLabelModel.FieldType);
+		Command<string> contextSelectedCommand;
+		public Command<string> ContextSelectedCommand {
+			get {
+				return contextSelectedCommand ?? (contextSelectedCommand = new Command<string>(ExecuteContextSelectedCommand));
+			}
+		}
 
-                var currentLabels = BL.GetLabels();
+		protected void ExecuteContextSelectedCommand(string selectedItem)
+		{
+			// handle items
+		}
+
+		Command menuCommand;
+		public Command MenuCommand {
+			get {
+				return menuCommand ?? (menuCommand = new Command(ExecuteMenuCommand));
+			}
+		}
+
+		protected void ExecuteMenuCommand(object obj)
+		{
+			if (obj != null) {
+				currentObject = obj;
+			}
+
+			MenuCommandCallback.Invoke();
+		}
+
+		Command<string> menuSelectedCommand;
+		public Command<string> MenuSelectedCommand {
+			get {
+				return menuSelectedCommand ?? (menuSelectedCommand = new Command<string>(ExecuteMenuSelectedCommand));
+			}
+		}
+
+		protected void ExecuteMenuSelectedCommand(string selectedItem)
+		{
+			if (string.Compare(selectedItem, "Delete") == 0) {
+				LabelItems.Remove(LabelItems.Single(i => i.FieldType == (string)currentObject));
+			}
+		}
+
+		Command systemMenuCommand;
+		public Command SystemMenuCommand {
+			get {
+				return systemMenuCommand ?? (systemMenuCommand = new Command(ExecuteSystemMenuCommand));
+			}
+		}
+
+		protected void ExecuteSystemMenuCommand()
+		{
+			SystemMenuCommandCallback.Invoke();
+		}
+
+		Command<string> systemMenuSelectedCommand;
+		public Command<string> SystemMenuSelectedCommand {
+			get {
+				return systemMenuSelectedCommand ?? (systemMenuSelectedCommand = new Command<string>(ExecuteSystemMenuSelectedCommand));
+			}
+		}
+
+		protected void ExecuteSystemMenuSelectedCommand(string selectedItem)
+		{
+			// System menu handle
+		}
+
+		Command deleteCommand;
+		public Command DeleteCommand {
+			get {
+				return deleteCommand ?? (deleteCommand = new Command(ExecuteDeleteCommand));
+			}
+		}
+
+		protected void ExecuteDeleteCommand(object obj)
+		{
+			var nswFormsLabelModel = (NSWFormsLabelModel)obj;
+			MessageCommand.Invoke("Confirmation", "Are you sure you want to delete label " + nswFormsLabelModel.Name + "?", "/delete");
+
+			MessagingCenter.Subscribe<LabelScreenView>(this, "/delete", (s) => {
+				var result = BL.RemoveLabel(nswFormsLabelModel.FieldType);
+
+				var currentLabels = BL.GetLabels();
 				LabelItems = new List<NSWFormsLabelModel>();
 
-				foreach (var label in currentLabels)
-				{
-                    if(!label.Deleted)
-					    LabelItems.Add(new NSWFormsLabelModel(label));
+				foreach (var label in currentLabels) {
+					if (!label.Deleted)
+						LabelItems.Add(new NSWFormsLabelModel(label));
 				}
 
-                if(result > 0)
-                {
-                    ErrorMessageCommand.Invoke(result);
-                }
+				if (result > 0) {
+					ErrorMessageCommand.Invoke(result);
+				}
 			});
 		}
 
 		Command changeIconCommand;
-		public Command ChangeIconCommand
-		{
-			get
-			{
+		public Command ChangeIconCommand {
+			get {
 				return changeIconCommand ?? (changeIconCommand = new Command(ExecuteChangeIconCommand));
 			}
 		}
 
 		protected void ExecuteChangeIconCommand(object obj)
 		{
-            HideItemMenuPopupCallback.Invoke();
+			HideItemMenuPopupCallback.Invoke();
 			var nswFormsLabelModel = (NSWFormsLabelModel)obj;
-            navigation.PushAsync(Pages.AddLabelScreen(LabelName, (string)SelectedLabelItem, nswFormsLabelModel.FieldType, "/edit", FinishEditCommand));
+			navigation.PushAsync(AppPages.AddLabelScreen(LabelName, (string)SelectedLabelItem, nswFormsLabelModel.FieldType, "/edit", FinishEditCommand));
 		}
 
-        Command finishEditCommand;
-        public Command FinishEditCommand
-        {
-            get
-            {
-                return finishEditCommand ?? (finishEditCommand = new Command(ExecuteFinishEditCommand));
-            }
-        }
+		Command finishEditCommand;
+		public Command FinishEditCommand {
+			get {
+				return finishEditCommand ?? (finishEditCommand = new Command(ExecuteFinishEditCommand));
+			}
+		}
 
-        protected void ExecuteFinishEditCommand()
-        {
-            Device.BeginInvokeOnMainThread(Pages.LabelsManagement);
-        }
-
-        Command changeTitleCommand;
-        public Command ChangeTitleCommand
+		protected void ExecuteFinishEditCommand()
 		{
-			get
-			{
-                return changeTitleCommand ?? (changeTitleCommand = new Command(ExecuteChangeTitleCommand));
+			Device.BeginInvokeOnMainThread(AppPages.LabelsManagement);
+		}
+
+		Command changeTitleCommand;
+		public Command ChangeTitleCommand {
+			get {
+				return changeTitleCommand ?? (changeTitleCommand = new Command(ExecuteChangeTitleCommand));
 			}
 		}
 
 		protected void ExecuteChangeTitleCommand()
 		{
-            HideItemMenuPopupCallback.Invoke();
-            LaunchEditPopupCallback.Invoke();
-            LabelName = null;
+			HideItemMenuPopupCallback.Invoke();
+			LaunchEditPopupCallback.Invoke();
+			LabelName = null;
 		}
 
-        Command menuTappedCommand;
-        public Command MenuTappedCommand
-        {
-            get
-            {
-                return menuTappedCommand ?? (menuTappedCommand = new Command(ExecuteMenuTappedCommand));
-            }
-        }
+		Command menuTappedCommand;
+		public Command MenuTappedCommand {
+			get {
+				return menuTappedCommand ?? (menuTappedCommand = new Command(ExecuteMenuTappedCommand));
+			}
+		}
 
-        void ExecuteMenuTappedCommand(object obj)
-        {
-            if (obj != null)
-            {
-                var popupItem = (PopupItem)obj;
-                switch (popupItem.Action)
-                {
-                    case "ChangeTitleCommand":
-                        ChangeTitleCommand.Execute(popupItem.Parameter);
-                        break;
-                    case "ChangeIconCommand":
-                        ChangeIconCommand.Execute(popupItem.Parameter);
-                        break;
-                    case "DeleteCommand":
-                        DeleteCommand.Execute(popupItem.Parameter);
-                        break;
-                }
-            }
-        }
+		void ExecuteMenuTappedCommand(object obj)
+		{
+			if (obj != null) {
+				var popupItem = (PopupItem)obj;
+				switch (popupItem.Action) {
+					case "ChangeTitleCommand":
+						ChangeTitleCommand.Execute(popupItem.Parameter);
+						break;
+					case "ChangeIconCommand":
+						ChangeIconCommand.Execute(popupItem.Parameter);
+						break;
+					case "DeleteCommand":
+						DeleteCommand.Execute(popupItem.Parameter);
+						break;
+				}
+			}
+		}
 
-        protected void OnPropertyChanged(string propName)
-        {
-            if (PropertyChanged != null)
-                PropertyChanged(this, new PropertyChangedEventArgs(propName));
-        }
-    }
+		protected void OnPropertyChanged(string propName)
+		{
+			if (PropertyChanged != null)
+				PropertyChanged(this, new PropertyChangedEventArgs(propName));
+		}
+	}
 }

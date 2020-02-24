@@ -86,7 +86,7 @@ namespace NSWallet
 		protected void ExecuteHideAdminPanelCommand()
 		{
 			Settings.DevOpsOn = false;
-			Pages.Main();
+			AppPages.Main();
 		}
 
        
