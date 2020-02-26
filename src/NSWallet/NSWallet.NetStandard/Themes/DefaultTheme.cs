@@ -67,7 +67,7 @@ namespace NSWallet
         const string closeIcon = "close.png";
         virtual public string CloseIcon { get { return closeIcon; } }
 
-        const string developerIcon = "Icons.app_developer_icon_146_148.png";
+        const string developerIcon = "Icons.LogoBykovSoft144.png";
         virtual public string DeveloperIcon { get { return developerIcon; } }
 
         const string menuIcon = "menu.png";
