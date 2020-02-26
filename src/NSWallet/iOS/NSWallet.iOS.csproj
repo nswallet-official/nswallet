@@ -163,17 +163,14 @@
     <Reference Include="FFImageLoading.Svg.Forms">
       <HintPath>..\packages\Xamarin.FFImageLoading.Svg.Forms.2.4.11.982\lib\Xamarin.iOS10\FFImageLoading.Svg.Forms.dll</HintPath>
     </Reference>
-    <Reference Include="Plugin.Fingerprint.Abstractions">
-      <HintPath>..\packages\Plugin.Fingerprint.1.4.9\lib\Xamarin.iOS10\Plugin.Fingerprint.Abstractions.dll</HintPath>
-    </Reference>
     <Reference Include="Plugin.Fingerprint">
-      <HintPath>..\packages\Plugin.Fingerprint.1.4.9\lib\Xamarin.iOS10\Plugin.Fingerprint.dll</HintPath>
+      <HintPath>..\packages\Plugin.Fingerprint.2.0.0\lib\xamarinios10\Plugin.Fingerprint.dll</HintPath>
     </Reference>
     <Reference Include="Toast">
       <HintPath>..\packages\Toast.iOS.1.2.0\lib\xamarinios10\Toast.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.Essentials">
-      <HintPath>..\packages\Xamarin.Essentials.1.3.1\lib\xamarinios10\Xamarin.Essentials.dll</HintPath>
+      <HintPath>..\packages\Xamarin.Essentials.1.4.0\lib\xamarinios10\Xamarin.Essentials.dll</HintPath>
     </Reference>
     <Reference Include="OpenTK-1.0" />
     <Reference Include="System.Buffers">
@@ -197,6 +194,7 @@
     <Reference Include="SQLite-net">
       <HintPath>..\packages\sqlite-net-pcl.1.6.292\lib\netstandard1.1\SQLite-net.dll</HintPath>
     </Reference>
+    <Reference Include="System.Drawing.Common.dll" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcons.appiconset\Contents.json" />
