@@ -116,7 +116,7 @@ namespace NSWallet
 
 			AddGroup(settingsLayout, TR.Tr("settings_group_extra"), true);
 			AddSettingButton(settingsLayout, "RestoreDefaultCommand", TR.Tr("settings_delete_all"), Theme.Current.SettingsDeleteAll);
-			AddSettingButton(settingsLayout, "OptimizeCommand", TR.Tr("settings_optimize"), Theme.Current.SettingsDeleteAll);
+			//AddSettingButton(settingsLayout, "OptimizeCommand", TR.Tr("settings_optimize"), Theme.Current.SettingsDeleteAll);
 			AddSeparator(settingsLayout);
 
 			pageVM.AutoBackupCommandCallback = AutoBackupSelector;
