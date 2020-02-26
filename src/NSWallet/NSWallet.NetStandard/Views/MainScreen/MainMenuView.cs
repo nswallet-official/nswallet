@@ -146,8 +146,8 @@ namespace NSWallet
 			AddSeparator(menuLayout);
 
 			//if (Settings.IsFeedback) {
-			AddMenu(menuLayout, "FeedbackCommand", TR.Tr("menu_feedback_request"), Theme.Current.MenuIconFeedback, AutomationIdConsts.MENU_FEEDBACK_BUTTON_ID);
-			AddSeparator(menuLayout);
+			//AddMenu(menuLayout, "FeedbackCommand", TR.Tr("menu_feedback_request"), Theme.Current.MenuIconFeedback, AutomationIdConsts.MENU_FEEDBACK_BUTTON_ID);
+			//AddSeparator(menuLayout);
 			//}
 
 			AddMenu(menuLayout, "AboutCommand", TR.Tr("menu_about"), Theme.Current.MenuIconAbout, AutomationIdConsts.MENU_ABOUT_BUTTON_ID);

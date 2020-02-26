@@ -477,5 +477,6 @@
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Localization\Files\be\help_import_backup.html" />
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Localization\Files\be\privacy_policy.html" />
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Localization\Files\be\terms_of_use.html" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\Assets\Icons\LogoBykovSoft144.png" />
   </ItemGroup>
 </Project>

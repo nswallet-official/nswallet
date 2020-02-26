@@ -23,7 +23,7 @@ namespace NSWallet.Droid
             RegisterActivityLifecycleCallbacks(this);
 
 			CrossFingerprint.SetCurrentActivityResolver(() => CrossCurrentActivity.Current.Activity);
-			CrossFingerprint.SetDialogFragmentType<MyCustomDialogFragment>();
+			//CrossFingerprint.SetDialogFragmentType<MyCustomDialogFragment>();
             //A great place to initialize Xamarin.Insights and Dependency Services!
         }
 

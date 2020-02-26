@@ -38,7 +38,13 @@ namespace NSWallet.Helpers
 
 		public static async Task<bool> Authenticate(string message)
 		{
-			var result = await CrossFingerprint.Current.AuthenticateAsync(TR.Tr("settings_fingerprint_message"));
+			AuthenticationRequestConfiguration reqConf;
+			reqConf = new AuthenticationRequestConfiguration(
+				TR.Tr("settings_fingerprint_message"),
+				TR.Tr("settings_fingerprint_message")
+			);
+
+			var result = await CrossFingerprint.Current.AuthenticateAsync(reqConf);
 			IsEnabled = true;
 			return result.Authenticated;
 		}
