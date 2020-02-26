@@ -119,7 +119,7 @@ namespace NSWallet.NetStandard.Views.Feedback
 						mainStackLayout.Children.Add(buttonsLayout);
 					}
 				} catch (Exception ex) {
-					AppLogs.Log(ex.Message, nameof(PremiumPageView), nameof(PremiumPageView));
+					AppLogs.Log(ex.Message, nameof(FeedbackPageView), nameof(FeedbackPageView));
 				}
 			};
 

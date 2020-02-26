@@ -1,6 +1,5 @@
 ﻿using NSWallet.Helpers;
 using NSWallet.NetStandard.Themes.NightMode;
-using NSWallet.Premium;
 using NSWallet.Shared;
 
 namespace NSWallet

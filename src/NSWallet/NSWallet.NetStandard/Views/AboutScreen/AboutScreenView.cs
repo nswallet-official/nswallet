@@ -142,31 +142,6 @@ namespace NSWallet
 			faqButton.Margin = new Thickness(15, 0, 15, 0);
 			faqButton.FontFamily = NSWFontsController.CurrentBoldTypeface;
 
-			var sendLogsButton = new Button { Text = TR.Tr("send_logs") };
-			sendLogsButton.SetBinding(Button.CommandProperty, "SendLogsCommand");
-			sendLogsButton.FontAttributes = FontAttributes.Bold;
-			sendLogsButton.FontFamily = NSWFontsController.CurrentBoldTypeface;
-			sendLogsButton.TextColor = Theme.Current.CommonButtonTextColor;
-			sendLogsButton.FontSize = FontSizeController.GetSize(NamedSize.Default, typeof(Button));
-			sendLogsButton.BackgroundColor = Theme.Current.CommonButtonBackground;
-			sendLogsButton.CornerRadius = Theme.Current.ButtonRadius;
-			sendLogsButton.BorderWidth = 0;
-			sendLogsButton.VerticalOptions = LayoutOptions.StartAndExpand;  //!!1 
-			sendLogsButton.Margin = new Thickness(15, 0, 15, 0);
-			sendLogsButton.IsVisible = Settings.AreLogsActive;
-
-			var diagnosticsButton = new Button { Text = TR.Tr("run_diagnostics") };
-			diagnosticsButton.SetBinding(Button.CommandProperty, "RunDiagnosticsCommand");
-			diagnosticsButton.FontAttributes = FontAttributes.Bold;
-			diagnosticsButton.TextColor = Theme.Current.CommonButtonTextColor;
-			diagnosticsButton.FontSize = FontSizeController.GetSize(NamedSize.Default, typeof(Button));
-			diagnosticsButton.FontFamily = NSWFontsController.CurrentBoldTypeface;
-			diagnosticsButton.BackgroundColor = Theme.Current.CommonButtonBackground;
-			diagnosticsButton.CornerRadius = Theme.Current.ButtonRadius;
-			diagnosticsButton.BorderWidth = 0;
-			diagnosticsButton.Margin = new Thickness(15, 0, 15, 0);
-			diagnosticsButton.IsVisible = Settings.AreLogsActive;
-			diagnosticsButton.SetBinding(IsEnabledProperty, "IsDiagnosticsRunning");
 
 			var privacyPolicyButton = new Button { Text = TR.Tr("privacy_policy") };
 			privacyPolicyButton.SetBinding(Button.CommandProperty, "PrivacyPolicyCommand");
@@ -210,29 +185,7 @@ namespace NSWallet
 			mainStackLayout.Children.Add(releaseNotesButton);
 			mainStackLayout.Children.Add(appDisclaimer);
 			mainStackLayout.Children.Add(faqButton);
-			mainStackLayout.Children.Add(diagnosticsButton);
-			mainStackLayout.Children.Add(sendLogsButton);
 
-			var socialButtons = SocialView.GetButtons();
-			socialButtons.HorizontalOptions = LayoutOptions.CenterAndExpand;
-			mainStackLayout.Children.Add(socialButtons);
-
-			/*
-			var devButton = new Button {
-				BackgroundColor = Theme.Current.CommonButtonBackground,
-				TextColor = Theme.Current.CommonButtonTextColor,
-				FontAttributes = FontAttributes.Bold,
-				FontSize = FontSizeController.GetSize(NamedSize.Micro, typeof(Label)),
-				Text = "DEV",
-				VerticalOptions = LayoutOptions.Start,
-				HorizontalOptions = LayoutOptions.Start,
-				Margin = new Thickness(20, 0, 0, 0),
-				WidthRequest = 80
-			};
-
-			devButton.SetBinding(Button.CommandProperty, "OpenDevCommand");
-			mainStackLayout.Children.Add(devButton);
-			*/		
 
 			var appDevStack = new StackLayout {
 				HorizontalOptions = LayoutOptions.FillAndExpand,
@@ -254,7 +207,7 @@ namespace NSWallet
 			appDevIcon.GestureRecognizers.Add(appDevIconGesture);
 
 			var appCopyright = new Label {
-				Text = String.Format("Nyxbull Software © 2011 - {0}", DateTime.Now.Year.ToString()),
+				Text = String.Format("BykovSoft © 2017 - {0}", DateTime.Now.Year.ToString()),
 				FontSize = FontSizeController.GetSize(NamedSize.Small, typeof(Label)),
 				HorizontalTextAlignment = TextAlignment.Center,
 				FontFamily = NSWFontsController.CurrentTypeface,
@@ -313,7 +266,7 @@ namespace NSWallet
 		{
 			if (!fromLogin) {
 				if (Settings.AndroidBackLogout) {
-					Pages.Main();
+					AppPages.Main();
 				}
 				return true;
 			}

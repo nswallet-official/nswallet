@@ -49,7 +49,7 @@ namespace NSWallet.NetStandard
 		}
 
 		void ShowImportHelp() {
-			Pages.ImportBackupHelp(Navigation);
+			AppPages.ImportBackupHelp(Navigation);
 		}
 
 		static void AddSeparator(StackLayout settingsLayout)

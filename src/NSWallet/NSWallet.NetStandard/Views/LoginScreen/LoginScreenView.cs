@@ -2,7 +2,6 @@
 using Xamarin.Forms;
 using NSWallet.Shared;
 using NSWallet.Helpers;
-using NSWallet.Premium;
 using System;
 using NSWallet.Consts;
 using System.Threading.Tasks;
@@ -14,10 +13,10 @@ using FFImageLoading.Forms;
 namespace NSWallet
 {
 	public class LoginScreenView : ContentPage
-    {
+	{
 		readonly StackLayout mainStackLayout;
 		readonly Button loginButton;
-        public List<string> Features { get; set; }
+		public List<string> Features { get; set; }
 		public static bool ManualExit;
 		readonly LoginScreenViewModel pageVM;
 
@@ -35,14 +34,14 @@ namespace NSWallet
 				Text = TR.Tr("menu_import"),
 				IconImageSource = Theme.Current.ToolBarImportIcon
 			};
-			importToolbarItem.Clicked += (sender, e) => { Pages.ImportBackupHelp(Navigation); };
+			importToolbarItem.Clicked += (sender, e) => { AppPages.ImportBackupHelp(Navigation); };
 			ToolbarItems.Add(importToolbarItem);
 
 			var aboutToolbarItem = new ToolbarItem {
 				Text = TR.Tr("menu_about"),
 				IconImageSource = Theme.Current.ToolbarAboutIcon
 			};
-			aboutToolbarItem.Clicked += (sender, e) => { Pages.AboutModal(Navigation); };
+			aboutToolbarItem.Clicked += (sender, e) => { AppPages.AboutModal(Navigation); };
 			ToolbarItems.Add(aboutToolbarItem);
 
 			mainStackLayout = new StackLayout {
@@ -144,7 +143,7 @@ namespace NSWallet
 
 			if (Settings.IsFingerprintActive) {
 				var fingerPrintImage = new CachedImage {
-				//Aspect = Aspect.AspectFit,
+					//Aspect = Aspect.AspectFit,
 					HeightRequest = Theme.Current.FingerPrintImageHeight,
 					Margin = Theme.Current.SocialIconMargin,
 					Style = ImageProperties.DefaultCachedImageStyle
@@ -163,43 +162,7 @@ namespace NSWallet
 				mainStackLayout.Children.Add(fingerPrintImage);
 			}
 
-			if (PremiumManagement.IsFree) { 
-				//mainStackLayout.Children.Add(getIndicators(5, 0));
 
-				if (!BL.IsNew()) // FIXME: business layer should not be in views!!!!!
-				{
-					var premiumButtonLayout = new Grid {
-						VerticalOptions = LayoutOptions.EndAndExpand
-					};
-
-					var premiumButton = new Button {
-						Margin = new Thickness(0, 0, 0, 20),
-						FontFamily = NSWFontsController.CurrentTypeface,
-						Text = TR.Tr("buypremium_button"),
-						HeightRequest = 50,
-						VerticalOptions = LayoutOptions.Center,
-						HorizontalOptions = LayoutOptions.Fill,
-						TextColor = Theme.Current.PremiumButtonTextColor,
-						FontSize = FontSizeController.GetSize(NamedSize.Medium, typeof(Button)),
-						FontAttributes = Theme.Current.PremiumButtonFontAttributes,
-						BackgroundColor = Theme.Current.PremiumButtonBackground
-					};
-					premiumButton.SetBinding(Button.CommandProperty, "BuyPremiumCommand");
-					premiumButtonLayout.Children.Add(premiumButton);
-
-					var premiumStar = new CachedImage {
-						HeightRequest = 70,
-						Source = ImageSource.FromStream(() => NSWRes.GetImage(Theme.Current.PremiumIcon)),
-						HorizontalOptions = LayoutOptions.End,
-						VerticalOptions = LayoutOptions.Center,
-						Style = ImageProperties.DefaultCachedImageStyle,
-						Margin = new Thickness(0, 0, 0, 20)
-					};
-					premiumButtonLayout.Children.Add(premiumStar);
-
-					mainStackLayout.Children.Add(premiumButtonLayout);
-				}
-			}
 
 			if (BL.IsNew()) // FIXME: business layer should not be in views!!!!!
 			{
@@ -247,71 +210,71 @@ namespace NSWallet
 		}
 
 
-        //void removeIndicators()
-        //{
-        //    /*if (PremiumManagement.IsFree)
-        //    {
-        //        mainStackLayout.Children.RemoveAt(6);
-        //    }*/
-        //}
+		//void removeIndicators()
+		//{
+		//    /*if (PremiumManagement.IsFree)
+		//    {
+		//        mainStackLayout.Children.RemoveAt(6);
+		//    }*/
+		//}
 
-        //void addIndicators(int index)
-        //{
-        //    /*if (PremiumManagement.IsFree)
-        //    {
-        //        mainStackLayout.Children.Insert(6, getIndicators(5, index));
-        //    }*/
-        //}
+		//void addIndicators(int index)
+		//{
+		//    /*if (PremiumManagement.IsFree)
+		//    {
+		//        mainStackLayout.Children.Insert(6, getIndicators(5, index));
+		//    }*/
+		//}
 
-     //   StackLayout getIndicators(int numberOfIndicators, int activeIndex)
-     //   {
-     //       var stackLayout = new StackLayout();
-     //       stackLayout.Orientation = StackOrientation.Horizontal;
-     //       stackLayout.HorizontalOptions = LayoutOptions.CenterAndExpand;
+		//   StackLayout getIndicators(int numberOfIndicators, int activeIndex)
+		//   {
+		//       var stackLayout = new StackLayout();
+		//       stackLayout.Orientation = StackOrientation.Horizontal;
+		//       stackLayout.HorizontalOptions = LayoutOptions.CenterAndExpand;
 
-     //       if (PremiumManagement.IsFree)
-     //       {
-     //           for (int i = 0; i < numberOfIndicators; i++)
-     //           {
-					//var indicator = new CachedImage {
-					//	HeightRequest = 30,
-					//	HorizontalOptions = LayoutOptions.CenterAndExpand,
-					//	Style = ImageProperties.DefaultCachedImageStyle
-					//};
-					//if (activeIndex.Equals(i))
-     //                   indicator.Source = "indicator_active.png";
-     //               else
-     //                   indicator.Source = "indicator_inactive.png";
+		//       if (PremiumManagement.IsFree)
+		//       {
+		//           for (int i = 0; i < numberOfIndicators; i++)
+		//           {
+		//var indicator = new CachedImage {
+		//	HeightRequest = 30,
+		//	HorizontalOptions = LayoutOptions.CenterAndExpand,
+		//	Style = ImageProperties.DefaultCachedImageStyle
+		//};
+		//if (activeIndex.Equals(i))
+		//                   indicator.Source = "indicator_active.png";
+		//               else
+		//                   indicator.Source = "indicator_inactive.png";
 
-     //               var tapGestureRecognizer = new TapGestureRecognizer();
-     //               tapGestureRecognizer.Tapped += indicatorClicked;
-     //               tapGestureRecognizer.CommandParameter = i;
-     //               indicator.GestureRecognizers.Add(tapGestureRecognizer);
+		//               var tapGestureRecognizer = new TapGestureRecognizer();
+		//               tapGestureRecognizer.Tapped += indicatorClicked;
+		//               tapGestureRecognizer.CommandParameter = i;
+		//               indicator.GestureRecognizers.Add(tapGestureRecognizer);
 
-     //               stackLayout.Children.Add(indicator);
-     //           }
-     //       }
+		//               stackLayout.Children.Add(indicator);
+		//           }
+		//       }
 
-     //       return stackLayout;
-     //   }
+		//       return stackLayout;
+		//   }
 
-        //void indicatorClicked(object sender, EventArgs e)
-        //{
-        //    var eventArgs = (TappedEventArgs)e;
-        //    var index = (int)eventArgs.Parameter;
-        //    removeIndicators();
-        //    addIndicators(index);
-        //}
+		//void indicatorClicked(object sender, EventArgs e)
+		//{
+		//    var eventArgs = (TappedEventArgs)e;
+		//    var index = (int)eventArgs.Parameter;
+		//    removeIndicators();
+		//    addIndicators(index);
+		//}
 
-        void DisplayTip()
-        {
-            DisplayAlert(TR.Tr("app_name"), TR.Tr("password_hint") + ": " + Settings.PasswordTip, TR.Tr("ok"));
-        }
+		void DisplayTip()
+		{
+			DisplayAlert(TR.Tr("app_name"), TR.Tr("password_hint") + ": " + Settings.PasswordTip, TR.Tr("ok"));
+		}
 
-        protected override bool OnBackButtonPressed()
-        {
+		protected override bool OnBackButtonPressed()
+		{
 
-            return base.OnBackButtonPressed();
-        }
-    }
+			return base.OnBackButtonPressed();
+		}
+	}
 }

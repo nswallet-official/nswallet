@@ -1,4 +1,4 @@
-﻿using NSWallet.Premium;
+﻿
 using NSWallet.Shared;
 using Xamarin.Forms;
 
@@ -9,23 +9,10 @@ namespace NSWallet
 	{
 		public MainMenuViewModel()
 		{
-			// Temporary for Mac BETA
-			if (Device.RuntimePlatform == Device.macOS) {
-				Premium = "Mac BETA";
-				PremiumColor = Theme.Current.MenuTopPremiumColor;
-				return;
-			}
 
-			if (PremiumManagement.IsPremiumSubscription) {
 				Premium = TR.Tr("premium_status");
 				PremiumColor = Theme.Current.MenuTopPremiumColor;
-			} else if (PremiumManagement.IsLegacyPremium) {
-				Premium = TR.Tr("premiumlegacy_status");
-				PremiumColor = Theme.Current.MenuTopPremiumColor;
-			} else {
-				Premium = TR.Tr("free_status");
-				PremiumColor = Theme.Current.MenuTopFreeColor;
-			}
+
 		}
 
 		string premium;
@@ -59,7 +46,7 @@ namespace NSWallet
 
 		protected static void ExecuteHomeCommand()
 		{
-			Pages.Main();
+			AppPages.Main();
 		}
 
 		Command labelsCommand;
@@ -71,7 +58,7 @@ namespace NSWallet
 
 		protected static void ExecuteLabelsCommand()
 		{
-			Pages.LabelsManagement();
+			AppPages.LabelsManagement();
 		}
 
 		Command iconsCommand;
@@ -83,7 +70,7 @@ namespace NSWallet
 
 		protected static void ExecuteIconsCommand()
 		{
-			Pages.IconsManagement();
+			AppPages.IconsManagement();
 		}
 
 		Command logoutCommand;
@@ -98,7 +85,7 @@ namespace NSWallet
 
 			BL.Close();
 			LoginScreenView.ManualExit = true;
-			Pages.Login();
+			AppPages.Login();
 		}
 
 		Command exportImportCommand;
@@ -110,7 +97,7 @@ namespace NSWallet
 
 		protected static void ExecuteExportImportCommand()
 		{
-			Pages.ExportImport();
+			AppPages.ExportImport();
 		}
 
 		Command aboutCommand;
@@ -122,7 +109,7 @@ namespace NSWallet
 
 		protected static void ExecuteAboutCommand()
 		{
-			Pages.About();
+			AppPages.About();
 		}
 
 		Command settingsCommand;
@@ -134,7 +121,7 @@ namespace NSWallet
 
 		protected static void ExecuteSettingsCommand()
 		{
-			Pages.Settings();
+			AppPages.Settings();
 		}
 
 		Command backupCommand;
@@ -146,7 +133,7 @@ namespace NSWallet
 
 		protected static void ExecuteBackupCommand()
 		{
-			Pages.Backup();
+			AppPages.Backup();
 		}
 
 		Command developerCommand;
@@ -158,7 +145,7 @@ namespace NSWallet
 
 		protected static void ExecuteDeveloperCommand()
 		{
-			Pages.AdminPanel();
+			AppPages.AdminPanel();
 		}
 
 		Command feedbackCommand;
@@ -170,7 +157,7 @@ namespace NSWallet
 
 		protected static void ExecuteFeedbackCommand()
 		{
-			Pages.Feedback();
+			AppPages.Feedback();
 		}
 	}
 }

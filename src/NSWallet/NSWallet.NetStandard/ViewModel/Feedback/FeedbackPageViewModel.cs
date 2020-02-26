@@ -5,7 +5,6 @@ using System.Text;
 using Newtonsoft.Json;
 using NSWallet.Helpers;
 using NSWallet.NetStandard.Helpers;
-using NSWallet.Premium;
 using NSWallet.Shared;
 using Xamarin.Forms;
 
@@ -71,14 +70,14 @@ namespace NSWallet.NetStandard
 			var instanceId = Security.CalcMD5(databaseId);
 			var platform = Device.RuntimePlatform;
 			var appVersion = PlatformSpecific.GetVersion() + "." + PlatformSpecific.GetBuildNumber();
-			var premium = PremiumManagement.IsAnyPremium;
+			
 			var device = ExtendedDevice.GetDeviceName();
 
 			var featureRequest = new FeatureRequestModel {
 				instance_id = instanceId,
 				platform = platform,
 				app_version = appVersion,
-				premium = premium,
+				premium = false,
 				device = device
 			};
 

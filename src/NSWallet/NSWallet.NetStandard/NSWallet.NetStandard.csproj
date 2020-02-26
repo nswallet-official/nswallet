@@ -7,14 +7,13 @@
   <ItemGroup>
     <PackageReference Include="Xam.Plugins.Settings" Version="3.1.1" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
-    <PackageReference Include="Plugin.InAppBilling" Version="2.0.0" />
-    <PackageReference Include="Plugin.Fingerprint" Version="1.4.9" />
     <PackageReference Include="Xam.Plugins.Forms.ImageCircle" Version="3.1.1.1-beta" />
     <PackageReference Include="Xamarin.FFImageLoading.Forms" Version="2.4.11.982" />
     <PackageReference Include="Xamarin.FFImageLoading.Transformations" Version="2.4.11.982" />
-    <PackageReference Include="Xamarin.Essentials" Version="1.3.1" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.4.0" />
     <PackageReference Include="Xamarin.Forms" Version="4.4.0.991640" />
     <PackageReference Include="sqlite-net-pcl" Version="1.6.292" />
+    <PackageReference Include="Plugin.Fingerprint" Version="2.0.0" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Helpers\Labels\" />
@@ -58,6 +57,9 @@
     <Folder Include="Views\Diagnostics\" />
     <Folder Include="ViewModel\Diagnostics\" />
     <Folder Include="Helpers\2FA\" />
+    <Folder Include="Pages\" />
+    <Folder Include="Pages\Lock\" />
+    <Folder Include="Pages\Lock\Views\" />
   </ItemGroup>
   <Import Project="..\NSWallet.Shared\NSWallet.Shared.projitems" Label="Shared" Condition="Exists('..\NSWallet.Shared\NSWallet.Shared.projitems')" />
 </Project>

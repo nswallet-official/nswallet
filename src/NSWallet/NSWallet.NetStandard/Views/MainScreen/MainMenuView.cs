@@ -101,30 +101,6 @@ namespace NSWallet
 
             AddSeparator(userLayout);
 
-            var premiumButton = new Button();
-			premiumButton.FontFamily = NSWFontsController.CurrentBoldTypeface;
-			premiumButton.Clicked += (sender, e) => Pages.Premium(Navigation);
-			premiumButton.FontSize = FontSizeController.GetSize(NamedSize.Medium, typeof(Button));
-			premiumButton.FontAttributes = FontAttributes.Bold;
-            premiumButton.TextColor = Theme.Current.MenuPremiumTextColor;
-            premiumButton.BackgroundColor = Theme.Current.MenuPremiumBackgroundColor;
-			premiumButton.CornerRadius = 0;
-            premiumButton.BorderWidth = 0;
-            premiumButton.Margin = 0;
-            //premiumButton.
-            //premiumButton.SetBackgroundColor(Android.Graphics.Color.Gray);
-            //premiumButton.pa
-            premiumButton.HorizontalOptions = LayoutOptions.FillAndExpand;
-            premiumButton.IsVisible &= !Premium.PremiumManagement.IsPremiumSubscription;
-
-            if (Premium.PremiumManagement.IsLegacyPremium)
-            {
-                premiumButton.Text = TR.Tr("premium_upgrade");
-            }
-            else
-            {
-                premiumButton.Text = TR.Tr("buypremium_button");
-            }
 
             StackLayout menuLayout = new StackLayout
 			{
@@ -170,8 +146,8 @@ namespace NSWallet
 			AddSeparator(menuLayout);
 
 			//if (Settings.IsFeedback) {
-			AddMenu(menuLayout, "FeedbackCommand", TR.Tr("menu_feedback_request"), Theme.Current.MenuIconFeedback, AutomationIdConsts.MENU_FEEDBACK_BUTTON_ID);
-			AddSeparator(menuLayout);
+			//AddMenu(menuLayout, "FeedbackCommand", TR.Tr("menu_feedback_request"), Theme.Current.MenuIconFeedback, AutomationIdConsts.MENU_FEEDBACK_BUTTON_ID);
+			//AddSeparator(menuLayout);
 			//}
 
 			AddMenu(menuLayout, "AboutCommand", TR.Tr("menu_about"), Theme.Current.MenuIconAbout, AutomationIdConsts.MENU_ABOUT_BUTTON_ID);
@@ -204,7 +180,7 @@ namespace NSWallet
                     BackgroundColor = Theme.Current.MenuTopBackgroundColor,
                     Padding = paddingStack,
                     Spacing = 0,
-                    Children = { userLayout, premiumButton, menuLayout, restLayout }
+                    Children = { userLayout, menuLayout, restLayout }
                 }
             };
         }

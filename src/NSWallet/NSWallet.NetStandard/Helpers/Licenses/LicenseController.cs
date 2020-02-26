@@ -44,7 +44,7 @@ namespace NSWallet.NetStandard.Helpers
 
 		public static void OpenPrivacyPolicyPage(bool buttons = true)
 		{
-			Pages.PrivacyPolicy(
+			AppPages.PrivacyPolicy(
 				Application.Current.MainPage.Navigation,
 				TR.Tr("privacy_policy"),
 				getPrivacyPolicyHTML(),
@@ -60,7 +60,7 @@ namespace NSWallet.NetStandard.Helpers
 
 		public static void OpenTermsOfUsePage(bool buttons = true)
 		{
-			Pages.TermsOfUse(
+			AppPages.TermsOfUse(
 				Application.Current.MainPage.Navigation,
 				TR.Tr("terms_of_use"),
 				getTermsOfUseHTML(),

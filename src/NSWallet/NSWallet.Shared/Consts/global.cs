@@ -10,8 +10,8 @@
 		public const string APP_WEBSITE_NAME = "www.nswallet.com";
 		public const string APP_WEBSITE_URI = "https://nswallet.com";
 		public const string APP_DISCLAIMER_URI = "https://privacy.nswallet.com/disclaimer.html";
-		public const string APP_DEV_WEBSITE_NAME = "www.nyxbull.com";
-		public const string APP_DEV_WEBSITE_URI = "https://www.nyxbull.com/";
+		public const string APP_DEV_WEBSITE_NAME = "bykovsoft.com";
+		public const string APP_DEV_WEBSITE_URI = "https://bykovsoft.com";
 		public const string APP_DEV_REQUEST_LANGUAGE_URI = "https://faq.nswallet.com/langs.html";
 		public const string APP_DEV_RELEASE_NOTES_URI = "https://releasenotes.nswallet.com";
 		public const string APP_DEV_FAQ_URI = "https://faq.nswallet.com";

@@ -1,11 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.nyxbull.nswallet" android:versionName="3.33" android:versionCode="1500" android:installLocation="internalOnly">
-	<uses-sdk android:minSdkVersion="15" android:targetSdkVersion="29" />
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.nyxbull.nswallet" android:versionCode="1500" android:installLocation="internalOnly" android:versionName="4.01">
+	<uses-sdk android:minSdkVersion="22" android:targetSdkVersion="29" />
 	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-	<uses-permission android:name="com.android.vending.BILLING" />
 	<uses-permission android:name="android.permission.USE_FINGERPRINT" />
-	<uses-permission android:name="com.samsung.android.providers.context.permission.WRITE_USE_APP_FEATURE_SURVEY" />
+	<uses-permission android:name="android.permission.USE_BIOMETRIC" />
 	<application android:label="NS Wallet" android:icon="@drawable/icon">
 		<provider android:name="android.support.v4.content.FileProvider" android:authorities="${applicationId}.provider" android:exported="false" android:grantUriPermissions="true">
 			<meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/provider_paths" />

@@ -38,7 +38,7 @@ namespace NSWallet.NetStandard
 			};
 
 			cancelButton.Clicked += (sender, e)
-				=> Pages.Settings();
+				=> AppPages.Settings();
 
 			Content = new StackLayout {
 				Spacing = 0,

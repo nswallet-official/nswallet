@@ -109,17 +109,13 @@ namespace NSWallet
 			settings.FontFamily = NSWFontsController.CurrentTypeface;
 			settings.Text = "First Launch: " + Settings.FirstLaunch + "\n" +
 				"Build: " + Settings.Build + "\n" +
-				"Premium Status: " + Settings.PremiumStatus + "\n" +
-				"Is Premium Old: " + Settings.IsPremiumOld + "\n" +
-				"Premium Subscription Date: " + Settings.PremiumSubscriptionDate + "\n" +
-				"Premium Subscription State: " + Settings.PremiumSubscriptionState + "\n" +
 				"Auto Backup Date: " + Settings.AutoBackupTime + "\n" +
 				"Backup Deletion: " + Settings.BackupDeletion + "\n" +
 				"Auto Backup: " + Settings.AutoBackup + "\n" +
 				"Language: " + Settings.Language + "\n" +
 				"Theme: " + Settings.Theme + "\n" +
 				"Hide Pass: " + Settings.IsHidePasswordEnabled + "\n" +
-				"Social: " + Settings.IsSocialEnabled + "\n" +
+		
 				"Auto Logout: " + Settings.AutoLogout + "\n" +
 				"Android Back Logout: " + Settings.AndroidBackLogout + "\n" +
 				"Font: " + Settings.FontFamily + "\n" +

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using NSWallet.Enums;
 using NSWallet.NetStandard;
 using NSWallet.NetStandard.Interfaces;
+using NSWallet.NetStandard.Pages.Lock.Views;
 using NSWallet.NetStandard.Views.Diagnostics;
 using NSWallet.NetStandard.Views.Feedback;
 using NSWallet.NetStandard.Views.IconsScreen;
@@ -12,7 +13,7 @@ using Xamarin.Forms;
 
 namespace NSWallet
 {
-    public static class Pages
+    public static class AppPages
     {
         public static void Main()
         {
@@ -31,16 +32,6 @@ namespace NSWallet
 
 		}
 
-        public static void Premium(INavigation navigation)
-        {
-            var navPage = new NavigationPage(new PremiumPageView())
-            {
-                BarBackgroundColor = Theme.Current.AppHeaderBackground,
-                BarTextColor = Theme.Current.AppHeaderTextColor
-            };
-
-            navigation.PushModalAsync(navPage);
-        }
 
 		public static void ImportBackupHelp(INavigation navigation) {
 			var navPage = new NavigationPage(new ImportBackupView()) {
@@ -336,5 +327,24 @@ namespace NSWallet
         {
             navigation.PopAsync(true);
         }
+
+		public static void Locker()
+		{
+            Application.Current.MainPage.Navigation.PushModalAsync(
+				new NavigationPage(new LockerPageView()), false);
+		}
+
+		public static void Close(bool isModal = false)
+		{
+            var navigationPage = Application.Current.MainPage.Navigation;
+
+            if (!isModal && navigationPage.NavigationStack.Count > 0) {
+                Application.Current.MainPage.Navigation.PopAsync(false);
+            }
+
+			if (isModal && navigationPage.ModalStack.Count > 0) {
+                Application.Current.MainPage.Navigation.PopModalAsync(false);
+			}
+		}
     }
 }

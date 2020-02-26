@@ -4,7 +4,6 @@ using Android.Views;
 using Android.OS;
 using Xamarin.Forms.Platform.Android;
 using Android.Content;
-using Plugin.InAppBilling;
 using NSWallet.Shared;
 using System;
 using System.IO;
@@ -110,7 +109,6 @@ namespace NSWallet.Droid
 		protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
 		{
 			base.OnActivityResult(requestCode, resultCode, data);
-			InAppBillingImplementation.HandleActivityResult(requestCode, resultCode, data);
 
 			if (requestCode == PickImageId) {
 				if ((resultCode == Result.Ok) && (data != null)) {
@@ -128,26 +126,6 @@ namespace NSWallet.Droid
 			Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
 
 			base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
-			/*
-            switch (requestCode)
-            {
-                case RequestPermissionsManager.RequestReadWriteID:
-                    {
-                        if (grantResults != null && grantResults.Length > 0)
-                        {
-                            if (grantResults[0] == Permission.Granted)
-                            {
-                                Toast.MakeText(ApplicationContext, TR.Tr("permission_granted"), ToastLength.Long).Show();
-                            }
-                            else
-                            {
-                                Toast.MakeText(ApplicationContext, TR.Tr("permission_denied"), ToastLength.Long).Show();
-                            }
-                        }
-                    }
-                    break;
-            }
-            */
 		}
 	}
 }
