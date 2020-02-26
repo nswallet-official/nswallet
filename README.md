@@ -1,4 +1,4 @@
-[![Build Status](https://app.bitrise.io/app/15dd5a3d14469ae8/status.svg?token=hJ-VR1fVCo58QHxwm-tWoQ&branch=develop)](https://app.bitrise.io/app/15dd5a3d14469ae8)
+[![Build Status](https://app.bitrise.io/app/d80a106bb67fa6e8/status.svg?token=xnyYwDyHqw773UCliHgd4g&branch=develop)](https://app.bitrise.io/app/d80a106bb67fa6e8)
 
 ## NS Wallet 
 
