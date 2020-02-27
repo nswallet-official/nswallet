@@ -331,6 +331,7 @@ namespace NSWallet
 		public static void Locker()
 		{
 			// Hide screen content for iOS devices
+			// TODO: find better solution to secure screens in iOS
             if (Device.RuntimePlatform == Device.iOS) {
                 if (Application.Current.MainPage != null &&
                     Application.Current.MainPage.Navigation != null) {
@@ -343,6 +344,7 @@ namespace NSWallet
 		public static void Unlocker(bool isModal = false)
 		{
             // Unhide screen content for iOS devices
+            // TODO: find better solution to secure screens in iOS
             if (Device.RuntimePlatform == Device.iOS) {
                 if (Application.Current.MainPage != null &&
                 Application.Current.MainPage.Navigation != null) {
