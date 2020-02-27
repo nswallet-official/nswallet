@@ -620,5 +620,8 @@
   "settings_is_auto_fingerprint_on": "L'empremta dactilar automàtica a la pantalla d'inici de sessió està activada",
   "settings_is_auto_fingerprint_off": "L'empremta dactilar automàtica a la pantalla d'inici de sessió està desactivada",
 
-  "back": "Esquena"
+  "back": "Esquena",
+
+  "info4users": "Benvolguts usuaris! \n NS Wallet va canviar el propietari i es va convertir en un projecte de procedència oberta i ara és totalment gratuït (hem concedit funcions premium a tothom). Consulteu la nostra pàgina de github i convertiu-vos en patró del projecte. Gràcies per la vostra lleialtat i suport!",
+  "become_patron": "Become a patron"
 }

@@ -624,5 +624,9 @@
   "settings_is_auto_fingerprint": "Automatically show fingerprint popup on login screen",
   "settings_is_auto_fingerprint_on": "Automatic fingerprint on login screen is turned on",
   "settings_is_auto_fingerprint_off": "Automatic fingerprint on login screen is turned off",
-  "back": "Back"
+  "back": "Back",
+
+  "info4users": "Dear users! \n NS Wallet changed the owner and became an open sourced project and it is fully free now (we granted premium features to everybody). Check our github page and become a patron of the project! Thank you for your loyality and support!",
+  "become_patron": "Become a patron",
+  "github": "GitHub"
 }

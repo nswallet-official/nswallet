@@ -85,6 +85,8 @@
 				case "admin_panel_detailed_log":
 				case "admin_panel_diagnostics":
 				case "hide_admin_panel":
+                case "github":
+                case "become_patron":
                     return true;
             }
             return false;

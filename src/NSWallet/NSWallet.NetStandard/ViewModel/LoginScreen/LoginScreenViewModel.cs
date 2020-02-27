@@ -6,6 +6,7 @@ using NSWallet.Shared;
 using NSWallet.Helpers;
 using NSWallet.NetStandard.Helpers;
 using System.Linq;
+using Xamarin.Essentials;
 
 namespace NSWallet
 {
@@ -284,7 +285,31 @@ namespace NSWallet
 
 		void ExecuteReleaseCommand()
 		{
-			Device.BeginInvokeOnMainThread(() => Device.OpenUri(new Uri(GConsts.APP_DEV_RELEASE_NOTES_URI)));
+			Launcher.OpenAsync(GConsts.APP_DEV_RELEASE_NOTES_URI);
+		}
+
+		Command githubCommand;
+		public Command GitHubCommand {
+			get {
+				return githubCommand ?? (githubCommand = new Command(ExecuteGitHubCommand));
+			}
+		}
+
+		void ExecuteGitHubCommand()
+		{
+			Launcher.OpenAsync(GConsts.APP_DEV_GITHUB_URI);
+		}
+
+		Command patreonCommand;
+		public Command PatreonCommand {
+			get {
+				return patreonCommand ?? (patreonCommand = new Command(ExecutePatreonCommand));
+			}
+		}
+
+		void ExecutePatreonCommand()
+		{
+			Launcher.OpenAsync(GConsts.APP_DEV_PATREON_URI);
 		}
 
 		protected void OnPropertyChanged(string propName)

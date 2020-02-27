@@ -526,5 +526,8 @@
   "settings_is_auto_fingerprint_on": "Der automatische Fingerabdruck im Anmeldebildschirm ist aktiviert",
   "settings_is_auto_fingerprint_off": "Der automatische Fingerabdruck im Anmeldebildschirm ist deaktiviert",
 
-  "back": "Zurück"
+  "back": "Zurück",
+
+  "info4users": "Sehr geehrte Benutzer! \n NS Wallet hat den Eigentümer gewechselt und wurde zu einem Open-Source-Projekt. Es ist jetzt völlig kostenlos (wir haben allen Premium-Funktionen gewährt). Überprüfen Sie unsere Github-Seite und werden Sie ein Förderer des Projekts! Vielen Dank für Ihre Loyalität und Unterstützung!",
+  "become_patron": "Become a patron"
 }

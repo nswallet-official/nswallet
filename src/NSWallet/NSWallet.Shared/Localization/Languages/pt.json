@@ -619,5 +619,7 @@
   "settings_is_auto_fingerprint": "Exibe automaticamente a janela pop-up da impressão digital na tela de login",
   "settings_is_auto_fingerprint_on": "A impressão digital automática na tela de login está ativada",
   "settings_is_auto_fingerprint_off": "A impressão digital automática na tela de login está desativada",
-  "back": "De volta"
+  "back": "De volta",
+  "info4users": "Caros usuários! \n A NS Wallet mudou o proprietário e se tornou um projeto de código aberto e agora é totalmente gratuito (concedemos recursos premium a todos). Confira nossa página no github e torne-se um patrocinador do projeto! Obrigado por sua lealdade e apoio!",
+  "become_patron": "Become a patron"
 }

@@ -136,6 +136,7 @@ namespace NSWallet
 
 		DateTime dateTimeSleep;
 
+		
 		protected override void OnSleep()
 		{
 			AppPages.Locker();
@@ -149,7 +150,7 @@ namespace NSWallet
 
 		protected override void OnResume()
 		{
-			AppPages.Close(isModal: true);
+			AppPages.Unlocker(isModal: true);
 
 			if (!FingerprintHelper.IsEnabled) {
 				ItemsStatsManager.Init();

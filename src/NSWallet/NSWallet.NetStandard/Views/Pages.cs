@@ -330,21 +330,35 @@ namespace NSWallet
 
 		public static void Locker()
 		{
-            Application.Current.MainPage.Navigation.PushModalAsync(
-				new NavigationPage(new LockerPageView()), false);
+			// Hide screen content for iOS devices
+			// TODO: find better solution to secure screens in iOS
+            if (Device.RuntimePlatform == Device.iOS) {
+                if (Application.Current.MainPage != null &&
+                    Application.Current.MainPage.Navigation != null) {
+                    Application.Current.MainPage.Navigation.PushModalAsync(
+                        new NavigationPage(new LockerPageView()), false);
+                }
+            }
 		}
 
-		public static void Close(bool isModal = false)
+		public static void Unlocker(bool isModal = false)
 		{
-            var navigationPage = Application.Current.MainPage.Navigation;
+            // Unhide screen content for iOS devices
+            // TODO: find better solution to secure screens in iOS
+            if (Device.RuntimePlatform == Device.iOS) {
+                if (Application.Current.MainPage != null &&
+                Application.Current.MainPage.Navigation != null) {
+                    var navigationPage = Application.Current.MainPage.Navigation;
 
-            if (!isModal && navigationPage.NavigationStack.Count > 0) {
-                Application.Current.MainPage.Navigation.PopAsync(false);
+                    if (!isModal && navigationPage.NavigationStack.Count > 0) {
+                        Application.Current.MainPage.Navigation.PopAsync(false);
+                    }
+
+                    if (isModal && navigationPage.ModalStack.Count > 0) {
+                        Application.Current.MainPage.Navigation.PopModalAsync(false);
+                    }
+                }
             }
-
-			if (isModal && navigationPage.ModalStack.Count > 0) {
-                Application.Current.MainPage.Navigation.PopModalAsync(false);
-			}
 		}
     }
 }
