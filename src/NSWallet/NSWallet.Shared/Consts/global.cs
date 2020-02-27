@@ -15,8 +15,10 @@
 		public const string APP_DEV_REQUEST_LANGUAGE_URI = "https://faq.nswallet.com/langs.html";
 		public const string APP_DEV_RELEASE_NOTES_URI = "https://releasenotes.nswallet.com";
 		public const string APP_DEV_FAQ_URI = "https://faq.nswallet.com";
+        public const string APP_DEV_GITHUB_URI = "https://github.com/bykovme/nswallet";
+        public const string APP_DEV_PATREON_URI = "https://www.patreon.com/nswallet";
 
-		public const string APPLINK_GOOGLEPLAY = "https://play.google.com/store/apps/details?id=com.nyxbull.nswallet";
+        public const string APPLINK_GOOGLEPLAY = "https://play.google.com/store/apps/details?id=com.nyxbull.nswallet";
 		public const string APPLINK_APPSTORE = "https://itunes.apple.com/us/app/ns-wallet-password-manager/id701558917";
 		public const string APPLINK_FACEBOOK = "https://www.facebook.com/nyxbullsoft/";
 		public const string APPLINK_TWITTER = "https://twitter.com/nyxbullsoft";

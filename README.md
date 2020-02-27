@@ -5,10 +5,11 @@
 
 ### About the app
 
-NS Wallet is an offline password manager for iOS and Android, now it is also an open source and public product. We need your help to maintain the app and related resources and continue its development  (websites domains and hosting, social accounts, app development and testing, deployment on AppStore and Google Play, creating documentation, provide user support and much more).
+NS Wallet is a free offline password manager for iOS and Android, now it is also an open source and public product. We need your help to maintain the app and continue its development.
 
 ### How you can help
-- If you just want to have a reliable and secure password manager, become a [patron](https://www.patreon.com/nswallet) 
+
+- If you just want to have a reliable and secure password manager, **become a [patron](https://www.patreon.com/nswallet)**
 - If you are tester, subscribe to our alpha channel to test the app prepared to release and report the bugs on the github issue tracker
 - If you are developer, develop new feature or fix the bug and send us your pull request on github
 - If you just like this project, spread the word about it in your social networks giving the link to this page 

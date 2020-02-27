@@ -595,6 +595,8 @@
   "continue": "Dalej",
   "export_import_alert": "Zamierzasz udostępnić swoje poufne informacje, upewnij się, że kanał, którego używasz do udostępniania informacji, jest wystarczająco bezpieczny. Czy kontynuujemy?",
 
-  "back": "Z powrotem"
+  "back": "Z powrotem",
+  "info4users": "Drodzy użytkownicy! \n NS Wallet zmienił właściciela i stał się projektem open source, teraz jest całkowicie darmowy (zapewniamy wszystkim wszystkie funkcje premium). Odwiedź naszą stronę github i wesprzyj projekt na patreon! Dziękujemy za lojalność i wsparcie!",
+  "become_patron": "Wsparcie w patreon"
 
 }

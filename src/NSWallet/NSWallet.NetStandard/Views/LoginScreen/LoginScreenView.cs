@@ -135,9 +135,6 @@ namespace NSWallet
 				Padding = Theme.Current.BodyPadding
 			};
 
-			//var socialButtons = SocialView.GetButtons();
-			//socialButtons.HorizontalOptions = LayoutOptions.CenterAndExpand;
-			//bodyLayout.Children.Add(socialButtons);
 
 			mainStackLayout.Children.Add(bodyLayout);
 
@@ -161,7 +158,8 @@ namespace NSWallet
 
 				mainStackLayout.Children.Add(fingerPrintImage);
 			}
-
+			
+			mainStackLayout.Children.Add(InfoView.GetContent());
 
 
 			if (BL.IsNew()) // FIXME: business layer should not be in views!!!!!
@@ -209,62 +207,6 @@ namespace NSWallet
 			}
 		}
 
-
-		//void removeIndicators()
-		//{
-		//    /*if (PremiumManagement.IsFree)
-		//    {
-		//        mainStackLayout.Children.RemoveAt(6);
-		//    }*/
-		//}
-
-		//void addIndicators(int index)
-		//{
-		//    /*if (PremiumManagement.IsFree)
-		//    {
-		//        mainStackLayout.Children.Insert(6, getIndicators(5, index));
-		//    }*/
-		//}
-
-		//   StackLayout getIndicators(int numberOfIndicators, int activeIndex)
-		//   {
-		//       var stackLayout = new StackLayout();
-		//       stackLayout.Orientation = StackOrientation.Horizontal;
-		//       stackLayout.HorizontalOptions = LayoutOptions.CenterAndExpand;
-
-		//       if (PremiumManagement.IsFree)
-		//       {
-		//           for (int i = 0; i < numberOfIndicators; i++)
-		//           {
-		//var indicator = new CachedImage {
-		//	HeightRequest = 30,
-		//	HorizontalOptions = LayoutOptions.CenterAndExpand,
-		//	Style = ImageProperties.DefaultCachedImageStyle
-		//};
-		//if (activeIndex.Equals(i))
-		//                   indicator.Source = "indicator_active.png";
-		//               else
-		//                   indicator.Source = "indicator_inactive.png";
-
-		//               var tapGestureRecognizer = new TapGestureRecognizer();
-		//               tapGestureRecognizer.Tapped += indicatorClicked;
-		//               tapGestureRecognizer.CommandParameter = i;
-		//               indicator.GestureRecognizers.Add(tapGestureRecognizer);
-
-		//               stackLayout.Children.Add(indicator);
-		//           }
-		//       }
-
-		//       return stackLayout;
-		//   }
-
-		//void indicatorClicked(object sender, EventArgs e)
-		//{
-		//    var eventArgs = (TappedEventArgs)e;
-		//    var index = (int)eventArgs.Parameter;
-		//    removeIndicators();
-		//    addIndicators(index);
-		//}
 
 		void DisplayTip()
 		{

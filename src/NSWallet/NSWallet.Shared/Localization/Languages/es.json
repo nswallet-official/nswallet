@@ -619,5 +619,8 @@
   "settings_is_auto_fingerprint_on": "La huella dactilar automática en la pantalla de inicio de sesión está activada",
   "settings_is_auto_fingerprint_off": "La huella dactilar automática en la pantalla de inicio de sesión está desactivada",
 
-  "back": "Atrás"
+  "back": "Atrás",
+
+  "info4users": "Estimados usuarios! \n NS Wallet cambió el propietario y se convirtió en un proyecto de código abierto y ahora es totalmente gratuito (otorgamos características premium a todos). ¡Consulta nuestra página de github y conviértete en un patrocinador del proyecto! ¡Gracias por su lealtad y apoyo!",
+  "become_patron": "Become a patron"
 }
