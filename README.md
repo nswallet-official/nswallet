@@ -1,4 +1,4 @@
-[![NS Wallet](https://github.com/bykovme/nswallet/blob/update/badges/banner.png?raw=true)](https://nswallet.com/)
+[![NS Wallet](https://raw.githubusercontent.com/bykovme/nswallet/develop/banner.png?raw=true)](https://nswallet.com/)
 
 # NS Wallet 
 
