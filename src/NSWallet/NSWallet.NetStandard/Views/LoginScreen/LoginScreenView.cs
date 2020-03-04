@@ -158,8 +158,9 @@ namespace NSWallet
 
 				mainStackLayout.Children.Add(fingerPrintImage);
 			}
+
+
 			
-			mainStackLayout.Children.Add(InfoView.GetContent());
 
 
 			if (BL.IsNew()) // FIXME: business layer should not be in views!!!!!
@@ -174,6 +175,9 @@ namespace NSWallet
 				bodyLayout.IsVisible = true;
 				checkPassword.IsVisible = false;
 				password.Completed += (s, e) => { loginButton.Command.Execute(null); };
+				if (!(Device.RuntimePlatform == Device.iOS) && !(Device.RuntimePlatform == Device.macOS)) {
+					mainStackLayout.Children.Add(InfoView.GetContent());
+				}
 			}
 
 			pageVM.TipAlertCommandCallback = DisplayTip;

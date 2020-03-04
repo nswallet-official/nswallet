@@ -14,8 +14,8 @@ NS Wallet is a free offline password manager for iOS and Android, now it is also
 ### How you can help
 
 - If you just want to have a reliable and secure password manager, **become a [patron](https://www.patreon.com/nswallet)**
-- If you are tester, subscribe to our alpha channel to test the app prepared to release and report the bugs on the github issue tracker
-- If you are developer, develop new feature or fix the bug and send us your pull request on github
+- If you are tester, subscribe to our [beta channel](https://play.google.com/apps/testing/com.nyxbull.nswallet) to test the app prepared to release and report the bugs on the github [issue tracker](https://github.com/bykovme/nswallet/issues)
+- If you are developer, [develop new feature or fix the bug](https://github.com/bykovme/nswallet/issues) and send us your pull request on github
 - If you just like this project, spread the word about it in your social networks giving the link to this page 
 - If you are an investor, become our sponsor
 

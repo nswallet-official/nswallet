@@ -26,7 +26,7 @@ namespace NSWallet
 				VerticalTextAlignment = TextAlignment.Center,
 		
 			};
-			infoLayout.Children.Add(infoLabel);
+			//infoLayout.Children.Add(infoLabel);
 
 			var githubButton = new Button {
 				FontFamily = NSWFontsController.CurrentBoldTypeface,
@@ -50,7 +50,7 @@ namespace NSWallet
 			};
 			patreonButton.SetBinding(Button.CommandProperty, "PatreonCommand");
 
-			infoLayout.Children.Add(githubButton);
+			//infoLayout.Children.Add(githubButton);
 			infoLayout.Children.Add(patreonButton);
 
 			return infoLayout;
