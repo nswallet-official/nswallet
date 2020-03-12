@@ -28,7 +28,7 @@ namespace NSWallet.Helpers
 
 
         const string AutoBackupDateKey = "autobackuptime_key";
-        static readonly string AutoBackupDateDefault = DateTime.Now.ToString();
+        static readonly string AutoBackupDateDefault = default(DateTime).ToString();
 
         const string BackupDeletionKey = "settingsdeletion_key";
         static readonly int BackupDeletionDefault = 30;
