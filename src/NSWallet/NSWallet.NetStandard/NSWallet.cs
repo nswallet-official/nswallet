@@ -22,10 +22,11 @@ namespace NSWallet
 				TR.SetLanguage(AppLanguage.GetCurrentLangCode());
 				ItemsStatsManager.Init();
 
-				// Automatic backup should be done before engine initialization, new version of engine can spoil old DB
-				BackupManager.CreateAutoBackup(); // Do not move this line below BL.InitAPI()
 
 				BL.InitAPI(PlatformSpecific.GetDBFile(), AppLanguage.GetCurrentLangCode());
+
+				// Automatic backup should be done before engine initialization, new version of engine can spoil old DB
+				BackupManager.CreateAutoBackup();
 
 				PCLUpgradeManager.PrepareUpdate();
 				BL.InitNewStorage();
