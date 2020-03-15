@@ -28,18 +28,20 @@ namespace NSWallet
 			return str.ToUpper();
 		}
 
-		void clearNonZip(IEnumerable<string> paths)
+		IEnumerable<string> clearNonZip(IEnumerable<string> paths)
 		{
 			try {
-				if (paths != null) {
-					foreach (var path in paths) {
-						if (!path.Contains(".zip")) {
-							PlatformSpecific.RemoveFile(path);
-						}
-					}
-				}
+				return paths?.Where(p => p.Contains(".zip"));
+				//if (paths != null) {
+				//	foreach (var path in paths) {
+				//		if (!path.Contains(".zip")) {
+				//			PlatformSpecific.RemoveFile(path);
+				//		}
+				//	}
+				//}
 			} catch (Exception ex) {
 				AppLogs.Log(ex.Message, nameof(clearNonZip), nameof(BackupScreenViewModel));
+				return paths;
 			}
 		}
 
@@ -48,7 +50,7 @@ namespace NSWallet
 			try {
 				var backupPath = PlatformSpecific.GetBackupPath();
 				var backupFiles = PlatformSpecific.GetFileNames(backupPath);
-				clearNonZip(backupFiles); // FIX FOR BACKUPS
+				backupFiles = clearNonZip(backupFiles); // FIX FOR BACKUPS
 
 				BackupList = new List<BackupModel>();
 
