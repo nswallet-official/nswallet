@@ -6,12 +6,10 @@ namespace NSWallet.UnitTests
     [TestFixture]
     public partial class LocalizationFixture
     {
-        const string _namespaceString = "NSWallet.NetStandard";
-
         [Test]
         public void SetLanguage()
         {
-            TR.InitTR(_namespaceString);
+            TR.InitTR(GetType().Namespace);
             TR.SetLanguage(Lang.LANG_CODE_RU);
             Assert.AreEqual(Lang.LANG_CODE_RU, TR.Language);
         }
@@ -19,7 +17,7 @@ namespace NSWallet.UnitTests
         [Test]
         public void SetNonExistingLanguage()
         {
-            TR.InitTR(_namespaceString);
+            TR.InitTR(GetType().Namespace);
             TR.SetLanguage("ww"); // Trying to set non existing language, has to be switched to English
             Assert.AreEqual(Lang.LANG_CODE_EN, TR.Language);
         }
@@ -27,7 +25,7 @@ namespace NSWallet.UnitTests
         [Test]
         public void CheckIfAvailableAreSupported()
         {
-            TR.InitTR(_namespaceString);
+            TR.InitTR(GetType().Namespace);
             var langs = Lang.availableLangs();
             foreach (Lang lng in langs)
             {
@@ -38,7 +36,7 @@ namespace NSWallet.UnitTests
         [Test]
         public void CheckNames()
         {
-            TR.InitTR(_namespaceString);
+            TR.InitTR(GetType().Namespace);
             var langs = Lang.availableLangs();
             foreach (Lang lng in langs)
             {
@@ -49,7 +47,7 @@ namespace NSWallet.UnitTests
         [Test]
         public void CheckTranslations()
         {
-            TR.InitTR(_namespaceString);
+            TR.InitTR(GetType().Namespace);
             var enDict = TR.GetEnDictionary();
             Assert.Multiple(() =>
             {

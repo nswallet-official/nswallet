@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Globalization;
-using Xamarin.Forms;
 using NSWallet.Shared;
 
 namespace NSWallet

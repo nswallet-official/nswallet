@@ -15,9 +15,6 @@
     <Compile Remove="UnitTest1.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\NSWallet.NetStandard\NSWallet.NetStandard.csproj" />
-  </ItemGroup>
-  <ItemGroup>
     <Folder Include="Helpers\" />
     <Folder Include="Localization\" />
     <Folder Include="Resources\" />
@@ -31,4 +28,8 @@
     <EmbeddedResource Include="TestData\Backups\nswallet_from_future.dat" />
     <EmbeddedResource Include="TestData\Backups\nswallet_old.dat" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NSWallet.NetStandard\NSWallet.NetStandard.csproj" />
+  </ItemGroup>
+  <Import Project="..\NSWallet.Shared\NSWallet.Shared.projitems" Label="Shared" Condition="Exists('..\NSWallet.Shared\NSWallet.Shared.projitems')" />
 </Project>
