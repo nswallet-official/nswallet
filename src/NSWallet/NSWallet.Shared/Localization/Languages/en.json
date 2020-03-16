@@ -628,5 +628,6 @@
 
   "info4users": "Dear users! \n NS Wallet changed the owner and became an open sourced project and it is fully free now (we granted premium features to everybody). Check our github page and become a patron of the project! Thank you for your loyality and support!",
   "become_patron": "Become a patron",
-  "github": "GitHub"
+  "github": "GitHub",
+  "test_message": "Test"
 }
