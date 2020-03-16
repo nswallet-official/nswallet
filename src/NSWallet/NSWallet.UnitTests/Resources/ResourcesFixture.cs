@@ -11,7 +11,9 @@ namespace NSWallet.UnitTests
     [TestFixture]
     public class ResourcesFixture
     {
+        const string _namespaceString = "NSWallet.NetStandard";
         const string defaultLang = "en";
+
 		readonly string[] files2check = { 
 			"help_import_backup.html",
 			"privacy_policy.html",
@@ -22,7 +24,7 @@ namespace NSWallet.UnitTests
         [Test]
         public void CheckNSWalletIcon()
         {
-            NSWRes.Init(GetType().Namespace);
+            NSWRes.Init(_namespaceString);
             var stream = NSWRes.GetImage("Icons.app_icon_1024.png");
             Assert.IsNotNull(stream);
         }
@@ -35,7 +37,7 @@ namespace NSWallet.UnitTests
             Assert.NotNull(langs, "List of languages is not detected");
             var assembly = typeof(Lang).GetTypeInfo().Assembly;
             Assert.NotNull(assembly, "Assembly of Lang class is not detected!!");
-            var curNamespace = GetType().Namespace;
+            var curNamespace = _namespaceString;
             Assert.NotNull(curNamespace, "Current namespace is not detected!!");
             var locFilePath = curNamespace + GConsts.EMBEDDED_LANG_FILES_PATH;
 
@@ -65,7 +67,7 @@ namespace NSWallet.UnitTests
 
             var assembly = typeof(Lang).GetTypeInfo().Assembly;
             Assert.NotNull(assembly, "Assembly of Lang class is not detected!!");
-            var curNamespace = GetType().Namespace;
+            var curNamespace = _namespaceString;
             Assert.NotNull(curNamespace, "Current namespace is not detected!!");
             var locFilePath = curNamespace + GConsts.EMBEDDED_LANG_PATH;
 
