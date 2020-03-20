@@ -10,6 +10,7 @@ namespace NSWallet.UnitTests
         const string defaultIcon = "document";
         const string defaultLang = "en";
         const string defaultIconPath = "Icons.items.icon_document_huge.png";
+        const string _namespace = "NSWallet.NetStandard";
 
         string password;
         string dbPath;
@@ -24,7 +25,7 @@ namespace NSWallet.UnitTests
                 File.Delete(dbPath);
             }
 
-            TR.InitTR(GetType().Namespace);   // Preparing translations
+            TR.InitTR(_namespace);   // Preparing translations
             TR.SetLanguage(defaultLang);
             BL.InitAPI(dbPath, defaultLang);
             BL.InitNewStorage();
