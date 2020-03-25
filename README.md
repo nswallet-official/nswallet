@@ -1,7 +1,7 @@
-[![NS Wallet](https://raw.githubusercontent.com/bykovme/nswallet/develop/banner.png?raw=true)](https://nswallet.com/)
+[![NS Wallet](./graphics/banner.png?raw=true)](https://nswallet.com/)
 
 [![Build Status](https://app.bitrise.io/app/d80a106bb67fa6e8/status.svg?token=xnyYwDyHqw773UCliHgd4g&branch=develop)](https://app.bitrise.io/app/d80a106bb67fa6e8)
-[![Framework](https://img.shields.io/badge/framework-Xamarin.Forms-3498DB?logo=xamarin&logoColor=white)](https://github.com/xamarin/Xamarin.Forms)
+[![Framework](./graphics/badge-xamarin.svg)](https://github.com/xamarin/Xamarin.Forms)
 [![Maintainability](https://api.codeclimate.com/v1/badges/0265f119ef5164d3ee70/maintainability)](https://codeclimate.com/github/bykovme/nswallet/maintainability)
 [![Test Coverage](https://codecov.io/gh/bykovme/nswallet/branch/develop/graph/badge.svg)](https://codecov.io/gh/bykovme/nswallet)
 
