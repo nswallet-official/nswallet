@@ -35,6 +35,7 @@
         <AndroidUseAapt2>true</AndroidUseAapt2>
         <AndroidUseSharedRuntime>true</AndroidUseSharedRuntime>
         <AndroidSupportedAbis>arm64-v8a;armeabi-v7a;x86;x86_64</AndroidSupportedAbis>
+        <AndroidDexTool>d8</AndroidDexTool>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
         <AndroidPackageFormat>aab</AndroidPackageFormat>
@@ -48,12 +49,16 @@
         <EnableProguard>true</EnableProguard>
         <AndroidSupportedAbis>armeabi-v7a;arm64-v8a;x86_64</AndroidSupportedAbis>
         <JavaMaximumHeapSize>1G</JavaMaximumHeapSize>
+        <AndroidEnableSGenConcurrent>true</AndroidEnableSGenConcurrent>
+        <AndroidDexTool>d8</AndroidDexTool>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Ad-Hoc|AnyCPU' ">
         <Optimize>true</Optimize>
         <OutputPath>bin\Ad-Hoc</OutputPath>
         <WarningLevel>4</WarningLevel>
         <AndroidSupportedAbis>armeabi-v7a;armeabi;arm64-v8a;x86_64</AndroidSupportedAbis>
+        <AndroidDexTool>d8</AndroidDexTool>
+        <AndroidLinkTool>proguard</AndroidLinkTool>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'ReleaseProd|AnyCPU' ">
         <AndroidPackageFormat>aab</AndroidPackageFormat>
@@ -67,6 +72,8 @@
         <EmbedAssembliesIntoApk>true</EmbedAssembliesIntoApk>
         <AndroidSupportedAbis>armeabi-v7a;arm64-v8a;x86_64</AndroidSupportedAbis>
         <RunCodeAnalysis>true</RunCodeAnalysis>
+        <AndroidDexTool>d8</AndroidDexTool>
+        <AndroidLinkTool>proguard</AndroidLinkTool>
     </PropertyGroup>
     <ItemGroup>
         <Reference Include="System" />
