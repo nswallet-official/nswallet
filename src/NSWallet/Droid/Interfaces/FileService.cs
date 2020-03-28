@@ -1,17 +1,11 @@
-using Android.Content;
-using Java.IO;
 using NSWallet.Droid;
 using Xamarin.Forms;
 using NSWallet.Shared;
 using System.IO;
 using System.IO.Compression;
-using Android.Preferences;
 using System;
 using System.Collections.Generic;
-using Java.Util;
-using System.Diagnostics;
 using System.Linq;
-using System.Threading.Tasks;
 using NSWallet.Droid.Helpers;
 using NSWallet.Shared.Helpers.Logs.AppLog;
 
@@ -88,7 +82,11 @@ namespace NSWallet.Droid
         public string GetBackupPath()
         {
 			try {
-				return Legacy.GetDefPrefs().GetString(GConsts.PREFS_BACKUPPATH, Legacy.GetDefaultBackupsFolderPath());
+				Java.IO.File file = MainActivity.Instance.Application.BaseContext.GetExternalFilesDir(null);
+				string extPath = file.AbsolutePath;
+				extPath = extPath + "/" +GConsts.BACKUP_FOLDER;
+				return extPath;
+				//return Legacy.GetDefPrefs().GetString(GConsts.PREFS_BACKUPPATH, Legacy.GetDefaultBackupsFolderPath());
 			} catch(Exception ex) {
 				log(ex.Message, nameof(GetBackupPath));
 				return null;
@@ -244,7 +242,7 @@ namespace NSWallet.Droid
                 try
                 {
                     ZipFile.CreateFromDirectory(pathSourceFolder, pathDestinationFolder + "/" + fileName);
-                    return true;
+					return true;
                 }
                 catch (Exception ex)
                 {
