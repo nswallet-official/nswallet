@@ -96,7 +96,7 @@ namespace NSWallet
 
 		protected override void OnStart()
 		{
-			LicenseController.CheckPrivacyPolicy();
+			//LicenseController.CheckPrivacyPolicy();
 			//PremiumManagement.CheckPreviousPremium(MainPage); Do not ask it on start!
 			checkLaunchCount();
 			checkFingerprintMessageBox();

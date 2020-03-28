@@ -9,16 +9,17 @@ using System.Linq;
 using NSWallet.Droid.Helpers;
 using NSWallet.Shared.Helpers.Logs.AppLog;
 
+
 [assembly: Dependency(typeof(FileService))]
 namespace NSWallet.Droid
 {
-    public class FileService : IFile
-    {
-        const string OLD_DROID_FILEPATH = "/app_nswallet/nswallet.dat";
-        const string OLD_DROID_DIRPATH = "/app_nswallet";
+	public class FileService : IFile
+	{
+		const string OLD_DROID_FILEPATH = "/app_nswallet/nswallet.dat";
+		const string OLD_DROID_DIRPATH = "/app_nswallet";
 
-        public string CheckOldFile()
-        {
+		public string CheckOldFile()
+		{
 			try {
 				var dbDir = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
 				var oldFile = dbDir.Replace("/files", OLD_DROID_FILEPATH);
@@ -29,11 +30,11 @@ namespace NSWallet.Droid
 			} catch (Exception ex) {
 				log(ex.Message, nameof(CheckOldFile));
 			}
-            return string.Empty;
-        }
+			return string.Empty;
+		}
 
-        public string GetOldDBDirectory()
-        {
+		public string GetOldDBDirectory()
+		{
 			try {
 				var dbDir = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
 				var oldDir = dbDir.Replace("/files", OLD_DROID_DIRPATH);
@@ -44,11 +45,11 @@ namespace NSWallet.Droid
 			} catch (Exception ex) {
 				log(ex.Message, nameof(GetOldDBDirectory));
 			}
-            return GetInternalDirPath();
-        }
+			return GetInternalDirPath();
+		}
 
-        public string GetInternalFilePath()
-        {
+		public string GetInternalFilePath()
+		{
 			try {
 				var dbDir = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
 
@@ -63,7 +64,7 @@ namespace NSWallet.Droid
 				log(ex.Message, nameof(GetInternalFilePath));
 				return null;
 			}
-        }
+		}
 
 		public string GetInternalDirPath()
 		{
@@ -71,67 +72,56 @@ namespace NSWallet.Droid
 
 			dbDir += "/" + GConsts.DATABASE_FOLDER;
 			var dInfo = new DirectoryInfo(dbDir);
-			if (dInfo.Exists == false)
-			{
+			if (dInfo.Exists == false) {
 				dInfo.Create();
 			}
 
 			return dbDir;
 		}
 
-        public string GetBackupPath()
-        {
+		public string GetBackupPath()
+		{
 			try {
-				Java.IO.File file = MainActivity.Instance.Application.BaseContext.GetExternalFilesDir(null);
-				string extPath = file.AbsolutePath;
-				extPath = extPath + "/" +GConsts.BACKUP_FOLDER;
+				string extPath = MainActivity.Instance.Application.BaseContext.GetExternalFilesDir(null).AbsolutePath;
+				extPath = extPath + "/" + GConsts.BACKUP_FOLDER;
 				return extPath;
-				//return Legacy.GetDefPrefs().GetString(GConsts.PREFS_BACKUPPATH, Legacy.GetDefaultBackupsFolderPath());
-			} catch(Exception ex) {
+
+			} catch (Exception ex) {
 				log(ex.Message, nameof(GetBackupPath));
 				return null;
 			}
-        }
+		}
 
 		public IEnumerable<string> GetFilePaths(string path)
 		{
-			try
-			{
+			try {
 				return Directory.EnumerateFiles(path);
-			}
-			catch (DirectoryNotFoundException ex)
-			{
+			} catch (DirectoryNotFoundException ex) {
 				Directory.CreateDirectory(path);
 				log(ex.Message, nameof(GetFilePaths));
 				return Directory.EnumerateFiles(path);
 			}
 		}
 
-        public IEnumerable<string> GetFileNames(string path)
-        {
-            if (RequestPermissionsManager.ReadWriteStoragePermission() == true)
-            {
-                try
-                {
-                    return Directory.EnumerateFiles(path).Select(f => Path.GetFileName(f));
-                }
-                catch (DirectoryNotFoundException ex)
-                {
-                    Directory.CreateDirectory(path);
+		public IEnumerable<string> GetFileNames(string path)
+		{
+			if (RequestPermissionsManager.ReadWriteStoragePermission() == true) {
+				try {
+					return Directory.EnumerateFiles(path).Select(f => Path.GetFileName(f));
+				} catch (DirectoryNotFoundException ex) {
+					Directory.CreateDirectory(path);
 					log(ex.Message, nameof(GetFileNames));
-                    return Directory.EnumerateFiles(path).Select(f => Path.GetFileName(f));
-                }
-                catch (Exception ex)
-                {
+					return Directory.EnumerateFiles(path).Select(f => Path.GetFileName(f));
+				} catch (Exception ex) {
 					log(ex.Message, nameof(GetFileNames));
-                    return null;
-                }
-            }
-            return null;
-        }	
+					return null;
+				}
+			}
+			return null;
+		}
 
-        public long GetFileSize(string path)
-        {
+		public long GetFileSize(string path)
+		{
 			try {
 				var fi = new FileInfo(path);
 				return fi.Length;
@@ -139,7 +129,7 @@ namespace NSWallet.Droid
 				log(ex.Message, nameof(GetFileSize));
 				return -1;
 			}
-        }
+		}
 
 		public bool FileExists(string path)
 		{
@@ -152,13 +142,13 @@ namespace NSWallet.Droid
 		}
 
 		public void MoveFile(string pathFrom, string pathTo)
-        {
+		{
 			try {
 				System.IO.File.Move(pathFrom, pathTo);
 			} catch (Exception ex) {
 				log(ex.Message, nameof(MoveFile));
 			}
-        }
+		}
 
 		public void RemoveFile(string path)
 		{
@@ -187,7 +177,7 @@ namespace NSWallet.Droid
 			} catch (Exception ex) {
 				log(ex.Message, nameof(WriteInFile));
 			}
- 		}
+		}
 
 		public string ReadFromFile(string path)
 		{
@@ -202,8 +192,8 @@ namespace NSWallet.Droid
 			}
 		}
 
-        public List<string> ReadZip(string path)
-        {
+		public List<string> ReadZip(string path)
+		{
 			try {
 				var zip = ZipFile.OpenRead(path);
 				var entries = new List<string>();
@@ -219,7 +209,7 @@ namespace NSWallet.Droid
 				log(ex.Message, nameof(ReadZip));
 				return null;
 			}
-        }
+		}
 
 		public bool Unzip(string pathFrom, string pathTo)
 		{
@@ -235,33 +225,26 @@ namespace NSWallet.Droid
 			return false;
 		}
 
-        public bool CreateZip(string pathSourceFolder, string pathDestinationFolder, string fileName)
+		public bool CreateZip(string pathSourceFolder, string pathDestinationFolder, string fileName)
 		{
-            if (RequestPermissionsManager.ReadWriteStoragePermission() == true)
-            {
-                try
-                {
-                    ZipFile.CreateFromDirectory(pathSourceFolder, pathDestinationFolder + "/" + fileName);
+			if (RequestPermissionsManager.ReadWriteStoragePermission() == true) {
+				try {
+					ZipFile.CreateFromDirectory(pathSourceFolder, pathDestinationFolder + "/" + fileName);
 					return true;
-                }
-                catch (Exception ex)
-                {
+				} catch (Exception ex) {
 					log(ex.Message, nameof(CreateZip));
 					return false;
-                }
-            }
-            return false;
+				}
+			}
+			return false;
 		}
 
 		public byte[] GetBytesFromFile(string path)
 		{
-			try
-			{
+			try {
 				var bytes = System.IO.File.ReadAllBytes(path);
 				return bytes;
-			}
-			catch (Exception ex)
-			{
+			} catch (Exception ex) {
 				log(ex.Message, nameof(GetBytesFromFile));
 				return null;
 			}
@@ -277,48 +260,39 @@ namespace NSWallet.Droid
 		}
 
 		public bool RemoveDirectoryWithContents(string path)
-        {
-            try
-            {
-                Directory.Delete(path, true);
-                return true;
-            }
-            catch (Exception ex)
-            {
+		{
+			try {
+				Directory.Delete(path, true);
+				return true;
+			} catch (Exception ex) {
 				log(ex.Message, nameof(RemoveDirectoryWithContents));
 				return false;
-            }
-        }
+			}
+		}
 
-        public string GetTempFolder()
-        {
-            try
-            {
-                var temp = Android.App.Application.Context.CacheDir.AbsolutePath;
-                return temp;
-            }
-            catch(Exception ex)
-            {
+		public string GetTempFolder()
+		{
+			try {
+				var temp = Android.App.Application.Context.CacheDir.AbsolutePath;
+				return temp;
+			} catch (Exception ex) {
 				log(ex.Message, nameof(GetTempFolder));
 				return null;
-            }
-        }
+			}
+		}
 
-        public void CreateFolder(string path)
-        {
-            try
-            {
-                Directory.CreateDirectory(path);
-            }
-            catch (Exception ex)
-            {
+		public void CreateFolder(string path)
+		{
+			try {
+				Directory.CreateDirectory(path);
+			} catch (Exception ex) {
 				log(ex.Message, nameof(CreateFolder));
 			}
-        }
+		}
 
 		void log(string message, string method = null)
 		{
 			AppLogs.Log(message, method, nameof(FileService));
 		}
-    }
+	}
 }

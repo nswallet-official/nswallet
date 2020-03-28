@@ -66,7 +66,6 @@ namespace NSWallet
 
         public static string GetBackupPath()
         {
-
 			return DependencyService.Get<IFile>().GetBackupPath();
         }
 
