@@ -175,9 +175,7 @@ namespace NSWallet
 				bodyLayout.IsVisible = true;
 				checkPassword.IsVisible = false;
 				password.Completed += (s, e) => { loginButton.Command.Execute(null); };
-				if (!(Device.RuntimePlatform == Device.iOS) && !(Device.RuntimePlatform == Device.macOS)) {
-					mainStackLayout.Children.Add(InfoView.GetContent());
-				}
+	
 			}
 
 			pageVM.TipAlertCommandCallback = DisplayTip;
