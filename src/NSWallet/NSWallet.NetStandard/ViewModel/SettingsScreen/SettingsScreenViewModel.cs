@@ -1245,9 +1245,7 @@ namespace NSWallet
 			BL.Close();
 			PlatformSpecific.RemoveFile(PlatformSpecific.GetDBFile());
 			BL.InitAPI(PlatformSpecific.GetDBFile(), AppLanguage.GetCurrentLangCode());
-			PCLUpgradeManager.PrepareUpdate();
 			BL.InitNewStorage();
-			PCLUpgradeManager.RemoveAfterUpdate();
 			AppTheme.SetCurrentTheme();
 			TR.SetLanguage(Settings.Language);
 			Device.BeginInvokeOnMainThread(() => {

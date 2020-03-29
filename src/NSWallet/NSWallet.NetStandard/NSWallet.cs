@@ -28,9 +28,7 @@ namespace NSWallet
 				// Automatic backup should be done before engine initialization, new version of engine can spoil old DB
 				BackupManager.CreateAutoBackup();
 
-				PCLUpgradeManager.PrepareUpdate();
 				BL.InitNewStorage();
-				PCLUpgradeManager.RemoveAfterUpdate();
 
 				AppTheme.SetCurrentTheme();
 
