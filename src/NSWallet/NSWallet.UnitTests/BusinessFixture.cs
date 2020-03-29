@@ -10,7 +10,7 @@ namespace NSWallet.UnitTests
         const string defaultIcon = "document";
         const string defaultLang = "en";
         const string defaultIconPath = "Icons.items.icon_document_huge.png";
-        const string _namespace = "NSWallet.NetStandard";
+        const string _namespace = "NSWallet";
 
         string password;
         string dbPath;
