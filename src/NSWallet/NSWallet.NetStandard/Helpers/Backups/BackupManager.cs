@@ -61,9 +61,7 @@ namespace NSWallet.Helpers
 				}
 
 				BL.InitAPI(fileToInit, AppLanguage.GetCurrentLangCode());
-				PCLUpgradeManager.PrepareUpdate();
 				BL.InitNewStorage();
-				PCLUpgradeManager.RemoveAfterUpdate();
 				return true;
 			}
 			return false;

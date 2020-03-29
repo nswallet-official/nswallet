@@ -4,7 +4,6 @@ using Xamarin.Forms;
 using System;
 using System.IO;
 using Xamarin.Essentials;
-//using Xamarin.Essentials;
 
 
 namespace NSWallet
@@ -69,17 +68,17 @@ namespace NSWallet
 			return DependencyService.Get<IFile>().GetBackupPath();
         }
 
-        public static IEnumerable<string> GetFilePaths(string path)
-        {
-            return DependencyService.Get<IFile>().GetFilePaths(path);
-        }
+		public static IEnumerable<string> GetFilePaths(string path)
+		{
+			return DependencyService.Get<IFile>().GetFilePaths(path);
+		}
 
-        public static IEnumerable<string> GetFileNames(string path)
-        {
-            return DependencyService.Get<IFile>().GetFileNames(path);
-        }
+		public static IEnumerable<string> GetFileNames(string path)
+		{
+			return DependencyService.Get<IFile>().GetFileNames(path);
+		}
 
-        public static long GetFileSize(string path)
+		public static long GetFileSize(string path)
         {
             return DependencyService.Get<IFile>().GetFileSize(path);
         }

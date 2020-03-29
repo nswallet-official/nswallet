@@ -940,6 +940,7 @@ namespace NSWallet
 			if (itemsList != null) {
 				if (itemsList.Count == 0) {
 					SetEmptyList(true);
+					Items = new List<NSWFormsItemModel>(itemsStorage);
 				} else {
 					SetEmptyList(false);
 					foreach (var nswItem in itemsList) {
@@ -958,7 +959,11 @@ namespace NSWallet
 			}
 
 			if (IsSpecialFolder) {
+
 				SetEmptyList(false);
+				AddButtonVisible = false;
+				IsCopyEnabled = false;
+				IsMoveEnabled = false;
 			}
 		}
 
@@ -1141,20 +1146,9 @@ namespace NSWallet
 				case ItemTypes.Field:
 					if (item.FieldID != null)
 						BL.SetCurrentFieldID(item.FieldID);
-					/*
-                    string val = null;
-                    if (item.FieldData.ValueType.Equals(GConsts.VALUETYPE_DATE))
-                        val = Common.ConvertStringToStringDate(item.FieldData.FieldValue);
-                    else if (item.FieldData.ValueType.Equals(GConsts.VALUETYPE_TIME))
-                        val = Common.ConvertStringToStringTime(item.FieldData.FieldValue);
-                    else
-                        val = item.FieldData.FieldValue;
-                        */
+
 					if (!IsLocalClipboardActivated) {
-						//LaunchFieldMenuCommandCallback.Invoke(item.LowAdditionalRow,
-						//item.FieldData.HumanReadableValue,
-						//item.FieldData.ValueType,
-						//ImageSource.FromStream(() => NSWRes.GetImage(item.FieldData.Icon)));
+
 						StateHandler.CopyFieldLocallyActivated = false;
 						ChangeFieldCommand.Execute(item.FieldData.HumanReadableValue);
 					}
