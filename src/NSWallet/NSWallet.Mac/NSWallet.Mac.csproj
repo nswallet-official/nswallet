@@ -110,7 +110,6 @@
     <Reference Include="Plugin.Fingerprint">
       <HintPath>..\packages\Plugin.Fingerprint.2.1.1\lib\xamarinmac20\Plugin.Fingerprint.dll</HintPath>
     </Reference>
-    <Reference Include="netstandard" />
     <Reference Include="Xamarin.Essentials">
       <HintPath>..\packages\Xamarin.Essentials.1.5.2\lib\netstandard2.0\Xamarin.Essentials.dll</HintPath>
     </Reference>
@@ -129,7 +128,6 @@
     <Reference Include="SQLite-net">
       <HintPath>..\packages\sqlite-net-pcl.1.6.292\lib\netstandard1.1\SQLite-net.dll</HintPath>
     </Reference>
-    <Reference Include="System.Drawing.Common.dll" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json" />
@@ -179,9 +177,9 @@
     <InterfaceDefinition Include="Main.storyboard" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\NSWallet.NetStandard\NSWallet.NetStandard.csproj">
+    <ProjectReference Include="..\NSWallet.NetStandard\NSWallet.csproj">
       <Project>{5670B638-9D43-4AA5-A18A-F723E9EC0B08}</Project>
-      <Name>NSWallet.NetStandard</Name>
+      <Name>NSWallet</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
