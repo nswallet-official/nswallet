@@ -14,7 +14,7 @@ namespace NSWallet
 		{
 			try {
 
-				var appNamespace = "NSWallet.NetStandard";
+				var appNamespace = "NSWallet";
 				NSWRes.Init(appNamespace); // Initializing access to resources (images, icons)
 				NSWLocalFiles.Init(appNamespace);
 

@@ -6,7 +6,7 @@ namespace NSWallet.UnitTests
     [TestFixture]
     public partial class LocalizationFixture
     {
-        const string _namespace = "NSWallet.NetStandard";
+        const string _namespace = "NSWallet";
 
         [Test]
         public void SetLanguage()

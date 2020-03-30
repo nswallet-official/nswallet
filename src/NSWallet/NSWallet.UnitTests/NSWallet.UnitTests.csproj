@@ -28,6 +28,6 @@
     <EmbeddedResource Include="TestData\Backups\nswallet_old.dat" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\NSWallet.NetStandard\NSWallet.NetStandard.csproj" />
+    <ProjectReference Include="..\NSWallet.NetStandard\NSWallet.csproj" />
   </ItemGroup>
 </Project>

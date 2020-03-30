@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NSWallet.Droid", "Droid\NSW
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "NSWallet.Shared", "NSWallet.Shared\NSWallet.Shared.shproj", "{5CE49CD5-E234-42D3-BF5A-0A8386456A3D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NSWallet.NetStandard", "NSWallet.NetStandard\NSWallet.NetStandard.csproj", "{5670B638-9D43-4AA5-A18A-F723E9EC0B08}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NSWallet", "NSWallet.NetStandard\NSWallet.csproj", "{5670B638-9D43-4AA5-A18A-F723E9EC0B08}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NSWallet.Mac", "NSWallet.Mac\NSWallet.Mac.csproj", "{1AE8CDD0-F03F-4302-B688-0E29E3AA5969}"
 EndProject

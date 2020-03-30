@@ -401,7 +401,6 @@
         <Reference Include="Plugin.Fingerprint">
             <HintPath>..\packages\Plugin.Fingerprint.2.1.1\lib\monoandroid90\Plugin.Fingerprint.dll</HintPath>
         </Reference>
-        <Reference Include="Java.Interop" />
         <Reference Include="Xamarin.AndroidX.Lifecycle.ViewModelSavedState">
           <HintPath>..\packages\Xamarin.AndroidX.Lifecycle.ViewModelSavedState.2.2.0\lib\monoandroid90\Xamarin.AndroidX.Lifecycle.ViewModelSavedState.dll</HintPath>
         </Reference>
@@ -552,12 +551,6 @@
         <Folder Include="CustomRenderers\ViewCells\" />
     </ItemGroup>
     <ItemGroup>
-        <ProjectReference Include="..\NSWallet.NetStandard\NSWallet.NetStandard.csproj">
-            <Project>{5670B638-9D43-4AA5-A18A-F723E9EC0B08}</Project>
-            <Name>NSWallet.NetStandard</Name>
-        </ProjectReference>
-    </ItemGroup>
-    <ItemGroup>
         <AndroidAsset Include="Assets\Merriweather-Regular.ttf" />
         <AndroidAsset Include="Assets\Montserrat-Regular.ttf" />
         <AndroidAsset Include="Assets\Inconsolata-Regular.ttf" />
@@ -581,6 +574,12 @@
     </ItemGroup>
     <ItemGroup>
         <ProguardConfiguration Include="Properties\ProGuard.cfg" />
+    </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\NSWallet.NetStandard\NSWallet.csproj">
+        <Project>{5670B638-9D43-4AA5-A18A-F723E9EC0B08}</Project>
+        <Name>NSWallet</Name>
+      </ProjectReference>
     </ItemGroup>
     <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
     <Import Project="..\packages\NETStandard.Library.2.0.2\build\netstandard2.0\NETStandard.Library.targets" Condition="Exists('..\packages\NETStandard.Library.2.0.2\build\netstandard2.0\NETStandard.Library.targets')" />
