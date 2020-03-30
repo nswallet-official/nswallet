@@ -1,0 +1,7 @@
+ignore:
+  - "src/NSWallet/NSWallet/Controls"
+  - "src/NSWallet/NSWallet/CustomRenderers"
+  - "src/NSWallet/NSWallet/Pages"
+  - "src/NSWallet/NSWallet/Views"
+  - "src/NSWallet/NSWallet/ViewModel"
+  
