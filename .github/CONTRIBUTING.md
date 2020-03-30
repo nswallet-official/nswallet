@@ -1,6 +1,22 @@
-## For contributors
+# For contributors
 
-- Ask owner to add you to contributors list
+## Introduction
+
+Thank you for your interest to contribute to **NSWallet**!
+
+You can help us with the following:
+
+- New features
+- Bug fixes
+- Refactoring
+- Tests
+- Bug reports
+- Feature requests
+
+To start helping us with code please ask owner to add you to contributors list.
+
+## Repository rules
+
 - Create your own branch from the branch 'develop'
 - Use the following name conventions for your **new branch**: 
 

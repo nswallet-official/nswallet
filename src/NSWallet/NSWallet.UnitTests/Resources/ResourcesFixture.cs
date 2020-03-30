@@ -12,7 +12,7 @@ namespace NSWallet.UnitTests
     public class ResourcesFixture
     {
         const string defaultLang = "en";
-        const string _namespace = "NSWallet.NetStandard";
+        const string _namespace = "NSWallet";
 
         readonly string[] files2check = { 
 			"help_import_backup.html",
