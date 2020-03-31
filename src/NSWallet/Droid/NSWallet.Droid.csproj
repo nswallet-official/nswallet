@@ -576,8 +576,8 @@
         <ProguardConfiguration Include="Properties\ProGuard.cfg" />
     </ItemGroup>
     <ItemGroup>
-      <ProjectReference Include="..\NSWallet.NetStandard\NSWallet.csproj">
-        <Project>{5670B638-9D43-4AA5-A18A-F723E9EC0B08}</Project>
+      <ProjectReference Include="..\NSWallet\NSWallet.csproj">
+        <Project>{4B530BEF-60C5-45D6-AD3D-B9CF4CA60B01}</Project>
         <Name>NSWallet</Name>
       </ProjectReference>
     </ItemGroup>

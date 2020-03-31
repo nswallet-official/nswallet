@@ -177,12 +177,6 @@
     <InterfaceDefinition Include="Main.storyboard" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\NSWallet.NetStandard\NSWallet.csproj">
-      <Project>{5670B638-9D43-4AA5-A18A-F723E9EC0B08}</Project>
-      <Name>NSWallet</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <BundleResource Include="Resources\512.png" />
     <BundleResource Include="Resources\app_icon_1024.png" />
     <BundleResource Include="Resources\close%402x.png" />
@@ -230,6 +224,12 @@
     <BundleResource Include="Resources\Fonts\PlayfairDisplay-Regular.ttf" />
     <BundleResource Include="Resources\Fonts\Raleway-Bold.ttf" />
     <BundleResource Include="Resources\Fonts\Raleway-Regular.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NSWallet\NSWallet.csproj">
+      <Project>{4B530BEF-60C5-45D6-AD3D-B9CF4CA60B01}</Project>
+      <Name>NSWallet</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Mac\Xamarin.Mac.CSharp.targets" />
   <Import Project="..\packages\NETStandard.Library.2.0.3\build\netstandard2.0\NETStandard.Library.targets" Condition="Exists('..\packages\NETStandard.Library.2.0.3\build\netstandard2.0\NETStandard.Library.targets')" />
