@@ -269,9 +269,6 @@
         <Reference Include="ImageCircle.Forms.Plugin">
           <HintPath>..\packages\Xam.Plugins.Forms.ImageCircle.3.1.1.1-beta\lib\monoandroid81\ImageCircle.Forms.Plugin.dll</HintPath>
         </Reference>
-        <Reference Include="SQLitePCLRaw.lib.e_sqlite3.android">
-          <HintPath>..\packages\SQLitePCLRaw.lib.e_sqlite3.android.2.0.4\lib\monoandroid80\SQLitePCLRaw.lib.e_sqlite3.android.dll</HintPath>
-        </Reference>
         <Reference Include="System.Buffers">
           <HintPath>..\packages\System.Buffers.4.5.1\lib\netstandard2.0\System.Buffers.dll</HintPath>
         </Reference>
@@ -280,18 +277,6 @@
         </Reference>
         <Reference Include="System.Memory">
           <HintPath>..\packages\System.Memory.4.5.4\lib\netstandard2.0\System.Memory.dll</HintPath>
-        </Reference>
-        <Reference Include="SQLitePCLRaw.core">
-          <HintPath>..\packages\SQLitePCLRaw.core.2.0.4\lib\netstandard2.0\SQLitePCLRaw.core.dll</HintPath>
-        </Reference>
-        <Reference Include="SQLitePCLRaw.provider.e_sqlite3">
-          <HintPath>..\packages\SQLitePCLRaw.provider.e_sqlite3.android.1.1.14\lib\MonoAndroid\SQLitePCLRaw.provider.e_sqlite3.dll</HintPath>
-        </Reference>
-        <Reference Include="SQLitePCLRaw.batteries_v2">
-          <HintPath>..\packages\SQLitePCLRaw.bundle_green.2.0.4\lib\netstandard2.0\SQLitePCLRaw.batteries_v2.dll</HintPath>
-        </Reference>
-        <Reference Include="SQLite-net">
-          <HintPath>..\packages\sqlite-net-pcl.1.7.335\lib\netstandard2.0\SQLite-net.dll</HintPath>
         </Reference>
         <Reference Include="Plugin.CurrentActivity">
           <HintPath>..\packages\Plugin.CurrentActivity.2.1.0.4\lib\monoandroid44\Plugin.CurrentActivity.dll</HintPath>
@@ -421,6 +406,21 @@
         </Reference>
         <Reference Include="Xamarin.AndroidX.ViewPager2">
           <HintPath>..\packages\Xamarin.AndroidX.ViewPager2.1.0.0.8\lib\monoandroid90\Xamarin.AndroidX.ViewPager2.dll</HintPath>
+        </Reference>
+        <Reference Include="SQLitePCLRaw.lib.e_sqlite3.android">
+          <HintPath>..\packages\SQLitePCLRaw.lib.e_sqlite3.android.2.0.3\lib\monoandroid80\SQLitePCLRaw.lib.e_sqlite3.android.dll</HintPath>
+        </Reference>
+        <Reference Include="SQLitePCLRaw.core">
+          <HintPath>..\packages\SQLitePCLRaw.core.2.0.3\lib\netstandard2.0\SQLitePCLRaw.core.dll</HintPath>
+        </Reference>
+        <Reference Include="SQLitePCLRaw.provider.e_sqlite3">
+          <HintPath>..\packages\SQLitePCLRaw.provider.e_sqlite3.2.0.3\lib\netstandard2.0\SQLitePCLRaw.provider.e_sqlite3.dll</HintPath>
+        </Reference>
+        <Reference Include="SQLitePCLRaw.batteries_v2">
+          <HintPath>..\packages\SQLitePCLRaw.bundle_green.2.0.3\lib\netstandard2.0\SQLitePCLRaw.batteries_v2.dll</HintPath>
+        </Reference>
+        <Reference Include="SQLite-net">
+          <HintPath>..\packages\sqlite-net-pcl.1.7.335\lib\netstandard2.0\SQLite-net.dll</HintPath>
         </Reference>
     </ItemGroup>
     <ItemGroup>
