@@ -1,10 +1,7 @@
 ﻿using System;
-using Android.App;
-using Android.Arch.Lifecycle;
 using Android.Content;
-using Android.Net;
 using Android.OS;
-using Android.Support.V4.Content;
+using AndroidX.Core.Content;
 using Java.IO;
 using NSWallet.Interfaces;
 using NSWallet.iOS.Interfaces;

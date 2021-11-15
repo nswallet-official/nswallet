@@ -8,8 +8,7 @@ using NSWallet.Droid;
 using NSWallet.Shared.Helpers.Logs.AppLog;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
-using FAB = Android.Support.Design.Widget.FloatingActionButton;
-//using AFloatingActionButton = Android.Support.Design.Widget.FloatingActionButton;
+using FAB = Google.Android.Material.FloatingActionButton.FloatingActionButton;
 
 [assembly: ExportRenderer(typeof(FloatingActionButton), typeof(FloatingActionButtonRenderer))]
 namespace NSWallet.Droid

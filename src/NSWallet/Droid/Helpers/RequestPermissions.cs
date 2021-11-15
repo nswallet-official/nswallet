@@ -3,9 +3,9 @@ using Android;
 using Android.App;
 using Android.Content.PM;
 using Android.OS;
-using Android.Support.Design.Widget;
-using Android.Support.V4.App;
-using Android.Support.V4.Content;
+using AndroidX.Core.App;
+using AndroidX.Core.Content;
+using Google.Android.Material.Snackbar;
 using NSWallet.Shared;
 using static Xamarin.Forms.Forms;
 
