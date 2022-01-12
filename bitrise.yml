@@ -1,0 +1,124 @@
+---
+format_version: 1.2.0
+default_step_lib_source: https://github.com/bitrise-io/bitrise-steplib.git
+trigger_map:
+- push_branch: develop
+  workflow: release
+- push_branch: "*"
+  workflow: build
+workflows:
+  build:
+    steps:
+    - script-runner@0:
+        inputs:
+        - file_path: "$BITRISE_SOURCE_DIR/scripts/build_number.sh"
+        title: Increase Build Number
+    - nuget-restore:
+        inputs:
+        - nuget_version: latest
+        - xamarin_solution: "$BITRISE_PROJECT_PATH"
+    - set-ios-version:
+        run_if: true
+        inputs:
+        - info_plist_file: "./src/NSWallet/iOS/Info.plist"
+        - bundle_version: "$BITRISE_BUILD_NUMBER"
+        - bundle_version_short: '3.0'
+    - set-android-manifest-versions:
+        run_if: true
+        inputs:
+        - manifest_file: "./src/NSWallet/Droid/Properties/AndroidManifest.xml"
+        - version_name: '3.0'
+    - xamarin-archive:
+        inputs:
+        - project_type_whitelist: android,ios
+    - script:
+        inputs:
+        - file_path: "$BITRISE_SOURCE_DIR/scripts/unit_tests.sh"
+        title: Unit tests
+    - codecov:
+        inputs:
+        - other_options: "-C $BITRISE_GIT_COMMIT -f ${PROJECT_DIRECTORY}/coverage/lcov.info"
+        - OS: macos
+        - CODECOV_TOKEN: "$CODECOV_TOKEN"
+
+  release:
+    steps:
+    - script-runner@0:
+        inputs:
+        - file_path: "$BITRISE_SOURCE_DIR/scripts/build_number.sh"
+        title: Increase Build Number
+    - nuget-restore:
+        inputs:
+        - nuget_version: latest
+        - xamarin_solution: "$BITRISE_PROJECT_PATH"
+    - set-ios-version:
+        run_if: true
+        inputs:
+        - info_plist_file: "./src/NSWallet/iOS/Info.plist"
+        - bundle_version: "$BITRISE_BUILD_NUMBER"
+        - bundle_version_short: "$NSWALLET_VERSION.$BITRISE_BUILD_NUMBER"
+    - set-android-manifest-versions:
+        run_if: true
+        inputs:
+        - manifest_file: "./src/NSWallet/Droid/Properties/AndroidManifest.xml"
+        - version_name: "$NSWALLET_VERSION.$BITRISE_BUILD_NUMBER"
+    - script:
+        inputs:
+        - file_path: "$BITRISE_SOURCE_DIR/scripts/unit_tests.sh"
+        title: Unit tests & Send report to CodeClimate
+    - codecov:
+        inputs:
+        - other_options: "-C $BITRISE_GIT_COMMIT -f ${PROJECT_DIRECTORY}/coverage/lcov.info"
+        - OS: macos
+        - CODECOV_TOKEN: "$CODECOV_TOKEN"
+    - xamarin-archive:
+        inputs:
+        - project_type_whitelist: ios,android
+        - xamarin_configuration: "$BITRISE_XAMARIN_PRODCONFIG"
+    - script@1:
+        inputs:
+        - content: |-
+            set -e
+            set -x
+
+            jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore $KEYSTORE_PATH -storepass $KEYSTORE_PASSWORD -keypass $PRIVATE_KEY_PASSWORD -signedjar $BITRISE_SIGNED_AAB_PATH  /Users/devops/Documents/Projects/nswallet/src/NSWallet/Droid/obj/Release/android/bin/com.nyxbull.nswallet.aab $KEYSTORE_ALIAS
+        title: Sign AAB file
+    - google-play-deploy:
+        inputs:
+        - service_account_json_key_path: "$SERVICE_ACCOUNT_JSON"
+        - package_name: com.nyxbull.nswallet
+        - app_path: "$BITRISE_SIGNED_AAB_PATH"
+        - track: internal
+        - user_fraction: ''
+    - deploy-to-itunesconnect-application-loader:
+        inputs:
+        - app_password: "$APPLE_PASSWORD"
+        - itunescon_user: "$APPLE_USER"
+
+app:
+  envs:
+  - NSWALLET_VERSION: '4.09'
+  - opts:
+      is_expand: false
+    BITRISE_PROJECT_PATH: src/NSWallet/NSWallet.sln
+  - opts:
+      is_expand: false
+    BITRISE_XAMARIN_CONFIGURATION: Release
+  - opts:
+      is_expand: false
+    BITRISE_XAMARIN_PLATFORM: iPhone
+  - BITRISE_XAMARIN_PRODCONFIG: ReleaseProd
+  - BITRISE_XAMARIN_UNITESTING: UnitTesting
+  - ANDROID_SDK_ROOT: "/Users/vagrant/Library/Developer/Xamarin/android-sdk-macosx"
+  - opts:
+      is_expand: false
+    BITRISE_AAB_PATH: "/Users/vagrant/deploy/"
+  - opts:
+      is_expand: false
+    PROJECT_DIRECTORY: src/NSWallet/
+  - opts:
+      is_expand: false
+    CODECLIMATE_TEST_REPORTER_DOWNLOAD_URL: https://codeclimate.com/downloads/test-reporter/test-reporter-latest-darwin-amd64
+  - opts:
+      is_expand: false
+    UNIT_TESTS_PROJECT: "/Users/devops/Documents/Projects/nswallet/src/NSWallet/NSWallet.UnitTests/NSWallet.UnitTests.csproj"
