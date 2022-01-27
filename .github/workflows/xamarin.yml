@@ -11,7 +11,7 @@ jobs:
 
     runs-on: macos-latest
 
-      steps:
+    steps:
     - uses: actions/checkout@v2
     - name: Set default Xamarin SDK versions
       run: |
