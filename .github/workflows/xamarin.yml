@@ -1,0 +1,38 @@
+name: .NET
+
+on:
+  push:
+    branches: [ feature/BCMS-10-add-runner ]
+  pull_request:
+    branches: [ feature/BCMS-10-add-runner ]
+
+jobs:
+  build:
+
+    runs-on: macos-latest
+
+      steps:
+    - uses: actions/checkout@v2
+    - name: Set default Xamarin SDK versions
+      run: |
+        $VM_ASSETS/select-xamarin-sdk-v2.sh --mono=6.12 --ios=15.0
+    
+    - name: Set default Xcode
+      run: |
+        XCODE_ROOT=/Applications/Xcode.app
+        echo "MD_APPLE_SDK_ROOT=$XCODE_ROOT" >> $GITHUB_ENV
+        sudo xcode-select -s $XCODE_ROOT
+   
+    - name: Setup .NET Core SDK 5.0.x
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: '5.0.x'
+
+    - name: Get current path
+      run: pwd
+
+    - name: Install dependencies
+      run: nuget restore ../../src/NSWallet/NSWallet.sln
+
+    - name: Build
+      run: msbuild ../../src/NSWallet/iOS/NSWallet.iOS.csproj /p:Configuration=Debug /p:Platform=iPhoneSimulator /t:Rebuild
