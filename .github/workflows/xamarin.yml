@@ -32,7 +32,7 @@ jobs:
       run: pwd
 
     - name: Install dependencies
-      run: nuget restore ../../src/NSWallet/NSWallet.sln
+      run: nuget restore src/NSWallet/NSWallet.sln
 
     - name: Build
-      run: msbuild ../../src/NSWallet/iOS/NSWallet.iOS.csproj /p:Configuration=Debug /p:Platform=iPhoneSimulator /t:Rebuild
+      run: msbuild src/NSWallet/iOS/NSWallet.iOS.csproj /p:Configuration=Debug /p:Platform=iPhoneSimulator /t:Rebuild
