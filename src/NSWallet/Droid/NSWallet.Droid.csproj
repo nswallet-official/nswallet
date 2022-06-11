@@ -243,6 +243,9 @@
     <PackageReference Include="Xamarin.Forms">
       <Version>5.0.0.2196</Version>
     </PackageReference>
+    <PackageReference Include="Plugin.InAppBilling">
+      <Version>4.0.2</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\Merriweather-Regular.ttf" />

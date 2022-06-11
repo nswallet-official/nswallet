@@ -26,6 +26,20 @@ namespace NSWallet.Helpers
         const string BuildKey = "build_key";
         static readonly string BuildDefault = "0";
 
+        const string PremiumKey = "premium_key";
+        public static readonly string PremiumDefault = "not_set";
+
+        const string IsPremiumOldKey = "is_premium_old_key";
+        static readonly bool IsPremiumOldDefault = false;
+
+        const string IsPremiumSubscriptionKey = "is_premium_subscription_key";
+        static readonly bool IsPremiumSubscriptionDefault = false;
+
+        const string PremiumSubscriptionDateKey = "premium_subscription_key";
+        static readonly DateTime PremiumSubscriptionDateDefault = default(DateTime);
+
+        const string PremiumSubscriptionStateKey = "premium_autorenewing_key";
+        static readonly string PremiumSubscriptionStateDefault = "unknown";
 
         const string AutoBackupDateKey = "autobackuptime_key";
         static readonly string AutoBackupDateDefault = default(DateTime).ToString();
@@ -147,9 +161,23 @@ namespace NSWallet.Helpers
 		const string IsAutoFingerKey = "is_auto_finger_key";
 		static readonly bool IsAutoFingerDefault = false;
 
+        /// <summary>
+		/// Resets the premium settings.
+		/// </summary>
+		public static void ResetPremiumSettings()
+        {
+            Theme = ThemeDefault;
+            IsRecentlyViewed = IsRecentlyViewedDefault;
+            IsExpiringSoon = IsExpiringSoonDefault;
+            ExpiringPeriod = ExpiringPeriodDefault;
+            IsRecentlyViewed = IsRecentlyViewedDefault;
+            IsMostlyViewed = IsMostlyViewedDefault;
+            FontFamily = FontFamilyDefault;
+            IsAutoLoginEnabled = AutoLoginDefault;
+            PasswordTip = PasswordTipDefault;
+        }
 
-
-		public static void ResetSettings()
+        public static void ResetSettings()
 		{
 			AppSettings.Clear();
 		}
@@ -177,6 +205,68 @@ namespace NSWallet.Helpers
                 AppSettings.AddOrUpdateValue(BuildKey, value);
             }
         }
+
+        public static string PremiumStatus
+        {
+            get
+            {
+                return AppSettings.GetValueOrDefault(PremiumKey, PremiumDefault);
+            }
+            set
+            {
+                AppSettings.AddOrUpdateValue(PremiumKey, value);
+            }
+        }
+
+        public static bool IsPremiumOld
+        {
+            get
+            {
+                return AppSettings.GetValueOrDefault(IsPremiumOldKey, IsPremiumOldDefault);
+            }
+            set
+            {
+                AppSettings.AddOrUpdateValue(IsPremiumOldKey, value);
+            }
+        }
+
+        public static bool IsPremiumSubscription
+        {
+            get
+            {
+                return AppSettings.GetValueOrDefault(IsPremiumSubscriptionKey, IsPremiumSubscriptionDefault);
+            }
+            set
+            {
+                AppSettings.AddOrUpdateValue(IsPremiumSubscriptionKey, value);
+            }
+        }
+
+
+        public static DateTime PremiumSubscriptionDate
+        {
+            get
+            {
+                return AppSettings.GetValueOrDefault(PremiumSubscriptionDateKey, PremiumSubscriptionDateDefault);
+            }
+            set
+            {
+                AppSettings.AddOrUpdateValue(PremiumSubscriptionDateKey, value);
+            }
+        }
+
+        public static string PremiumSubscriptionState
+        {
+            get
+            {
+                return AppSettings.GetValueOrDefault(PremiumSubscriptionStateKey, PremiumSubscriptionStateDefault);
+            }
+            set
+            {
+                AppSettings.AddOrUpdateValue(PremiumSubscriptionStateKey, value);
+            }
+        }
+
 
         public static string AutoBackupTime
         {

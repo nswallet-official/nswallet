@@ -318,7 +318,16 @@ namespace NSWallet
 			});
 		}
 
-		public static void CloseModalPage(INavigation navigation)
+        public static void Premium(INavigation navigation)
+        {
+            navigation.PushModalAsync(new NavigationPage(new PremiumPageView()) {
+                BarBackgroundColor = Theme.Current.AppHeaderBackground,
+                BarTextColor = Theme.Current.AppHeaderTextColor
+            });
+        }
+
+
+        public static void CloseModalPage(INavigation navigation)
         {
             navigation.PopModalAsync(true);
         }
