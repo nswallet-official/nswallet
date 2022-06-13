@@ -5,6 +5,7 @@ using NSWallet.Helpers;
 using NSWallet.NetStandard;
 using NSWallet.NetStandard.Helpers.Fonts;
 using NSWallet.NetStandard.Helpers.UI.NavigationHeader;
+using NSWallet.Premium;
 using NSWallet.Shared;
 using Xamarin.Forms;
 
@@ -112,6 +113,9 @@ namespace NSWallet
 					break;
 			}
 
+			// Premium
+			AddGroup(settingsLayout, TR.Tr("settings_premium"));
+			AddSettingButton(settingsLayout, "RestorePremiumCommand", TR.Tr("settings_restore_premium"), Theme.Current.SettingsPremium, "ChosenRestorePremium");
 			AddSeparator(settingsLayout);
 
 			AddGroup(settingsLayout, TR.Tr("settings_group_extra"), true);
@@ -119,6 +123,7 @@ namespace NSWallet
 			//AddSettingButton(settingsLayout, "OptimizeCommand", TR.Tr("settings_optimize"), Theme.Current.SettingsDeleteAll);
 			AddSeparator(settingsLayout);
 
+			pageVM.PremiumAlertAfterRestoringFailedCallback = PremiumAlertAfterRestoringFailed;
 			pageVM.AutoBackupCommandCallback = AutoBackupSelector;
 			pageVM.AutoLogoutCommandCallback = AutoLogoutSelector;
 			pageVM.BackupDeletionCommandCallback = BackupsDeletionSelector;
@@ -154,6 +159,17 @@ namespace NSWallet
 			AbsoluteLayout.SetLayoutFlags(indicator, AbsoluteLayoutFlags.All);
 			AbsoluteLayout.SetLayoutBounds(indicator, new Rectangle(0, 0, 1, 1));
 
+		}
+
+		void PremiumAlertAfterRestoringFailed()
+		{
+			var answer = DisplayAlert(TR.Tr("premium"), TR.Tr("settings_restore_premium_fail"), TR.Yes, TR.No).ContinueWith((t =>
+			{
+				if (t.Result)
+				{
+					Device.BeginInvokeOnMainThread(() => AppPages.Premium(Navigation));
+				}
+			}));
 		}
 
 		public async void EnterPasswordTip()
@@ -471,11 +487,37 @@ namespace NSWallet
 
 			var checkBoxSwitch = new Switch();
 
+			if (Premium.PremiumManagement.IsAnyPremium)
+			{
+				checkBoxSwitch = new Switch { HorizontalOptions = LayoutOptions.EndAndExpand };
+				checkBoxSwitch.SetBinding(Switch.IsToggledProperty, checkedProperty);
+				checkboxLayout.Children.Add(checkBoxSwitch);
+			}
+			else
+			{
+				if (isPremium)
+				{
+					var premiumImage = new CachedImage
+					{
+						HeightRequest = 30,
+						HorizontalOptions = LayoutOptions.EndAndExpand,
+						Source = ImageSource.FromFile("premium_outlined.png"),
+						Style = ImageProperties.DefaultCachedImageStyle
+					};
 
-			checkBoxSwitch = new Switch { HorizontalOptions = LayoutOptions.EndAndExpand };
-			checkBoxSwitch.SetBinding(Switch.IsToggledProperty, checkedProperty);
-			checkboxLayout.Children.Add(checkBoxSwitch);
+					var premiumTappedGesture = new TapGestureRecognizer();
+					premiumTappedGesture.Tapped += (sender, e) => PremiumManagement.ShowBuyPremiumPopup();
+					premiumImage.GestureRecognizers.Add(premiumTappedGesture);
 
+					checkboxLayout.Children.Add(premiumImage);
+				}
+				else
+				{
+					checkBoxSwitch = new Switch { HorizontalOptions = LayoutOptions.EndAndExpand };
+					checkBoxSwitch.SetBinding(Switch.IsToggledProperty, checkedProperty);
+					checkboxLayout.Children.Add(checkBoxSwitch);
+				}
+			}
 
 			settingsLayout.Children.Add(checkboxLayout);
 
@@ -548,6 +590,25 @@ namespace NSWallet
 
 			stack.Children.Add(itemSettingLayout);
 
+			if (PremiumManagement.IsFree)
+			{
+				if (isPremium)
+				{
+					var premiumImage = new CachedImage
+					{
+						HeightRequest = 30,
+						HorizontalOptions = LayoutOptions.EndAndExpand,
+						Source = ImageSource.FromFile("premium_outlined.png"),
+						Style = ImageProperties.DefaultCachedImageStyle
+					};
+
+					var premiumTappedGesture = new TapGestureRecognizer();
+					premiumTappedGesture.Tapped += (sender, e) => PremiumManagement.ShowBuyPremiumPopup();
+					premiumImage.GestureRecognizers.Add(premiumTappedGesture);
+
+					itemSettingLayout.Children.Add(premiumImage);
+				}
+			}
 
 			var tapGestureRecognizer = new TapGestureRecognizer();
 			tapGestureRecognizer.SetBinding(TapGestureRecognizer.CommandProperty, modelCommand);

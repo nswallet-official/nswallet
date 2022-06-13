@@ -8,6 +8,8 @@ namespace NSWallet.Shared
 {
     public static class NSWLocalFiles
     {
+		const string notPremium = ".notpremium.html";
+		const string oldPremium = ".old_premium.html";
 		const string helpImportBackup = ".help_import_backup.html";
 		const string privacyPolicy = ".privacy_policy.html";
 		const string termsOfUse = ".terms_of_use.html";
@@ -47,6 +49,15 @@ namespace NSWallet.Shared
 			}
         }
 
+		public static string GetNotPremiumHTML(string langCode)
+		{
+			return GetHTML(langCode, notPremium);
+		}
+
+		public static string GetOldPremiumHTML(string langCode)
+		{
+			return GetHTML(langCode, oldPremium);
+		}
 
 		public static string GetImportBackupHelpHTML(string langCode) {
 			return GetHTML(langCode, helpImportBackup);

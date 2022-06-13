@@ -4,6 +4,7 @@ using NSWallet.iOS.Helpers;
 using NSWallet.iOS.Helpers.Files;
 using NSWallet.NetStandard.Helpers;
 using NSWallet.Shared;
+using StoreKit;
 using UIKit;
 
 namespace NSWallet.iOS
@@ -18,6 +19,8 @@ namespace NSWallet.iOS
 			Xamarin.Forms.Forms.Init();
 			ImageCircleRenderer.Init();
 			FFImageLoading.Forms.Platform.CachedImageRenderer.Init();
+			Plugin.InAppBilling.InAppBillingImplementation.OnShouldAddStorePayment = OnShouldAddStorePayment;
+			var current = Plugin.InAppBilling.CrossInAppBilling.Current;
 
 			mainForms = new App();
 
@@ -25,10 +28,6 @@ namespace NSWallet.iOS
 			ExtendedDevice.ScreenWidth = (int)UIScreen.MainScreen.Bounds.Width;
 
 			LoadApplication(mainForms);
-
-			#if ENABLE_TEST_CLOUD
-				//Xamarin.Calabash.Start();
-			#endif
 
             return base.FinishedLaunching(uiApplication, launchOptions);
 		}
@@ -50,5 +49,10 @@ namespace NSWallet.iOS
 			}
             return true;
         }
+
+		bool OnShouldAddStorePayment(SKPaymentQueue queue, SKPayment payment, SKProduct product)
+		{
+			return true;
+		}
 	}
 }

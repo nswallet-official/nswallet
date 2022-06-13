@@ -478,5 +478,27 @@
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Localization\Files\be\privacy_policy.html" />
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Localization\Files\be\terms_of_use.html" />
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\Assets\Icons\LogoBykovSoft144.png" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Localization\Files\be\notpremium.html" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Localization\Files\be\old_premium.html" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Localization\Files\ru\notpremium.html" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Localization\Files\ru\old_premium.html" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Localization\Files\en\notpremium.html" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Localization\Files\en\old_premium.html" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Localization\Files\de\notpremium.html" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Localization\Files\de\old_premium.html" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Localization\Files\es\notpremium.html" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Localization\Files\es\old_premium.html" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Localization\Files\pl\notpremium.html" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Localization\Files\pl\old_premium.html" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Localization\Files\uk\notpremium.html" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Localization\Files\uk\old_premium.html" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Localization\Files\pt\notpremium.html" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Localization\Files\pt\old_premium.html" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Localization\Files\hi\notpremium.html" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Localization\Files\hi\old_premium.html" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Localization\Files\ca\notpremium.html" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Localization\Files\ca\old_premium.html" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Localization\Files\bg\notpremium.html" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Localization\Files\bg\old_premium.html" />
   </ItemGroup>
 </Project>

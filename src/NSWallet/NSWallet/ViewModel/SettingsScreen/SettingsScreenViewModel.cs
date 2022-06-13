@@ -6,6 +6,7 @@ using Xamarin.Forms;
 using System.Threading.Tasks;
 using NSWallet.Controls.EntryPopup;
 using NSWallet.NetStandard.Helpers.Fonts;
+using NSWallet.Premium;
 
 namespace NSWallet
 {
@@ -15,6 +16,7 @@ namespace NSWallet
 
 		//public Action PremiumAlertCallback { get; set; }
 
+		public Action PremiumAlertAfterRestoringFailedCallback { get; set; }
 		public Action AutoBackupCommandCallback { get; set; }
 		public Action AutoLogoutCommandCallback { get; set; }
 		public Action BackupDeletionCommandCallback { get; set; }
@@ -33,8 +35,7 @@ namespace NSWallet
 
 		public SettingsScreenViewModel(INavigation navigation)
 		{
-			//PremiumAlertCallback = () => { };
-
+			PremiumAlertAfterRestoringFailedCallback = () => { };
 			AutoBackupCommandCallback = () => { };
 			AutoLogoutCommandCallback = () => { };
 			BackupDeletionCommandCallback = () => { };
@@ -111,7 +112,6 @@ namespace NSWallet
 				ChosenHidePassword = TR.Tr("settings_hidepass_on");
 			else
 				ChosenHidePassword = TR.Tr("settings_hidepass_off");
-
 
 			if (IsFingerprintChecked)
 				ChosenFingerprintActive = TR.Tr("settings_fingerprint_on");
@@ -305,9 +305,17 @@ namespace NSWallet
 
 		protected void ExecuteExpiringPeriodCommand()
 		{
-
-			ExpiringPeriodCommandCallback.Invoke();
-
+			if (PremiumManagement.IsAnyPremium)
+			{
+				ExpiringPeriodCommandCallback.Invoke();
+			}
+			else
+			{
+				if (!settingsStartup)
+				{
+					PremiumManagement.ShowBuyPremiumPopup();
+				}
+			}
 		}
 
 		Command<string> expiringPeriodSelectedCommand;
@@ -346,9 +354,14 @@ namespace NSWallet
 
 		protected void ExecuteThemeCommand()
 		{
-
-			ThemeCommandCallback.Invoke(true);
-
+			if (PremiumManagement.IsAnyPremium)
+			{
+				ThemeCommandCallback.Invoke(true);
+			}
+			else
+			{
+				ThemeCommandCallback.Invoke(false);
+			}
 		}
 
 		Command<string> themeSelectedCommand;
@@ -378,8 +391,12 @@ namespace NSWallet
 				}
 
 				if (string.Compare(selectedTheme, TR.Tr("more_themes")) == 0) {
-
-				} else {
+					if (!settingsStartup)
+					{
+						PremiumManagement.ShowBuyPremiumPopup();
+					}
+				}
+				else {
 					ChosenTheme = selectedTheme;
 					Device.BeginInvokeOnMainThread(() => { AppTheme.SetTheme(themeCode); });
 					Device.BeginInvokeOnMainThread(AppPages.Settings);
@@ -480,9 +497,17 @@ namespace NSWallet
 
 		protected void ExecuteFontCommand()
 		{
-
-			AppPages.FontSelector();
-
+			if (PremiumManagement.IsAnyPremium)
+			{
+				AppPages.FontSelector();
+			}
+			else
+			{
+				if (!settingsStartup)
+				{
+					PremiumManagement.ShowBuyPremiumPopup();
+				}
+			}
 		}
 
 		Command<string> fontSelectedCommand;
@@ -504,19 +529,32 @@ namespace NSWallet
 		#endregion
 
 		bool isExpiringSoonChecked;
-		public bool IsExpiringSoonChecked {
+		public bool IsExpiringSoonChecked
+		{
 			get { return isExpiringSoonChecked; }
-			set {
+			set
+			{
+				if (PremiumManagement.IsAnyPremium)
+				{
+					if (isExpiringSoonChecked == value)
+						return;
+					isExpiringSoonChecked = value;
+					ExecuteExoiringSoonCommand();
+				}
+				else
+				{
+					if (!value) return;
 
-				if (isExpiringSoonChecked == value)
-					return;
-				isExpiringSoonChecked = value;
-				ExecuteExoiringSoonCommand();
-
+					if (!settingsStartup)
+					{
+						PremiumManagement.ShowBuyPremiumPopup();
+					}
+				}
 
 				OnPropertyChanged("IsExpiringSoonChecked");
 			}
 		}
+
 
 		protected void ExecuteExoiringSoonCommand()
 		{
@@ -532,15 +570,27 @@ namespace NSWallet
 		}
 
 		bool isRecentlyViewedChecked;
-		public bool IsRecentlyViewedChecked {
+		public bool IsRecentlyViewedChecked
+		{
 			get { return isRecentlyViewedChecked; }
-			set {
+			set
+			{
+				if (PremiumManagement.IsAnyPremium)
+				{
+					if (isRecentlyViewedChecked == value)
+						return;
+					isRecentlyViewedChecked = value;
+					ExecuteRecentlyViewedCommand();
+				}
+				else
+				{
+					if (!value) return;
 
-				if (isRecentlyViewedChecked == value)
-					return;
-				isRecentlyViewedChecked = value;
-				ExecuteRecentlyViewedCommand();
-
+					if (!settingsStartup)
+					{
+						PremiumManagement.ShowBuyPremiumPopup();
+					}
+				}
 				OnPropertyChanged("IsRecentlyViewedChecked");
 			}
 		}
@@ -561,15 +611,26 @@ namespace NSWallet
 		// Is mostly viewed
 
 		bool isMostlyViewedChecked;
-		public bool IsMostlyViewedChecked {
+		public bool IsMostlyViewedChecked
+		{
 			get { return isMostlyViewedChecked; }
-			set {
-
-				if (isMostlyViewedChecked == value)
-					return;
-				isMostlyViewedChecked = value;
-				ExecuteMostlyViewedCommand();
-
+			set
+			{
+				if (PremiumManagement.IsAnyPremium)
+				{
+					if (isMostlyViewedChecked == value)
+						return;
+					isMostlyViewedChecked = value;
+					ExecuteMostlyViewedCommand();
+				}
+				else
+				{
+					if (!value) return;
+					if (!settingsStartup)
+					{
+						PremiumManagement.ShowBuyPremiumPopup();
+					}
+				}
 				OnPropertyChanged("IsMostlyViewedChecked");
 			}
 		}
@@ -1005,15 +1066,27 @@ namespace NSWallet
 		}
 
 		bool isAutoLoginChecked;
-		public bool IsAutoLoginChecked {
+		public bool IsAutoLoginChecked
+		{
 			get { return isAutoLoginChecked; }
-			set {
-
-				if (isAutoLoginChecked == value)
-					return;
-				isAutoLoginChecked = value;
-				ExecuteAutoLoginCommand();
-
+			set
+			{
+				if (PremiumManagement.IsAnyPremium)
+				{
+					if (isAutoLoginChecked == value)
+						return;
+					isAutoLoginChecked = value;
+					ExecuteAutoLoginCommand();
+				}
+				else
+				{
+					if (!value) return;
+					//PremiumAlertCallback.Invoke();
+					if (!settingsStartup)
+					{
+						PremiumManagement.ShowBuyPremiumPopup();
+					}
+				}
 				OnPropertyChanged("IsAutoLoginChecked");
 			}
 		}
@@ -1166,9 +1239,17 @@ namespace NSWallet
 
 		protected void ExecutePasswordTipCommand()
 		{
-
-			PasswordTipCommandCallback.Invoke();
-
+			if (PremiumManagement.IsAnyPremium)
+			{
+				PasswordTipCommandCallback.Invoke();
+			}
+			else
+			{
+				if (!settingsStartup)
+				{
+					PremiumManagement.ShowBuyPremiumPopup();
+				}
+			}
 		}
 
 		Command passwordTipSuccessCommand;
@@ -1207,10 +1288,48 @@ namespace NSWallet
 			// Main command
 		}
 
-
+		Command restorePremiumCommand;
+		public Command RestorePremiumCommand
+		{
+			get
+			{
+				return restorePremiumCommand ?? (restorePremiumCommand = new Command(ExecuteRestorePremiumCommand));
+			}
+		}
 
 		bool restored = true;
+		protected void ExecuteRestorePremiumCommand()
+		{
+			if (restored)
+			{
+				Task.Run(async () =>
+				{
+					restored = false;
+					var status = await PremiumManagement.GetPurchases();
+					restored = true;
+					if (PremiumManagement.IsAnyPremium)
+					{
+						Device.BeginInvokeOnMainThread(() =>
+						{
+							AppPages.Settings();
+						});
 
+						if (PremiumManagement.IsPremiumSubscription)
+						{
+							showMessage(TR.Tr("settings_restore_premiumsubscription_success"));
+						}
+						else if (PremiumManagement.IsLegacyPremium)
+						{
+							showMessage(TR.Tr("settings_restore_premium_success"));
+						}
+					}
+					else
+					{
+						Device.BeginInvokeOnMainThread(() => PremiumAlertAfterRestoringFailedCallback.Invoke());
+					}
+				});
+			}
+		}
 
 		Command restoreDefaultCommand;
 		public Command RestoreDefaultCommand {
