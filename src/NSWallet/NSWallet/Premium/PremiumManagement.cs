@@ -32,11 +32,9 @@ namespace NSWallet.Premium
 		const string purchase_state_canceled = "canceled";
 		const string purchase_state_deferred = "deferred";
 		const string purchase_state_failed = "failed";
-		const string purchase_state_free_trial = "free_trial";
 		const string purchase_state_payment_pending = "payment_pending";
 		const string purchase_state_purchased = "purchased";
 		const string purchase_state_purchasing = "purchasing";
-		const string purchase_state_refunded = "refunded";
 		const string purchase_state_restored = "restored";
 		const string purchase_state_unknown = "unknown";
 
@@ -532,16 +530,12 @@ namespace NSWallet.Premium
 					return purchase_state_deferred;
 				case PurchaseState.Failed:
 					return purchase_state_failed;
-				case PurchaseState.FreeTrial:
-					return purchase_state_free_trial;
 				case PurchaseState.PaymentPending:
 					return purchase_state_payment_pending;
 				case PurchaseState.Purchased:
 					return purchase_state_purchased;
 				case PurchaseState.Purchasing:
 					return purchase_state_purchasing;
-				case PurchaseState.Refunded:
-					return purchase_state_refunded;
 				case PurchaseState.Restored:
 					return purchase_state_restored;
 				case PurchaseState.Unknown:
@@ -566,16 +560,12 @@ namespace NSWallet.Premium
 					return PurchaseState.Deferred;
 				case purchase_state_failed:
 					return PurchaseState.Failed;
-				case purchase_state_free_trial:
-					return PurchaseState.FreeTrial;
 				case purchase_state_payment_pending:
 					return PurchaseState.PaymentPending;
 				case purchase_state_purchased:
 					return PurchaseState.Purchased;
 				case purchase_state_purchasing:
 					return PurchaseState.Purchasing;
-				case purchase_state_refunded:
-					return PurchaseState.Refunded;
 				case purchase_state_restored:
 					return PurchaseState.Restored;
 				case purchase_state_unknown:
